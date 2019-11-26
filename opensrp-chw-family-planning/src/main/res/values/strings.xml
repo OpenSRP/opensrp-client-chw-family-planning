@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Family Planning</string>
+    <string name="error_unable_to_start_form">An error occurred when starting the form</string>
+</resources>
