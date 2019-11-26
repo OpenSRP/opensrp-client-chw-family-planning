@@ -2,7 +2,7 @@ package org.smartregister.chw.fp.presenter;
 
 import org.apache.commons.lang3.StringUtils;
 import org.smartregister.chw.fp.contract.BaseFpRegisterFragmentContract;
-import org.smartregister.chw.fp.util.FpDBConstants;
+import org.smartregister.chw.fp.util.FamilyPlanningConstants;
 import org.smartregister.configurableviews.model.Field;
 import org.smartregister.configurableviews.model.RegisterConfiguration;
 import org.smartregister.configurableviews.model.View;
@@ -65,7 +65,7 @@ public class BaseFpRegisterFragmentPresenter implements BaseFpRegisterFragmentCo
 
     @Override
     public void initializeQueries(String mainCondition) {
-        String tableName = FpDBConstants.FAMILY_PLANNING_TABLE;
+        String tableName = FamilyPlanningConstants.DBConstants.FAMILY_PLANNING_TABLE;
 
         String countSelect = model.countSelect(tableName, mainCondition);
         String mainSelect = model.mainSelect(tableName, mainCondition);

@@ -14,7 +14,7 @@ import org.smartregister.chw.fp.contract.BaseFpRegisterContract;
 import org.smartregister.chw.fp.fragment.BaseFpRegisterFragment;
 import org.smartregister.chw.fp.model.BaseFpRegisterModel;
 import org.smartregister.chw.fp.presenter.BaseFpRegisterPresenter;
-import org.smartregister.chw.fp.util.Constants;
+import org.smartregister.chw.fp.util.FamilyPlanningConstants;
 import org.smartregister.fp.R;
 import org.smartregister.view.activity.BaseRegisterActivity;
 import org.smartregister.view.fragment.BaseRegisterFragment;
@@ -30,7 +30,7 @@ public class BaseFpRegisterActivity extends BaseRegisterActivity implements Base
     }
 
     public String getRegistrationForm() {
-        return Constants.Forms.FAMILY_PLANNING_REGISTRATION_FORM;
+        return FamilyPlanningConstants.Forms.FAMILY_PLANNING_REGISTRATION_FORM;
     }
 
     @Override
@@ -52,13 +52,13 @@ public class BaseFpRegisterActivity extends BaseRegisterActivity implements Base
     @Override
     public void startFormActivity(JSONObject jsonForm) {
         Intent intent = new Intent(this, getFamilyFormActivity());
-        intent.putExtra(Constants.JsonFromExtra.JSON, jsonForm.toString());
+        intent.putExtra(FamilyPlanningConstants.JsonFromExtra.JSON, jsonForm.toString());
 
         if (getFormConfig() != null) {
             intent.putExtra(JsonFormConstants.JSON_FORM_KEY.FORM, getFormConfig());
         }
 
-        startActivityForResult(intent, Constants.REQUEST_CODE_GET_JSON);
+        startActivityForResult(intent, FamilyPlanningConstants.REQUEST_CODE_GET_JSON);
     }
 
     @Override
@@ -72,13 +72,13 @@ public class BaseFpRegisterActivity extends BaseRegisterActivity implements Base
 
     @Override
     protected void onActivityResultExtended(int requestCode, int resultCode, Intent data) {
-        if (requestCode == Constants.REQUEST_CODE_GET_JSON && resultCode == RESULT_OK) {
+        if (requestCode == FamilyPlanningConstants.REQUEST_CODE_GET_JSON && resultCode == RESULT_OK) {
             try {
-                String jsonString = data.getStringExtra(Constants.JsonFromExtra.JSON);
+                String jsonString = data.getStringExtra(FamilyPlanningConstants.JsonFromExtra.JSON);
                 Log.d("JSONResult", jsonString);
 
                 JSONObject form = new JSONObject(jsonString);
-                if (form.getString(Constants.ENCOUNTER_TYPE).equals(getRegisterEventType())) {
+                if (form.getString(FamilyPlanningConstants.ENCOUNTER_TYPE).equals(getRegisterEventType())) {
                     presenter().saveForm(jsonString, false);
                 }
             } catch (Exception e) {
@@ -99,7 +99,7 @@ public class BaseFpRegisterActivity extends BaseRegisterActivity implements Base
      * @return
      */
     public String getRegisterEventType() {
-        return Constants.EventType.FAMILY_PLANNING_REGISTRATION;
+        return FamilyPlanningConstants.EventType.FAMILY_PLANNING_REGISTRATION;
     }
 
     /**

@@ -4,12 +4,12 @@ import android.util.Log;
 
 import org.smartregister.Context;
 import org.smartregister.CoreLibrary;
+import org.smartregister.chw.fp.FpLibrary;
+import org.smartregister.chw.fp.util.FamilyPlanningConstants;
 import org.smartregister.commonregistry.CommonFtsObject;
 import org.smartregister.configurableviews.ConfigurableViewsLibrary;
 import org.smartregister.fp.BuildConfig;
-import org.smartregister.chw.fp.FpLibrary;
 import org.smartregister.fp.repository.SampleRepository;
-import org.smartregister.chw.fp.util.FpDBConstants;
 import org.smartregister.fp.utils.SampleConstants;
 import org.smartregister.receiver.SyncStatusBroadcastReceiver;
 import org.smartregister.repository.Repository;
@@ -91,21 +91,35 @@ public class SampleApplication extends DrishtiApplication {
 
     private static String[] getFtsSearchFields(String tableName) {
         if (tableName.equals(SampleConstants.TABLE_NAME.FAMILY)) {
-            return new String[]{FpDBConstants.BASE_ENTITY_ID, FpDBConstants.VILLAGE_TOWN, FpDBConstants.FIRST_NAME,
-                    FpDBConstants.LAST_NAME, FpDBConstants.UNIQUE_ID};
+            return new String[]{
+                    FamilyPlanningConstants.DBConstants.BASE_ENTITY_ID,
+                    FamilyPlanningConstants.DBConstants.VILLAGE_TOWN,
+                    FamilyPlanningConstants.DBConstants.FIRST_NAME,
+                    FamilyPlanningConstants.DBConstants.LAST_NAME,
+                    FamilyPlanningConstants.DBConstants.UNIQUE_ID
+            };
         } else if (tableName.equals(SampleConstants.TABLE_NAME.FAMILY_MEMBER)) {
-            return new String[]{FpDBConstants.BASE_ENTITY_ID, FpDBConstants.FIRST_NAME, FpDBConstants.MIDDLE_NAME,
-                    FpDBConstants.LAST_NAME, FpDBConstants.UNIQUE_ID};
+            return new String[]{
+                    FamilyPlanningConstants.DBConstants.BASE_ENTITY_ID,
+                    FamilyPlanningConstants.DBConstants.FIRST_NAME,
+                    FamilyPlanningConstants.DBConstants.MIDDLE_NAME,
+                    FamilyPlanningConstants.DBConstants.LAST_NAME,
+                    FamilyPlanningConstants.DBConstants.UNIQUE_ID};
         }
         return null;
     }
 
     private static String[] getFtsSortFields(String tableName) {
         if (tableName.equals(SampleConstants.TABLE_NAME.FAMILY)) {
-            return new String[]{FpDBConstants.LAST_INTERACTED_WITH, FpDBConstants.DATE_REMOVED};
+            return new String[]{
+                    FamilyPlanningConstants.DBConstants.LAST_INTERACTED_WITH,
+                    FamilyPlanningConstants.DBConstants.DATE_REMOVED};
         } else if (tableName.equals(SampleConstants.TABLE_NAME.FAMILY_MEMBER)) {
-            return new String[]{FpDBConstants.DOB, FpDBConstants.DOD, FpDBConstants
-                    .LAST_INTERACTED_WITH, FpDBConstants.DATE_REMOVED};
+            return new String[]{
+                    FamilyPlanningConstants.DBConstants.DOB,
+                    FamilyPlanningConstants.DBConstants.DOD,
+                    FamilyPlanningConstants.DBConstants.LAST_INTERACTED_WITH,
+                    FamilyPlanningConstants.DBConstants.DATE_REMOVED};
         }
         return null;
     }
