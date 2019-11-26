@@ -19,8 +19,4 @@ public class BaseFpRegisterActivityTest {
         Assert.assertNull(baseFpRegisterActivity.getFormConfig());
     }
 
-    @Test
-    public void checkIdentifier() {
-        Assert.assertNotNull(baseFpRegisterActivity.getViewIdentifiers());
-    }
 }
