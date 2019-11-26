@@ -9,7 +9,7 @@ import org.smartregister.configurableviews.ConfigurableViewsLibrary;
 import org.smartregister.fp.BuildConfig;
 import org.smartregister.chw.fp.FpLibrary;
 import org.smartregister.fp.repository.SampleRepository;
-import org.smartregister.chw.fp.util.DBConstants;
+import org.smartregister.chw.fp.util.FpDBConstants;
 import org.smartregister.fp.utils.SampleConstants;
 import org.smartregister.receiver.SyncStatusBroadcastReceiver;
 import org.smartregister.repository.Repository;
@@ -91,21 +91,21 @@ public class SampleApplication extends DrishtiApplication {
 
     private static String[] getFtsSearchFields(String tableName) {
         if (tableName.equals(SampleConstants.TABLE_NAME.FAMILY)) {
-            return new String[]{DBConstants.fpDbKeys.BASE_ENTITY_ID, DBConstants.fpDbKeys.VILLAGE_TOWN, DBConstants.fpDbKeys.FIRST_NAME,
-                    DBConstants.fpDbKeys.LAST_NAME, DBConstants.fpDbKeys.UNIQUE_ID};
+            return new String[]{FpDBConstants.BASE_ENTITY_ID, FpDBConstants.VILLAGE_TOWN, FpDBConstants.FIRST_NAME,
+                    FpDBConstants.LAST_NAME, FpDBConstants.UNIQUE_ID};
         } else if (tableName.equals(SampleConstants.TABLE_NAME.FAMILY_MEMBER)) {
-            return new String[]{DBConstants.fpDbKeys.BASE_ENTITY_ID, DBConstants.fpDbKeys.FIRST_NAME, DBConstants.fpDbKeys.MIDDLE_NAME,
-                    DBConstants.fpDbKeys.LAST_NAME, DBConstants.fpDbKeys.UNIQUE_ID};
+            return new String[]{FpDBConstants.BASE_ENTITY_ID, FpDBConstants.FIRST_NAME, FpDBConstants.MIDDLE_NAME,
+                    FpDBConstants.LAST_NAME, FpDBConstants.UNIQUE_ID};
         }
         return null;
     }
 
     private static String[] getFtsSortFields(String tableName) {
         if (tableName.equals(SampleConstants.TABLE_NAME.FAMILY)) {
-            return new String[]{DBConstants.fpDbKeys.LAST_INTERACTED_WITH, DBConstants.fpDbKeys.DATE_REMOVED};
+            return new String[]{FpDBConstants.LAST_INTERACTED_WITH, FpDBConstants.DATE_REMOVED};
         } else if (tableName.equals(SampleConstants.TABLE_NAME.FAMILY_MEMBER)) {
-            return new String[]{DBConstants.fpDbKeys.DOB, DBConstants.fpDbKeys.DOD, DBConstants.fpDbKeys
-                    .LAST_INTERACTED_WITH, DBConstants.fpDbKeys.DATE_REMOVED};
+            return new String[]{FpDBConstants.DOB, FpDBConstants.DOD, FpDBConstants
+                    .LAST_INTERACTED_WITH, FpDBConstants.DATE_REMOVED};
         }
         return null;
     }

@@ -14,9 +14,6 @@ import org.smartregister.repository.Repository;
 import org.smartregister.repository.SettingsRepository;
 import org.smartregister.repository.UniqueIdRepository;
 
-/**
- * Created by keyman on 28/07/2017.
- */
 public class SampleRepository extends Repository {
 
     private static final String TAG = SampleRepository.class.getCanonicalName();
