@@ -4,7 +4,7 @@ android {
     compileSdkVersion androidCompileSdkVersion
 
     defaultConfig {
-        applicationId "org.smartregister.familyPlanning"
+        applicationId "org.smartregister.fp"
         minSdkVersion androidMinSdkVersion
         targetSdkVersion androidTargetSdkVersion
         versionCode 1
