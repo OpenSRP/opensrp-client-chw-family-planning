@@ -91,21 +91,21 @@ public class SampleApplication extends DrishtiApplication {
 
     private static String[] getFtsSearchFields(String tableName) {
         if (tableName.equals(SampleConstants.TABLE_NAME.FAMILY)) {
-            return new String[]{DBConstants.KEY.BASE_ENTITY_ID, DBConstants.KEY.VILLAGE_TOWN, DBConstants.KEY.FIRST_NAME,
-                    DBConstants.KEY.LAST_NAME, DBConstants.KEY.UNIQUE_ID};
+            return new String[]{DBConstants.DBKeys.BASE_ENTITY_ID, DBConstants.DBKeys.VILLAGE_TOWN, DBConstants.DBKeys.FIRST_NAME,
+                    DBConstants.DBKeys.LAST_NAME, DBConstants.DBKeys.UNIQUE_ID};
         } else if (tableName.equals(SampleConstants.TABLE_NAME.FAMILY_MEMBER)) {
-            return new String[]{DBConstants.KEY.BASE_ENTITY_ID, DBConstants.KEY.FIRST_NAME, DBConstants.KEY.MIDDLE_NAME,
-                    DBConstants.KEY.LAST_NAME, DBConstants.KEY.UNIQUE_ID};
+            return new String[]{DBConstants.DBKeys.BASE_ENTITY_ID, DBConstants.DBKeys.FIRST_NAME, DBConstants.DBKeys.MIDDLE_NAME,
+                    DBConstants.DBKeys.LAST_NAME, DBConstants.DBKeys.UNIQUE_ID};
         }
         return null;
     }
 
     private static String[] getFtsSortFields(String tableName) {
         if (tableName.equals(SampleConstants.TABLE_NAME.FAMILY)) {
-            return new String[]{DBConstants.KEY.LAST_INTERACTED_WITH, DBConstants.KEY.DATE_REMOVED};
+            return new String[]{DBConstants.DBKeys.LAST_INTERACTED_WITH, DBConstants.DBKeys.DATE_REMOVED};
         } else if (tableName.equals(SampleConstants.TABLE_NAME.FAMILY_MEMBER)) {
-            return new String[]{DBConstants.KEY.DOB, DBConstants.KEY.DOD, DBConstants.KEY
-                    .LAST_INTERACTED_WITH, DBConstants.KEY.DATE_REMOVED};
+            return new String[]{DBConstants.DBKeys.DOB, DBConstants.DBKeys.DOD, DBConstants.DBKeys
+                    .LAST_INTERACTED_WITH, DBConstants.DBKeys.DATE_REMOVED};
         }
         return null;
     }

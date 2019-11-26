@@ -5,16 +5,15 @@ public interface Constants {
     int REQUEST_CODE_GET_JSON = 2244;
     String ENCOUNTER_TYPE = "encounter_type";
 
-    interface JSON_FORM_EXTRA {
+    interface JsonFromExtra {
         String JSON = "json";
-        String NEXT = "next";
     }
 
-    interface EVENT_TYPE {
+    interface EventType {
         String FAMILY_PLANNING_REGISTRATION = "Family Planning Registration";
     }
 
-    interface FORMS {
+    interface Forms {
         String FAMILY_PLANNING_REGISTRATION_FORM = "family_planning_registration";
     }
 }

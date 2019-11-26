@@ -30,7 +30,7 @@ public class BaseFpRegisterActivity extends BaseRegisterActivity implements Base
     }
 
     public String getRegistrationForm() {
-        return Constants.FORMS.FAMILY_PLANNING_REGISTRATION_FORM;
+        return Constants.Forms.FAMILY_PLANNING_REGISTRATION_FORM;
     }
 
     @Override
@@ -52,7 +52,7 @@ public class BaseFpRegisterActivity extends BaseRegisterActivity implements Base
     @Override
     public void startFormActivity(JSONObject jsonForm) {
         Intent intent = new Intent(this, getFamilyFormActivity());
-        intent.putExtra(Constants.JSON_FORM_EXTRA.JSON, jsonForm.toString());
+        intent.putExtra(Constants.JsonFromExtra.JSON, jsonForm.toString());
 
         if (getFormConfig() != null) {
             intent.putExtra(JsonFormConstants.JSON_FORM_KEY.FORM, getFormConfig());
@@ -74,7 +74,7 @@ public class BaseFpRegisterActivity extends BaseRegisterActivity implements Base
     protected void onActivityResultExtended(int requestCode, int resultCode, Intent data) {
         if (requestCode == Constants.REQUEST_CODE_GET_JSON && resultCode == RESULT_OK) {
             try {
-                String jsonString = data.getStringExtra(Constants.JSON_FORM_EXTRA.JSON);
+                String jsonString = data.getStringExtra(Constants.JsonFromExtra.JSON);
                 Log.d("JSONResult", jsonString);
 
                 JSONObject form = new JSONObject(jsonString);
@@ -99,7 +99,7 @@ public class BaseFpRegisterActivity extends BaseRegisterActivity implements Base
      * @return
      */
     public String getRegisterEventType() {
-        return Constants.EVENT_TYPE.FAMILY_PLANNING_REGISTRATION;
+        return Constants.EventType.FAMILY_PLANNING_REGISTRATION;
     }
 
     /**
