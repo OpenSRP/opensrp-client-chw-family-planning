@@ -4,11 +4,11 @@ package org.smartregister.chw.fp.util;
  * Created by keyman on 13/11/2018.
  */
 public class DBConstants {
-    public final class TableName {
+    public final class tableName {
         public static final String FAMILY_PLANNING_TABLE = "ec_family_planning";
     }
 
-    public final class DBKeys {
+    public final class fpDbKeys {
         public static final String FIRST_NAME = "first_name";
         public static final String MIDDLE_NAME = "middle_name";
         public static final String LAST_NAME = "last_name";

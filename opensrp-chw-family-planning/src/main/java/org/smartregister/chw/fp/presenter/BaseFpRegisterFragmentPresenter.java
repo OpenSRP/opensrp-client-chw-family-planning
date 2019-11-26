@@ -65,7 +65,7 @@ public class BaseFpRegisterFragmentPresenter implements BaseFpRegisterFragmentCo
 
     @Override
     public void initializeQueries(String mainCondition) {
-        String tableName = DBConstants.TableName.FAMILY_PLANNING_TABLE;
+        String tableName = DBConstants.tableName.FAMILY_PLANNING_TABLE;
 
         String countSelect = model.countSelect(tableName, mainCondition);
         String mainSelect = model.mainSelect(tableName, mainCondition);
