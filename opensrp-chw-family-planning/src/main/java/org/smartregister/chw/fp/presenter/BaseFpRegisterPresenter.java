@@ -15,9 +15,9 @@ public class BaseFpRegisterPresenter implements BaseFpRegisterContract.Presenter
     protected BaseFpRegisterContract.Interactor interactor;
     protected BaseFpRegisterContract.Model model;
 
-    public BaseFpRegisterPresenter(BaseFpRegisterContract.View view, BaseFpRegisterContract.Model model) {
+    public BaseFpRegisterPresenter(BaseFpRegisterContract.View view, BaseFpRegisterContract.Model model,BaseFpRegisterContract.Interactor interactor) {
         viewReference = new WeakReference<>(view);
-        interactor = new BaseFpRegisterInteractor();
+        this.interactor = interactor;
         this.model = model;
     }
 
@@ -32,7 +32,7 @@ public class BaseFpRegisterPresenter implements BaseFpRegisterContract.Presenter
     }
 
     @Override
-    public void saveForm(String jsonString, boolean isEditMode) {
+    public void saveForm(String jsonString) {
 //        implement
     }
 
