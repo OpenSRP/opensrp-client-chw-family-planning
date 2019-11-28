@@ -16,6 +16,9 @@ public interface FamilyPlanningConstants {
     interface Forms {
         String FAMILY_PLANNING_REGISTRATION_FORM = "family_planning_registration";
     }
+    interface CONFIGURATION {
+        String FAMILY_PLANNING_REGISTRATION = "family_planning_registration";
+    }
 
     interface DBConstants {
         String FAMILY_PLANNING_TABLE = "ec_family_planning";
@@ -30,5 +33,12 @@ public interface FamilyPlanningConstants {
         String LAST_INTERACTED_WITH = "last_interacted_with";
         String VILLAGE_TOWN = "village_town";
         String DATE_REMOVED = "date_removed";
+    }
+
+    interface ACTIVITY_PAYLOAD {
+        String BASE_ENTITY_ID = "BASE_ENTITY_ID";
+        String ACTION = "ACTION";
+        String FP_FORM_NAME = "FP_FORM_NAME";
+
     }
 }
