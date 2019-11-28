@@ -22,7 +22,7 @@ public interface BaseFpRegisterContract {
 
         void startForm(String formName, String entityId, String metadata, String currentLocationId) throws Exception;
 
-        void saveForm(String jsonString, boolean isEditMode);
+        void saveForm(String jsonString);
 
         void closeFamilyRecord(String jsonString);
 
