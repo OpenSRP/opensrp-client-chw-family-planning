@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">Family Planning</string>
+    <string name="scan_qr">Scan QR</string>
+    <string name="home">Home</string>
+    <string name="add_family">Add family</string>
+    <string name="job_aids">Job Aids</string>
     <string name="error_unable_to_start_form">An error occurred when starting the form</string>
+    <string name="error_unable_to_save_form">An error occurred when saving the form</string>
 </resources>
