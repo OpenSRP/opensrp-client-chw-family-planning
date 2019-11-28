@@ -18,4 +18,10 @@
 
     <color name="other_member_profile_bg">#FAFAFA</color>
     <color name="due_profile_blue">#218CC5</color>
+
+    <color name="black">#000000</color>
+    <color name="light_grey">#FAFAFA</color>
+    <color name="grey">#9e9e9e</color>
+
+
 </resources>
