@@ -105,6 +105,10 @@ public class BaseFpRegisterActivity extends BaseRegisterActivity implements Base
         }
     }
 
+    protected Activity getFpRegisterActivity() {
+        return this;
+    }
+
     @Override
     public List<String> getViewIdentifiers() {
         return Arrays.asList(FamilyPlanningConstants.CONFIGURATION.FAMILY_PLANNING_REGISTRATION);
@@ -163,13 +167,15 @@ public class BaseFpRegisterActivity extends BaseRegisterActivity implements Base
             try {
                 String jsonString = data.getStringExtra(FamilyPlanningConstants.JsonFromExtra.JSON);
                 JSONObject form = new JSONObject(jsonString);
-//                process malaria form
+//                process family planning form
                 presenter().saveForm(form.toString());
             } catch (JSONException e) {
                 Timber.e(e);
                 displayToast(getString(R.string.error_unable_to_save_form));
             }
             startClientProcessing();
+        } else {
+            getFpRegisterActivity().finish();
         }
     }
 
@@ -184,5 +190,4 @@ public class BaseFpRegisterActivity extends BaseRegisterActivity implements Base
         }
 
     }
-
 }
