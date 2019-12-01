@@ -1,8 +1,11 @@
 package org.smartregister.chw.fp.presenter;
 
-import org.apache.commons.lang3.tuple.Triple;
+import android.util.Log;
+
+import org.apache.commons.lang3.StringUtils;
+import org.json.JSONObject;
 import org.smartregister.chw.fp.contract.BaseFpRegisterContract;
-import org.smartregister.chw.fp.interactor.BaseFpRegisterInteractor;
+import org.smartregister.fp.R;
 
 import java.lang.ref.WeakReference;
 import java.util.List;
@@ -12,48 +15,39 @@ public class BaseFpRegisterPresenter implements BaseFpRegisterContract.Presenter
     public static final String TAG = BaseFpRegisterPresenter.class.getName();
 
     protected WeakReference<BaseFpRegisterContract.View> viewReference;
-    protected BaseFpRegisterContract.Interactor interactor;
+    private BaseFpRegisterContract.Interactor interactor;
     protected BaseFpRegisterContract.Model model;
 
-    public BaseFpRegisterPresenter(BaseFpRegisterContract.View view, BaseFpRegisterContract.Model model,BaseFpRegisterContract.Interactor interactor) {
+    public BaseFpRegisterPresenter(BaseFpRegisterContract.View view, BaseFpRegisterContract.Model model, BaseFpRegisterContract.Interactor interactor) {
         viewReference = new WeakReference<>(view);
         this.interactor = interactor;
         this.model = model;
     }
 
     @Override
-    public void saveLanguage(String language) {
-//        implement
-    }
-
-    @Override
     public void startForm(String formName, String entityId, String metadata, String currentLocationId) throws Exception {
-//        implement
+        if (StringUtils.isBlank(entityId)) {
+            return;
+        }
+
+        JSONObject form = model.getFormAsJson(formName, entityId, "2020");
+        getView().startFormActivity(form);
     }
 
     @Override
     public void saveForm(String jsonString) {
-//        implement
+        try {
+            getView().showProgressDialog(R.string.saving_dialog_title);
+            interactor.saveRegistration(jsonString, this);
+        } catch (Exception e) {
+            Log.e(TAG, Log.getStackTraceString(e));
+        }
     }
 
     @Override
-    public void closeFamilyRecord(String jsonString) {
-//        implement
-    }
+    public void onRegistrationSaved() {
+        getView().hideProgressDialog();
 
-    @Override
-    public void onUniqueIdFetched(Triple<String, String, String> triple, String entityId) {
-//        implement
-    }
-
-    @Override
-    public void onNoUniqueId() {
-//        implement
-    }
-
-    @Override
-    public void onRegistrationSaved(boolean isEdit) {
-//        implement
     }
 
     @Override
@@ -74,5 +68,12 @@ public class BaseFpRegisterPresenter implements BaseFpRegisterContract.Presenter
     @Override
     public void updateInitials() {
 //        implement
+    }
+
+    private BaseFpRegisterContract.View getView() {
+        if (viewReference != null)
+            return viewReference.get();
+        else
+            return null;
     }
 }

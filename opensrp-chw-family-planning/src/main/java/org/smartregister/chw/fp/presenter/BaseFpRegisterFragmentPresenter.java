@@ -95,4 +95,15 @@ public class BaseFpRegisterFragmentPresenter implements BaseFpRegisterFragmentCo
 //        implement
 
     }
+
+    @Override
+    public String getDueFilterCondition() {
+        return " (cast( julianday(STRFTIME('%Y-%m-%d', datetime('now'))) -  julianday(IFNULL(SUBSTR(malaria_test_date,7,4)|| '-' || SUBSTR(malaria_test_date,4,2) || '-' || SUBSTR(malaria_test_date,1,2),'')) as integer) between 7 and 14) ";
+    }
+
+
+    @Override
+    public String getMainTable() {
+        return FamilyPlanningConstants.DBConstants.FAMILY_PLANNING_TABLE;
+    }
 }
