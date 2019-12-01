@@ -29,6 +29,11 @@ public interface BaseFpRegisterFragmentContract {
 
         String getDefaultSortQuery();
 
+        String getDueFilterCondition();
+
+        String getMainTable();
+
+
     }
 
     interface Model {
