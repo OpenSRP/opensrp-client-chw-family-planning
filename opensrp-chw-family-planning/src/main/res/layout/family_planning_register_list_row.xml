@@ -9,44 +9,76 @@
         android:id="@+id/patient_column"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
         android:layout_centerVertical="true"
-        android:layout_marginBottom="@dimen/register_list_top_bottom_margin"
-        android:layout_marginEnd="@dimen/register_list_item_margin"
-        android:layout_marginLeft="@dimen/register_list_item_margin"
-        android:layout_marginRight="@dimen/register_list_item_margin"
         android:layout_marginStart="@dimen/register_list_item_margin"
+        android:layout_marginLeft="@dimen/register_list_item_margin"
         android:layout_marginTop="@dimen/register_list_top_bottom_margin"
-        android:layout_toLeftOf="@+id/due_button_wrapper"
+        android:layout_marginEnd="@dimen/register_list_item_margin"
+        android:layout_marginRight="@dimen/register_list_item_margin"
+        android:layout_marginBottom="@dimen/register_list_top_bottom_margin"
         android:layout_toStartOf="@+id/due_button_wrapper"
+        android:layout_toLeftOf="@+id/due_button_wrapper"
         android:orientation="vertical">
 
         <org.smartregister.view.customcontrols.CustomFontTextView
-            android:id="@+id/patient_name"
+            android:id="@+id/patient_parent_name"
             style="@style/CustomFontTextViewStyle.ClientList"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:maxLines="1"
-            android:paddingLeft="0dp"
-            android:paddingStart="0dp"
             android:singleLine="true"
-            android:text="Patient Name"
+            android:text="CG:Parent Name"
+            android:textColor="@color/text_black"
+            android:textSize="@dimen/register_list_title_size"
+            android:visibility="gone" />
+
+        <org.smartregister.view.customcontrols.CustomFontTextView
+            android:id="@+id/patient_name_age"
+            style="@style/CustomFontTextViewStyle.ClientList"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:text="Patient Name, Age"
             android:textColor="@color/text_black"
             android:textSize="@dimen/register_list_title_size" />
 
-        <org.smartregister.view.customcontrols.CustomFontTextView
-            android:id="@+id/village_town"
-            style="@style/CustomFontTextViewStyle.ClientList.Light"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingLeft="0dp"
-            android:paddingStart="0dp"
-            android:paddingTop="@dimen/register_list_top_bottom_padding"
-            android:text="Lavington #445"
-            android:textColor="@color/light_grey_text"
-            android:textSize="@dimen/register_list_desc_size"
-            android:textStyle="bold" />
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:orientation="horizontal">
+
+            <org.smartregister.view.customcontrols.CustomFontTextView
+                android:id="@+id/text_view_village"
+                style="@style/CustomFontTextViewStyle.ClientList.Light"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Lavingtone #445"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/register_member_village_size" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/register_dot_separator_margin"
+                android:text="@string/interpunct"
+                android:textColor="@android:color/black" />
+
+            <org.smartregister.view.customcontrols.CustomFontTextView
+                android:id="@+id/text_view_gender"
+                style="@style/CustomFontTextViewStyle.ClientList.Light"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Male"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/register_member_village_size" />
+        </LinearLayout>
 
     </LinearLayout>
 
@@ -58,12 +90,12 @@
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
         android:background="@drawable/grey_left_border"
-        android:paddingBottom="@dimen/register_list_top_bottom_padding"
-        android:paddingEnd="@dimen/register_list_item_padding"
-        android:paddingLeft="@dimen/register_list_item_padding"
-        android:paddingRight="@dimen/register_list_item_padding"
         android:paddingStart="@dimen/register_list_item_padding"
-        android:paddingTop="@dimen/register_list_top_bottom_padding">
+        android:paddingLeft="@dimen/register_list_item_padding"
+        android:paddingTop="@dimen/register_list_top_bottom_padding"
+        android:paddingEnd="@dimen/register_list_item_padding"
+        android:paddingRight="@dimen/register_list_item_padding"
+        android:paddingBottom="@dimen/register_list_top_bottom_padding">
 
         <Button
             android:id="@+id/due_button"
@@ -78,36 +110,12 @@
             android:paddingLeft="20dp"
             android:paddingRight="20dp"
             android:stateListAnimator="@drawable/button"
-            android:text="Home Visit"
+            android:text="@string/fp_followup_visit"
             android:textAllCaps="false"
             android:textAppearance="?android:textAppearanceSmall"
             android:textColor="@color/vaccine_blue_bg_st"
-            android:textSize="@dimen/register_list_due_size"
+            android:textSize="@dimen/malaria_register_list_due_size"
             android:typeface="normal" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/member_icon_layout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="@dimen/register_list_member_icon_margin"
-        android:layout_marginRight="@dimen/register_list_member_icon_margin"
-        android:layout_toLeftOf="@+id/due_button_wrapper"
-        android:layout_toStartOf="@+id/due_button_wrapper"
-        android:orientation="horizontal"
-        android:paddingBottom="@dimen/register_list_top_bottom_padding">
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@mipmap/ic_boy_child" />
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@mipmap/ic_girl_child" />
 
     </LinearLayout>
 
