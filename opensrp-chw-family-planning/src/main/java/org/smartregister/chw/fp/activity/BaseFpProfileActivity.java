@@ -9,6 +9,9 @@ import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import org.apache.commons.lang3.StringUtils;
+import org.joda.time.DateTime;
+import org.joda.time.Period;
 import org.smartregister.chw.fp.contract.BaseFpProfileContract;
 import org.smartregister.chw.fp.domain.MemberObject;
 import org.smartregister.chw.fp.interactor.BaseFpProfileInteractor;
@@ -19,6 +22,8 @@ import org.smartregister.helper.ImageRenderHelper;
 import org.smartregister.view.activity.BaseProfileActivity;
 import org.smartregister.view.contract.BaseProfileContract;
 
+import java.util.Locale;
+
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class BaseFpProfileActivity extends BaseProfileActivity implements BaseFpProfileContract.View {
@@ -26,10 +31,10 @@ public class BaseFpProfileActivity extends BaseProfileActivity implements BaseFp
     private ImageRenderHelper imageRenderHelper;
     private ProgressBar progressBar;
     private CircleImageView profileImageView;
-    private TextView textViewName;
-    private TextView textViewGender;
-    private TextView textViewLocation;
-    private TextView textViewUniqueID;
+    private TextView tvName;
+    private TextView tvGender;
+    private TextView tvLocation;
+    private TextView tvUniqueID;
     private TextView familyHead;
     private TextView primaryCareGiver;
     private View lastVisitRow;
@@ -39,9 +44,10 @@ public class BaseFpProfileActivity extends BaseProfileActivity implements BaseFp
     private RelativeLayout rlUpcomingServices;
     private RelativeLayout rlFamilyServicesDue;
     private RelativeLayout visitStatus;
-    private TextView textViewUndo;
+    private TextView tvUndo;
     private TextView tvUpComingServices;
     private TextView tvFamilyStatus;
+    private TextView tvRecordFpFollowUp;
 
     protected BaseProfileContract.Presenter profilePresenter;
     protected MemberObject memberObject;
@@ -68,15 +74,14 @@ public class BaseFpProfileActivity extends BaseProfileActivity implements BaseFp
 
         initializePresenter();
         setupViews();
-
     }
 
     @Override
     protected void setupViews() {
-        textViewName = findViewById(R.id.textview_name);
-        textViewGender = findViewById(R.id.textview_gender);
-        textViewLocation = findViewById(R.id.textview_address);
-        textViewUniqueID = findViewById(R.id.textview_unique_id);
+        tvName = findViewById(R.id.textview_name);
+        tvGender = findViewById(R.id.textview_gender);
+        tvLocation = findViewById(R.id.textview_address);
+        tvUniqueID = findViewById(R.id.textview_unique_id);
         familyHead = findViewById(R.id.fp_family_head);
         primaryCareGiver = findViewById(R.id.fp_primary_caregiver);
         lastVisitRow = findViewById(R.id.view_last_visit_row);
@@ -89,10 +94,12 @@ public class BaseFpProfileActivity extends BaseProfileActivity implements BaseFp
         rlFamilyServicesDue = findViewById(R.id.rlFamilyServicesDue);
         visitStatus = findViewById(R.id.record_visit_status_bar);
         progressBar = findViewById(R.id.progress_bar);
-        textViewUndo = findViewById(R.id.textview_undo);
+        tvUndo = findViewById(R.id.textview_undo);
         profileImageView = findViewById(R.id.profile_image_view);
+        tvRecordFpFollowUp = findViewById(R.id.textview_record_reccuring_visit);
 
-        textViewUndo.setOnClickListener(this);
+        tvUndo.setOnClickListener(this);
+        tvRecordFpFollowUp.setOnClickListener(this);
         findViewById(R.id.rlLastVisit).setOnClickListener(this);
         findViewById(R.id.rlUpcomingServices).setOnClickListener(this);
         findViewById(R.id.rlFamilyServicesDue).setOnClickListener(this);
@@ -109,6 +116,10 @@ public class BaseFpProfileActivity extends BaseProfileActivity implements BaseFp
     @Override
     protected ViewPager setupViewPager(ViewPager viewPager) {
         return null;
+    }
+
+    public void onClick(View view) {
+
     }
 
     @Override
@@ -147,18 +158,30 @@ public class BaseFpProfileActivity extends BaseProfileActivity implements BaseFp
     }
 
     @Override
-    public void setProfile() {
+    public void setProfileViewData(MemberObject memberObject) {
+        int age = new Period(new DateTime(memberObject.getAge()), new DateTime()).getYears();
+        tvName.setText(String.format(Locale.getDefault(), "%s %s %s, %d", memberObject.getFirstName(),
+                memberObject.getMiddleName(), memberObject.getLastName(), age));
+        tvGender.setText(memberObject.getGender());
+        tvLocation.setText(memberObject.getAddress());
+        tvUniqueID.setText(memberObject.getUniqueId());
 
+        if (StringUtils.isNotBlank(memberObject.getFamilyHead()) && memberObject.getFamilyHead().equals(memberObject.getBaseEntityId())) {
+            findViewById(R.id.fp_family_head).setVisibility(View.VISIBLE);
+        }
+        if (StringUtils.isNotBlank(memberObject.getPrimaryCareGiver()) && memberObject.getPrimaryCareGiver().equals(memberObject.getBaseEntityId())) {
+            findViewById(R.id.fp_primary_caregiver).setVisibility(View.VISIBLE);
+        }
     }
 
     @Override
     public void setOverdueColor() {
-
+        tvRecordFpFollowUp.setBackground(getResources().getDrawable(R.drawable.record_fp_followup));
     }
 
     @Override
     public void setDueColor() {
-
+        tvRecordFpFollowUp.setBackground(getResources().getDrawable(R.drawable.record_fp_followup_overdue));
     }
 
     @Override

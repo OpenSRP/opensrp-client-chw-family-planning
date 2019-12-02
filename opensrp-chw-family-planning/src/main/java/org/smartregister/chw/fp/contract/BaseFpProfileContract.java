@@ -1,5 +1,6 @@
 package org.smartregister.chw.fp.contract;
 
+import org.smartregister.chw.fp.domain.MemberObject;
 import org.smartregister.view.contract.BaseProfileContract;
 
 public interface BaseFpProfileContract {
@@ -18,7 +19,7 @@ public interface BaseFpProfileContract {
 
         void refreshMedicalHistory();
 
-        void setProfile();
+        void setProfileViewData(MemberObject memberObject);
 
         void setOverdueColor();
 
