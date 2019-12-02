@@ -10,6 +10,8 @@ import org.smartregister.fp.R;
 import java.lang.ref.WeakReference;
 import java.util.List;
 
+import timber.log.Timber;
+
 public class BaseFpRegisterPresenter implements BaseFpRegisterContract.Presenter, BaseFpRegisterContract.InteractorCallBack  {
 
     public static final String TAG = BaseFpRegisterPresenter.class.getName();
@@ -40,7 +42,7 @@ public class BaseFpRegisterPresenter implements BaseFpRegisterContract.Presenter
             getView().showProgressDialog(R.string.saving_dialog_title);
             interactor.saveRegistration(jsonString, this);
         } catch (Exception e) {
-            Log.e(TAG, Log.getStackTraceString(e));
+            Timber.e(TAG, Log.getStackTraceString(e));
         }
     }
 

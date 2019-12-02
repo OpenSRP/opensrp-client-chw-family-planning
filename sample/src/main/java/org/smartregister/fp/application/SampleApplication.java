@@ -1,7 +1,5 @@
 package org.smartregister.fp.application;
 
-import android.util.Log;
-
 import org.smartregister.Context;
 import org.smartregister.CoreLibrary;
 import org.smartregister.chw.fp.FpLibrary;
@@ -19,6 +17,8 @@ import org.smartregister.view.activity.DrishtiApplication;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+
+import timber.log.Timber;
 
 public class SampleApplication extends DrishtiApplication {
     private static final String TAG = SampleApplication.class.getCanonicalName();
@@ -68,7 +68,7 @@ public class SampleApplication extends DrishtiApplication {
                 repository = new SampleRepository(getInstance().getApplicationContext(), context);
             }
         } catch (UnsatisfiedLinkError e) {
-            Log.e(TAG, e.getMessage(), e);
+            Timber.e(TAG, e.getMessage(), e);
         }
         return repository;
     }
@@ -95,16 +95,14 @@ public class SampleApplication extends DrishtiApplication {
                     FamilyPlanningConstants.DBConstants.BASE_ENTITY_ID,
                     FamilyPlanningConstants.DBConstants.VILLAGE_TOWN,
                     FamilyPlanningConstants.DBConstants.FIRST_NAME,
-                    FamilyPlanningConstants.DBConstants.LAST_NAME,
-                    FamilyPlanningConstants.DBConstants.UNIQUE_ID
+                    FamilyPlanningConstants.DBConstants.LAST_NAME
             };
         } else if (tableName.equals(SampleConstants.TABLE_NAME.FAMILY_MEMBER)) {
             return new String[]{
                     FamilyPlanningConstants.DBConstants.BASE_ENTITY_ID,
                     FamilyPlanningConstants.DBConstants.FIRST_NAME,
                     FamilyPlanningConstants.DBConstants.MIDDLE_NAME,
-                    FamilyPlanningConstants.DBConstants.LAST_NAME,
-                    FamilyPlanningConstants.DBConstants.UNIQUE_ID};
+                    FamilyPlanningConstants.DBConstants.LAST_NAME};
         }
         return null;
     }
@@ -117,7 +115,6 @@ public class SampleApplication extends DrishtiApplication {
         } else if (tableName.equals(SampleConstants.TABLE_NAME.FAMILY_MEMBER)) {
             return new String[]{
                     FamilyPlanningConstants.DBConstants.DOB,
-                    FamilyPlanningConstants.DBConstants.DOD,
                     FamilyPlanningConstants.DBConstants.LAST_INTERACTED_WITH,
                     FamilyPlanningConstants.DBConstants.DATE_REMOVED};
         }

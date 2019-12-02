@@ -1,7 +1,5 @@
 package org.smartregister.chw.fp.util;
 
-import android.util.Log;
-
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.tuple.Triple;
 import org.json.JSONArray;
@@ -12,6 +10,8 @@ import org.smartregister.clientandeventmodel.Event;
 import org.smartregister.domain.tag.FormTag;
 import org.smartregister.repository.AllSharedPreferences;
 import org.smartregister.util.FormUtils;
+
+import timber.log.Timber;
 
 
 public class FpJsonFormUtils extends org.smartregister.util.JsonFormUtils {
@@ -41,7 +41,7 @@ public class FpJsonFormUtils extends org.smartregister.util.JsonFormUtils {
             return fieldsOne;
 
         } catch (JSONException e) {
-            Log.e(TAG, "", e);
+            Timber.e(e);
         }
         return null;
     }
@@ -57,7 +57,7 @@ public class FpJsonFormUtils extends org.smartregister.util.JsonFormUtils {
             return step1.has(FIELDS) ? step1.getJSONArray(FIELDS) : null;
 
         } catch (JSONException e) {
-            Log.e(TAG, "", e);
+            Timber.e(e);
         }
         return null;
     }

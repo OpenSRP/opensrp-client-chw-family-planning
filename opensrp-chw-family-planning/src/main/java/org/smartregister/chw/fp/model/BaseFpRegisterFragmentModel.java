@@ -1,7 +1,5 @@
 package org.smartregister.chw.fp.model;
 
-import android.util.Log;
-
 import org.apache.commons.lang3.StringUtils;
 import org.json.JSONArray;
 import org.smartregister.chw.fp.FpLibrary;
@@ -19,6 +17,8 @@ import org.smartregister.domain.ResponseStatus;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
+
+import timber.log.Timber;
 
 public class BaseFpRegisterFragmentModel implements BaseFpRegisterFragmentContract.Model {
 
@@ -92,7 +92,7 @@ public class BaseFpRegisterFragmentModel implements BaseFpRegisterFragmentContra
                 return new JSONArray(response.payload());
             }
         } catch (Exception e) {
-            Log.e(getClass().getName(), "", e);
+            Timber.e(getClass().getName(), "", e);
         }
         return null;
     }
