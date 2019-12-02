@@ -111,7 +111,7 @@ public class BaseFpRegisterActivity extends BaseRegisterActivity implements Base
 
     @Override
     public List<String> getViewIdentifiers() {
-        return Arrays.asList(FamilyPlanningConstants.CONFIGURATION.FAMILY_PLANNING_REGISTRATION);
+        return Arrays.asList(FamilyPlanningConstants.CONFIGURATION.FAMILY_PLANNING_REGISTER);
     }
 
     /**
