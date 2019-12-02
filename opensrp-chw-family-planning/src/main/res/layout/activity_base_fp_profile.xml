@@ -169,8 +169,11 @@
 
         </android.support.design.widget.CollapsingToolbarLayout>
 
-        <include android:id="@+id/record_visit_malaria"
-            layout="@layout/fp_follow_up_visit_view"/>
+        <include
+            android:id="@+id/record_visit_malaria"
+            layout="@layout/fp_follow_up_visit_view" />
+
+        <include layout="@layout/content_fp_profile" />
 
         <View
             android:layout_width="match_parent"

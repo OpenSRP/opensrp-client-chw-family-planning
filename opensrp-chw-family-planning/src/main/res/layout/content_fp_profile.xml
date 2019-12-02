@@ -17,7 +17,7 @@
                 android:id="@+id/rlLastVisit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/list_item_background_selctor"
+                android:background="@drawable/list_item_background_selector"
                 android:padding="20dp"
                 android:visibility="visible">
 
@@ -27,7 +27,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_marginRight="10dp"
-                    android:src="@drawable/childrow_history" />
+                    android:src="@drawable/fp_medical_history" />
 
                 <ImageView
                     android:id="@+id/arrow_image"
@@ -35,7 +35,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
-                    android:src="@drawable/row_goto" />
+                    android:src="@drawable/goto_arrow" />
 
                 <org.smartregister.view.customcontrols.CustomFontTextView
                     android:id="@+id/textview_last_visit_day"
@@ -45,7 +45,7 @@
                     android:layout_marginLeft="10dp"
                     android:layout_toRightOf="@+id/tick_image"
                     android:gravity="center_horizontal"
-                    android:text="@string/last_visit_40_days_ago"
+                    android:text="@string/last_visit_n_days_ago"
                     android:textAppearance="@style/TextAppearance.AppCompat.Large"
                     android:textColor="@android:color/black" />
 
@@ -54,7 +54,7 @@
                     style="@style/CustomFontTextViewStyle.ListView.Normal.MultipleLines"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/textview_last_vist_day"
+                    android:layout_below="@+id/textview_last_visit_day"
                     android:layout_marginLeft="10dp"
                     android:layout_toRightOf="@+id/tick_image"
                     android:text="@string/view_medical_history"
@@ -76,7 +76,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/view_last_visit_row"
-                android:background="@drawable/list_item_background_selctor"
+                android:background="@drawable/list_item_background_selector"
                 android:padding="20dp"
                 android:visibility="gone">
 
@@ -86,7 +86,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_marginRight="10dp"
-                    android:src="@drawable/childrow_upcoming" />
+                    android:src="@drawable/fp_upcoming" />
 
                 <ImageView
                     android:id="@+id/right_arrow_image"
@@ -94,10 +94,10 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
-                    android:src="@drawable/row_goto" />
+                    android:src="@drawable/goto_arrow" />
 
                 <org.smartregister.view.customcontrols.CustomFontTextView
-                    android:id="@+id/textview_name_due"
+                    android:id="@+id/textview_visit_due"
                     style="@style/CustomFontTextViewStyle.ListView.Normal.MultipleLines"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -114,7 +114,7 @@
                     style="@style/CustomFontTextViewStyle.ListView.Normal.MultipleLines"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/textview_name_due"
+                    android:layout_below="@+id/textview_visit_due"
                     android:layout_marginLeft="10dp"
                     android:layout_toRightOf="@+id/cross_image"
                     android:text="@string/view_upcoming_services"
@@ -136,7 +136,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/view_most_due_overdue_row"
-                android:background="@drawable/list_item_background_selctor"
+                android:background="@drawable/list_item_background_selector"
                 android:padding="20dp"
                 android:visibility="gone">
 
@@ -146,7 +146,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_marginRight="10dp"
-                    android:src="@drawable/fp_row_family" />
+                    android:src="@drawable/fp_family" />
 
                 <ImageView
                     android:id="@+id/family_arrow_image"
@@ -154,7 +154,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
-                    android:src="@drawable/row_goto" />
+                    android:src="@drawable/goto_arrow" />
 
                 <org.smartregister.view.customcontrols.CustomFontTextView
                     android:id="@+id/textview_family_has"
