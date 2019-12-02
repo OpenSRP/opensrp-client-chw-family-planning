@@ -79,7 +79,7 @@ public class BaseFpRegisterFragment extends BaseRegisterFragment implements Base
         if (getActivity() == null) {
             return;
         }
-        presenter = new BaseFpRegisterFragmentPresenter(this, new BaseFpRegisterFragmentModel(), null);
+        presenter = new BaseFpRegisterFragmentPresenter(this, new BaseFpRegisterFragmentModel());
     }
 
     @Override
@@ -122,7 +122,7 @@ public class BaseFpRegisterFragment extends BaseRegisterFragment implements Base
     }
 
     protected void openProfile(CommonPersonObjectClient client) {
-//        BaseFpProfileActivity.startProfileActivity(getActivity(), new MemberObject(client));
+//        BaseMalariaProfileActivity.startProfileActivity(getActivity(), new MemberObject(client));
     }
 
     protected void openFollowUpVisit(CommonPersonObjectClient client) {
