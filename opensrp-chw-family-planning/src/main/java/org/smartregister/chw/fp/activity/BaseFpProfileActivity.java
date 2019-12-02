@@ -118,8 +118,18 @@ public class BaseFpProfileActivity extends BaseProfileActivity implements BaseFp
         return null;
     }
 
+    @Override
     public void onClick(View view) {
-
+        int id = view.getId();
+        if (id == R.id.title_layout) {
+            onBackPressed();
+        } else if (id == R.id.rlLastVisit) {
+            this.openMedicalHistory();
+        } else if (id == R.id.rlUpcomingServices) {
+            this.openUpcomingServices();
+        } else if (id == R.id.rlFamilyServicesDue) {
+            this.openFamilyDueServices();
+        }
     }
 
     @Override
@@ -143,6 +153,11 @@ public class BaseFpProfileActivity extends BaseProfileActivity implements BaseFp
     }
 
     @Override
+    public void openFamilyDueServices() {
+
+    }
+
+    @Override
     public void openFollowUpVisitForm() {
 
     }
@@ -153,12 +168,13 @@ public class BaseFpProfileActivity extends BaseProfileActivity implements BaseFp
     }
 
     @Override
-    public void refreshMedicalHistory() {
-
+    public void refreshMedicalHistory(boolean hasHistory) {
+        showProgressBar(false);
+        rlLastVisit.setVisibility(hasHistory ? View.VISIBLE : View.GONE);
     }
 
     @Override
-    public void setProfileViewData(MemberObject memberObject) {
+    public void setProfileViewDetails(MemberObject memberObject) {
         int age = new Period(new DateTime(memberObject.getAge()), new DateTime()).getYears();
         tvName.setText(String.format(Locale.getDefault(), "%s %s %s, %d", memberObject.getFirstName(),
                 memberObject.getMiddleName(), memberObject.getLastName(), age));

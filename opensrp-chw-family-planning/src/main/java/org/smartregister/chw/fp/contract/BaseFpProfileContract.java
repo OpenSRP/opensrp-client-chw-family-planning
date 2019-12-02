@@ -13,13 +13,15 @@ public interface BaseFpProfileContract {
 
         void openUpcomingServices();
 
+        void openFamilyDueServices();
+
         void openFollowUpVisitForm();
 
         void refreshUpcomingServices();
 
-        void refreshMedicalHistory();
+        void refreshMedicalHistory(boolean hasHistory);
 
-        void setProfileViewData(MemberObject memberObject);
+        void setProfileViewDetails(MemberObject memberObject);
 
         void setOverdueColor();
 
