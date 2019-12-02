@@ -26,7 +26,7 @@ public interface BaseFpProfileContract {
 
         // hideView();
 
-        // showProgressBar();
+        void showProgressBar(boolean status);
 
     }
 
@@ -49,7 +49,7 @@ public interface BaseFpProfileContract {
 
     }
 
-    interface interactor {
+    interface Interactor {
 
         void fetchProfile(String baseEntityId); // Callback here
     }
