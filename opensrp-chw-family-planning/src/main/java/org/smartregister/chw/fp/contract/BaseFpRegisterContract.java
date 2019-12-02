@@ -33,13 +33,7 @@ public interface BaseFpRegisterContract {
 
     interface Interactor {
 
-        void onDestroy(boolean isChangingConfiguration);
-
-        void getNextUniqueId(Triple<String, String, String> triple, InteractorCallBack callBack);
-
         void saveRegistration(String jsonString, final InteractorCallBack callBack);
-
-        void removeFamilyFromRegister(String closeFormJsonString, String providerId);
 
     }
 
