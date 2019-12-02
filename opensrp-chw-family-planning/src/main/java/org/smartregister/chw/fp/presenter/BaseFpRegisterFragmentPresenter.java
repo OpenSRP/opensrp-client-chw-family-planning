@@ -1,6 +1,5 @@
 package org.smartregister.chw.fp.presenter;
 
-import org.apache.commons.lang3.StringUtils;
 import org.smartregister.chw.fp.contract.BaseFpRegisterFragmentContract;
 import org.smartregister.chw.fp.util.FamilyPlanningConstants;
 import org.smartregister.configurableviews.model.Field;
@@ -22,12 +21,10 @@ public class BaseFpRegisterFragmentPresenter implements BaseFpRegisterFragmentCo
     protected RegisterConfiguration config;
 
     protected Set<View> visibleColumns = new TreeSet<>();
-    protected String viewConfigurationIdentifier;
 
-    public BaseFpRegisterFragmentPresenter(BaseFpRegisterFragmentContract.View view, BaseFpRegisterFragmentContract.Model model, String viewConfigurationIdentifier) {
+    public BaseFpRegisterFragmentPresenter(BaseFpRegisterFragmentContract.View view, BaseFpRegisterFragmentContract.Model model) {
         this.viewReference = new WeakReference<>(view);
         this.model = model;
-        this.viewConfigurationIdentifier = viewConfigurationIdentifier;
         this.config = model.defaultRegisterConfiguration();
     }
 
@@ -48,14 +45,11 @@ public class BaseFpRegisterFragmentPresenter implements BaseFpRegisterFragmentCo
 
     @Override
     public void processViewConfigurations() {
-        if (StringUtils.isBlank(viewConfigurationIdentifier)) {
-            return;
-        }
 
-        ViewConfiguration viewConfiguration = model.getViewConfiguration(viewConfigurationIdentifier);
+        ViewConfiguration viewConfiguration = model.getViewConfiguration(FamilyPlanningConstants.CONFIGURATION.FAMILY_PLANNING_REGISTER);
         if (viewConfiguration != null) {
             config = (RegisterConfiguration) viewConfiguration.getMetadata();
-            this.visibleColumns = model.getRegisterActiveColumns(viewConfigurationIdentifier);
+            this.visibleColumns = model.getRegisterActiveColumns(FamilyPlanningConstants.CONFIGURATION.FAMILY_PLANNING_REGISTER);
         }
 
         if (config.getSearchBarText() != null && getView() != null) {
@@ -87,7 +81,6 @@ public class BaseFpRegisterFragmentPresenter implements BaseFpRegisterFragmentCo
     @Override
     public void startSync() {
 //        implement
-
     }
 
     @Override

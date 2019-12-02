@@ -56,6 +56,9 @@ public class BaseFpRegisterProvider implements RecyclerViewProvider<BaseFpRegist
         }
     }
 
+    private String updateMemberGender(CommonPersonObjectClient commonPersonObjectClient) {
+        return "FEMALE";
+    }
 
     private void populatePatientColumn(CommonPersonObjectClient pc, final RegisterViewHolder viewHolder) {
         try {
@@ -64,12 +67,13 @@ public class BaseFpRegisterProvider implements RecyclerViewProvider<BaseFpRegist
                     Utils.getValue(pc.getColumnmaps(), FamilyPlanningConstants.DBConstants.FIRST_NAME, true),
                     Utils.getValue(pc.getColumnmaps(), FamilyPlanningConstants.DBConstants.MIDDLE_NAME, true));
 
-            String dobString = Utils.getValue(pc.getColumnmaps(), FamilyPlanningConstants.DBConstants.DOB, false);
-            int age = new Period(new DateTime(dobString), new DateTime()).getYears();
+//            String dobString = Utils.getValue(pc.getColumnmaps(), FamilyPlanningConstants.DBConstants.DOB, false);
+//            int age = new Period(new DateTime(dobString), new DateTime()).getYears();
+            int age = 23;
 
             String patientName = getName(firstName, Utils.getValue(pc.getColumnmaps(), FamilyPlanningConstants.DBConstants.LAST_NAME, true));
             viewHolder.patientName.setText(patientName + ", " + age);
-            viewHolder.textViewGender.setText("FEMALEE");
+            viewHolder.textViewGender.setText(updateMemberGender(pc));
             viewHolder.textViewVillage.setText(Utils.getValue(pc.getColumnmaps(), FamilyPlanningConstants.DBConstants.VILLAGE_TOWN, true));
             viewHolder.patientColumn.setOnClickListener(onClickListener);
             viewHolder.patientColumn.setTag(pc);
