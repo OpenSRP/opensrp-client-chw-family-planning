@@ -5,6 +5,10 @@ public interface FamilyPlanningConstants {
     int REQUEST_CODE_GET_JSON = 2244;
     String ENCOUNTER_TYPE = "encounter_type";
 
+    interface FAMILY_PLANNING_MEMBER_OBJECT {
+        String MEMBER_OBJECT = "memberObject";
+    }
+
     interface JsonFromExtra {
         String JSON = "json";
     }
@@ -24,11 +28,17 @@ public interface FamilyPlanningConstants {
         String MIDDLE_NAME = "middle_name";
         String LAST_NAME = "last_name";
         String BASE_ENTITY_ID = "base_entity_id";
+        String GENDER = "gender";
         String DOB = "dob";
         String DOD = "dod";
         String UNIQUE_ID = "unique_id";
         String LAST_INTERACTED_WITH = "last_interacted_with";
         String VILLAGE_TOWN = "village_town";
         String DATE_REMOVED = "date_removed";
+        String RELATIONALID = "relationalid";
+        String FAMILY_HEAD = "family_head";
+        String PRIMARY_CARE_GIVER = "primary_caregiver";
+        String RELATIONAL_ID = "relational_id";
+        String DETAILS = "details";
     }
 }
