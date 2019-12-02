@@ -35,7 +35,7 @@ public class BaseFpRegisterFragmentPresenter implements BaseFpRegisterFragmentCo
 
     @Override
     public String getMainCondition() {
-        return "";
+        return " ec_family_member.date_removed is null AND ec_family_planning.is_closed = 0";
     }
 
     @Override
