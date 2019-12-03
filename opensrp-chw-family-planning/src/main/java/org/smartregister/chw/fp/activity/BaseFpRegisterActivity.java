@@ -48,9 +48,9 @@ public class BaseFpRegisterActivity extends BaseRegisterActivity implements Base
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        BASE_ENTITY_ID = getIntent().getStringExtra(FamilyPlanningConstants.ACTIVITY_PAYLOAD.BASE_ENTITY_ID);
-        ACTION = getIntent().getStringExtra(FamilyPlanningConstants.ACTIVITY_PAYLOAD.ACTION);
-        FORM_NAME = getIntent().getStringExtra(FamilyPlanningConstants.ACTIVITY_PAYLOAD.FP_FORM_NAME);
+        BASE_ENTITY_ID = getIntent().getStringExtra(FamilyPlanningConstants.ActivityPayload.BASE_ENTITY_ID);
+        ACTION = getIntent().getStringExtra(FamilyPlanningConstants.ActivityPayload.ACTION);
+        FORM_NAME = getIntent().getStringExtra(FamilyPlanningConstants.ActivityPayload.FP_FORM_NAME);
         onStartActivityWithAction();
     }
 
