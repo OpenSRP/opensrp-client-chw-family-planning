@@ -11,18 +11,20 @@ import android.widget.TextView;
 
 import org.apache.commons.lang3.StringUtils;
 import org.joda.time.DateTime;
+import org.joda.time.Days;
 import org.joda.time.Period;
 import org.smartregister.chw.fp.contract.BaseFpProfileContract;
 import org.smartregister.chw.fp.domain.MemberObject;
 import org.smartregister.chw.fp.interactor.BaseFpProfileInteractor;
 import org.smartregister.chw.fp.presenter.BaseFpProfilePresenter;
 import org.smartregister.chw.fp.util.FamilyPlanningConstants;
+import org.smartregister.chw.fp.util.FpUtil;
 import org.smartregister.domain.AlertStatus;
 import org.smartregister.fp.R;
 import org.smartregister.helper.ImageRenderHelper;
 import org.smartregister.view.activity.BaseProfileActivity;
-import org.smartregister.view.contract.BaseProfileContract;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
@@ -47,6 +49,7 @@ public class BaseFpProfileActivity extends BaseProfileActivity implements BaseFp
     private RelativeLayout rlFamilyServicesDue;
     private RelativeLayout visitStatus;
     private TextView tvUndo;
+    private TextView tvLastVisitDate;
     private TextView tvUpComingServices;
     private TextView tvFamilyStatus;
     private TextView tvRecordFpFollowUp;
@@ -100,6 +103,7 @@ public class BaseFpProfileActivity extends BaseProfileActivity implements BaseFp
         tvUndo = findViewById(R.id.textview_undo);
         profileImageView = findViewById(R.id.profile_image_view);
         tvRecordFpFollowUp = findViewById(R.id.textview_record_reccuring_visit);
+        tvLastVisitDate = findViewById(R.id.textview_last_visit_day);
 
         tvUndo.setOnClickListener(this);
         tvRecordFpFollowUp.setOnClickListener(this);
@@ -121,7 +125,7 @@ public class BaseFpProfileActivity extends BaseProfileActivity implements BaseFp
 
     @Override
     protected void fetchProfileData() {
-        
+
     }
 
     @Override
@@ -165,17 +169,44 @@ public class BaseFpProfileActivity extends BaseProfileActivity implements BaseFp
 
     @Override
     public void setLastVisit(Date lastVisitDate) {
+        if (lastVisitDate == null)
+            return;
 
+        lastVisitRow.setVisibility(View.VISIBLE);
+        rlLastVisit.setVisibility(View.VISIBLE);
+
+        int numOfDays = Days.daysBetween(new DateTime(lastVisitDate).toLocalDate(), new DateTime().toLocalDate()).getDays();
+        tvLastVisitDate.setText(getString(R.string.last_visit_n_days_ago, (numOfDays <= 1) ? getString(R.string.less_than_twenty_four) : numOfDays + " " + getString(R.string.days)));
     }
 
     @Override
     public void setUpComingServicesStatus(String service, AlertStatus status, Date date) {
+        showProgressBar(false);
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd MMM", Locale.getDefault());
+        if (status == AlertStatus.complete)
+            return;
+        overDueRow.setVisibility(View.VISIBLE);
+        rlUpcomingServices.setVisibility(View.VISIBLE);
 
+        if (status == AlertStatus.upcoming) {
+            tvUpComingServices.setText(FpUtil.fromHtml(getString(R.string.fp_service_upcoming, service, dateFormat.format(date))));
+        } else {
+            tvUpComingServices.setText(FpUtil.fromHtml(getString(R.string.fp_service_due, service, dateFormat.format(date))));
+        }
     }
 
     @Override
     public void setFamilyStatus(AlertStatus status) {
+        familyRow.setVisibility(View.VISIBLE);
+        rlFamilyServicesDue.setVisibility(View.VISIBLE);
 
+        if (status == AlertStatus.complete) {
+            tvFamilyStatus.setText(getString(R.string.family_has_nothing_due));
+        } else if (status == AlertStatus.normal) {
+            tvFamilyStatus.setText(getString(R.string.family_has_services_due));
+        } else if (status == AlertStatus.urgent) {
+            tvFamilyStatus.setText(FpUtil.fromHtml(getString(R.string.family_has_service_overdue)));
+        }
     }
 
     @Override
