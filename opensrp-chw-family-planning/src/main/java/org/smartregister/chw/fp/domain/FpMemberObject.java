@@ -5,7 +5,7 @@ import org.smartregister.commonregistry.CommonPersonObjectClient;
 
 import java.io.Serializable;
 
-public class MemberObject implements Serializable {
+public class FpMemberObject implements Serializable {
 
     private String familyHeadName;
     private String familyHeadPhoneNumber;
@@ -28,10 +28,10 @@ public class MemberObject implements Serializable {
     private String familyName;
     private String phoneNumber;
 
-    public MemberObject() {
+    public FpMemberObject() {
     }
 
-    public MemberObject(CommonPersonObjectClient client) {
+    public FpMemberObject(CommonPersonObjectClient client) {
         firstName = client.getColumnmaps().get(FamilyPlanningConstants.DBConstants.FIRST_NAME) != null ? client.getColumnmaps().get(FamilyPlanningConstants.DBConstants.FIRST_NAME) : "";
         middleName = client.getColumnmaps().get(FamilyPlanningConstants.DBConstants.MIDDLE_NAME) != null ? client.getColumnmaps().get(FamilyPlanningConstants.DBConstants.MIDDLE_NAME) : "";
         lastName = client.getColumnmaps().get(FamilyPlanningConstants.DBConstants.LAST_NAME) != null ? client.getColumnmaps().get(FamilyPlanningConstants.DBConstants.LAST_NAME) : "";

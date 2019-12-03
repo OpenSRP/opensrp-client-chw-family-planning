@@ -14,7 +14,7 @@ import org.joda.time.DateTime;
 import org.joda.time.Days;
 import org.joda.time.Period;
 import org.smartregister.chw.fp.contract.BaseFpProfileContract;
-import org.smartregister.chw.fp.domain.MemberObject;
+import org.smartregister.chw.fp.domain.FpMemberObject;
 import org.smartregister.chw.fp.interactor.BaseFpProfileInteractor;
 import org.smartregister.chw.fp.presenter.BaseFpProfilePresenter;
 import org.smartregister.chw.fp.util.FamilyPlanningConstants;
@@ -55,7 +55,7 @@ public class BaseFpProfileActivity extends BaseProfileActivity implements BaseFp
     private TextView tvRecordFpFollowUp;
 
     protected BaseFpProfileContract.Presenter fpProfilePresenter;
-    protected MemberObject memberObject;
+    protected FpMemberObject fpMemberObject;
 
     @Override
     protected void onCreation() {
@@ -74,7 +74,7 @@ public class BaseFpProfileActivity extends BaseProfileActivity implements BaseFp
         collapsingToolbarLayout = appBarLayout.findViewById(R.id.collapsing_toolbar_layout);
         appBarLayout.addOnOffsetChangedListener(this);
 
-        memberObject = (MemberObject) getIntent().getSerializableExtra(FamilyPlanningConstants.FAMILY_PLANNING_MEMBER_OBJECT.MEMBER_OBJECT);
+        fpMemberObject = (FpMemberObject) getIntent().getSerializableExtra(FamilyPlanningConstants.FAMILY_PLANNING_MEMBER_OBJECT.MEMBER_OBJECT);
         imageRenderHelper = new ImageRenderHelper(this);
 
         setupViews();
@@ -114,7 +114,7 @@ public class BaseFpProfileActivity extends BaseProfileActivity implements BaseFp
 
     @Override
     protected void initializePresenter() {
-        fpProfilePresenter = new BaseFpProfilePresenter(this, new BaseFpProfileInteractor(), memberObject);
+        fpProfilePresenter = new BaseFpProfilePresenter(this, new BaseFpProfileInteractor(), fpMemberObject);
     }
 
     @Override
@@ -215,18 +215,18 @@ public class BaseFpProfileActivity extends BaseProfileActivity implements BaseFp
     }
 
     @Override
-    public void setProfileViewDetails(MemberObject memberObject) {
-        int age = new Period(new DateTime(memberObject.getAge()), new DateTime()).getYears();
-        tvName.setText(String.format(Locale.getDefault(), "%s %s %s, %d", memberObject.getFirstName(),
-                memberObject.getMiddleName(), memberObject.getLastName(), age));
-        tvGender.setText(memberObject.getGender());
-        tvLocation.setText(memberObject.getAddress());
-        tvUniqueID.setText(memberObject.getUniqueId());
+    public void setProfileViewDetails(FpMemberObject fpMemberObject) {
+        int age = new Period(new DateTime(fpMemberObject.getAge()), new DateTime()).getYears();
+        tvName.setText(String.format(Locale.getDefault(), "%s %s %s, %d", fpMemberObject.getFirstName(),
+                fpMemberObject.getMiddleName(), fpMemberObject.getLastName(), age));
+        tvGender.setText(fpMemberObject.getGender());
+        tvLocation.setText(fpMemberObject.getAddress());
+        tvUniqueID.setText(fpMemberObject.getUniqueId());
 
-        if (StringUtils.isNotBlank(memberObject.getFamilyHead()) && memberObject.getFamilyHead().equals(memberObject.getBaseEntityId())) {
+        if (StringUtils.isNotBlank(fpMemberObject.getFamilyHead()) && fpMemberObject.getFamilyHead().equals(fpMemberObject.getBaseEntityId())) {
             findViewById(R.id.fp_family_head).setVisibility(View.VISIBLE);
         }
-        if (StringUtils.isNotBlank(memberObject.getPrimaryCareGiver()) && memberObject.getPrimaryCareGiver().equals(memberObject.getBaseEntityId())) {
+        if (StringUtils.isNotBlank(fpMemberObject.getPrimaryCareGiver()) && fpMemberObject.getPrimaryCareGiver().equals(fpMemberObject.getBaseEntityId())) {
             findViewById(R.id.fp_primary_caregiver).setVisibility(View.VISIBLE);
         }
     }

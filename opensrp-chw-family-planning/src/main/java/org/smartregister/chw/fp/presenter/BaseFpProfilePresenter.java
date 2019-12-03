@@ -1,7 +1,7 @@
 package org.smartregister.chw.fp.presenter;
 
 import org.smartregister.chw.fp.contract.BaseFpProfileContract;
-import org.smartregister.chw.fp.domain.MemberObject;
+import org.smartregister.chw.fp.domain.FpMemberObject;
 import org.smartregister.domain.AlertStatus;
 import org.smartregister.view.contract.BaseProfileContract;
 
@@ -10,13 +10,13 @@ import java.util.Date;
 
 public class BaseFpProfilePresenter implements BaseProfileContract, BaseFpProfileContract.Presenter, BaseFpProfileContract.InteractorCallback {
     private WeakReference<BaseFpProfileContract.View> view;
-    private MemberObject memberObject;
+    private FpMemberObject fpMemberObject;
     private BaseFpProfileContract.Interactor interactor;
 
-    public BaseFpProfilePresenter(BaseFpProfileContract.View view, BaseFpProfileContract.Interactor interactor, MemberObject memberObject) {
+    public BaseFpProfilePresenter(BaseFpProfileContract.View view, BaseFpProfileContract.Interactor interactor, FpMemberObject fpMemberObject) {
         this.view = new WeakReference<>(view);
         this.interactor = interactor;
-        this.memberObject = memberObject;
+        this.fpMemberObject = fpMemberObject;
     }
 
     @Override
@@ -37,7 +37,7 @@ public class BaseFpProfilePresenter implements BaseProfileContract, BaseFpProfil
         if (getView() != null) {
             getView().showProgressBar(true);
         }
-        interactor.refreshProfileView(memberObject, false, this);
+        interactor.refreshProfileView(fpMemberObject, false, this);
     }
 
     @Override
@@ -51,9 +51,9 @@ public class BaseFpProfilePresenter implements BaseProfileContract, BaseFpProfil
     }
 
     @Override
-    public void refreshProfileTopSection(MemberObject memberObject) {
+    public void refreshProfileTopSection(FpMemberObject fpMemberObject) {
         if (getView() != null) {
-            getView().setProfileViewDetails(memberObject);
+            getView().setProfileViewDetails(fpMemberObject);
             getView().showProgressBar(false);
         }
     }

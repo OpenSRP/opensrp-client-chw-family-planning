@@ -1,6 +1,6 @@
 package org.smartregister.chw.fp.contract;
 
-import org.smartregister.chw.fp.domain.MemberObject;
+import org.smartregister.chw.fp.domain.FpMemberObject;
 import org.smartregister.domain.AlertStatus;
 import org.smartregister.view.contract.BaseProfileContract;
 
@@ -26,7 +26,7 @@ public interface BaseFpProfileContract {
 
         void setFamilyStatus(AlertStatus status);
 
-        void setProfileViewDetails(MemberObject memberObject);
+        void setProfileViewDetails(FpMemberObject fpMemberObject);
 
         void setOverdueColor();
 
@@ -53,7 +53,7 @@ public interface BaseFpProfileContract {
 
     interface Interactor {
 
-        void refreshProfileView(MemberObject memberObject, boolean isForEdit, BaseFpProfileContract.InteractorCallback callback);
+        void refreshProfileView(FpMemberObject fpMemberObject, boolean isForEdit, BaseFpProfileContract.InteractorCallback callback);
 
         void resetProfileInfo(BaseFpProfileContract.InteractorCallback callback);
 
@@ -61,7 +61,7 @@ public interface BaseFpProfileContract {
 
     interface InteractorCallback {
 
-        void refreshProfileTopSection(MemberObject memberObject);
+        void refreshProfileTopSection(FpMemberObject fpMemberObject);
 
         void refreshLastVisit(Date lastVisitDate);
 

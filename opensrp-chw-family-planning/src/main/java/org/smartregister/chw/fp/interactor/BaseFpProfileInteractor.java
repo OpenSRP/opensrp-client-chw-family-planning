@@ -3,7 +3,7 @@ package org.smartregister.chw.fp.interactor;
 import android.support.annotation.VisibleForTesting;
 
 import org.smartregister.chw.fp.contract.BaseFpProfileContract;
-import org.smartregister.chw.fp.domain.MemberObject;
+import org.smartregister.chw.fp.domain.FpMemberObject;
 import org.smartregister.chw.fp.util.AppExecutors;
 import org.smartregister.domain.AlertStatus;
 
@@ -22,8 +22,8 @@ public class BaseFpProfileInteractor implements BaseFpProfileContract.Interactor
     }
 
     @Override
-    public void refreshProfileView(MemberObject memberObject, boolean isForEdit, BaseFpProfileContract.InteractorCallback callback) {
-        Runnable runnable = () -> appExecutors.mainThread().execute(() -> callback.refreshProfileTopSection(memberObject));
+    public void refreshProfileView(FpMemberObject fpMemberObject, boolean isForEdit, BaseFpProfileContract.InteractorCallback callback) {
+        Runnable runnable = () -> appExecutors.mainThread().execute(() -> callback.refreshProfileTopSection(fpMemberObject));
         appExecutors.diskIO().execute(runnable);
     }
 
