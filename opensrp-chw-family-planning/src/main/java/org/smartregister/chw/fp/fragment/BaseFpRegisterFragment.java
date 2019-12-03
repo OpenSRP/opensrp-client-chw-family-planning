@@ -122,7 +122,7 @@ public class BaseFpRegisterFragment extends BaseRegisterFragment implements Base
     }
 
     protected void openProfile(CommonPersonObjectClient client) {
-//        BaseMalariaProfileActivity.startProfileActivity(getActivity(), new MemberObject(client));
+//        BaseFpProfileActivity.startProfileActivity(getActivity(), new MemberObject(client));
     }
 
     protected void openFollowUpVisit(CommonPersonObjectClient client) {
