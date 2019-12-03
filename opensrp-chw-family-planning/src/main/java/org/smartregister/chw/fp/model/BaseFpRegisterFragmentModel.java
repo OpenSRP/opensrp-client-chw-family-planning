@@ -1,12 +1,13 @@
 package org.smartregister.chw.fp.model;
 
-import android.util.Log;
+import android.support.annotation.NonNull;
 
 import org.apache.commons.lang3.StringUtils;
 import org.json.JSONArray;
 import org.smartregister.chw.fp.FpLibrary;
 import org.smartregister.chw.fp.contract.BaseFpRegisterFragmentContract;
 import org.smartregister.chw.fp.util.ConfigHelper;
+import org.smartregister.chw.fp.util.FamilyPlanningConstants;
 import org.smartregister.configurableviews.ConfigurableViewsLibrary;
 import org.smartregister.configurableviews.model.Field;
 import org.smartregister.configurableviews.model.RegisterConfiguration;
@@ -17,10 +18,25 @@ import org.smartregister.domain.Response;
 import org.smartregister.domain.ResponseStatus;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import timber.log.Timber;
+
 public class BaseFpRegisterFragmentModel implements BaseFpRegisterFragmentContract.Model {
+
+    @NonNull
+    @Override
+    public String mainSelect(@NonNull String tableName, @NonNull String mainCondition) {
+        SmartRegisterQueryBuilder queryBuilder = new SmartRegisterQueryBuilder();
+        queryBuilder.SelectInitiateMainTable(tableName, mainColumns(tableName));
+        queryBuilder.customJoin("INNER JOIN " + FamilyPlanningConstants.DBConstants.FAMILY_MEMBER + " ON  " + tableName + "." + FamilyPlanningConstants.DBConstants.BASE_ENTITY_ID + " = " + FamilyPlanningConstants.DBConstants.FAMILY_MEMBER + "." + FamilyPlanningConstants.DBConstants.BASE_ENTITY_ID + " COLLATE NOCASE ");
+        queryBuilder.customJoin("INNER JOIN " + FamilyPlanningConstants.DBConstants.FAMILY + " ON  " + FamilyPlanningConstants.DBConstants.FAMILY_MEMBER + "." + FamilyPlanningConstants.DBConstants.RELATIONAL_ID + " = " + FamilyPlanningConstants.DBConstants.FAMILY + "." + FamilyPlanningConstants.DBConstants.BASE_ENTITY_ID);
+
+        return queryBuilder.mainCondition(mainCondition);
+    }
+
 
     @Override
     public RegisterConfiguration defaultRegisterConfiguration() {
@@ -44,18 +60,23 @@ public class BaseFpRegisterFragmentModel implements BaseFpRegisterFragmentContra
         return countQueryBuilder.mainCondition(mainCondition);
     }
 
-    @Override
-    public String mainSelect(String tableName, String mainCondition) {
-        SmartRegisterQueryBuilder queryBUilder = new SmartRegisterQueryBuilder();
-        queryBUilder.SelectInitiateMainTable(tableName, mainColumns(tableName));
-        return queryBUilder.mainCondition(mainCondition);
-    }
 
     protected String[] mainColumns(String tableName) {
-        String[] columns = new String[]{
-                tableName + ".relationalid"
-        };
-        return columns;
+        Set<String> columnList = new HashSet<>();
+        columnList.add(tableName + "." + FamilyPlanningConstants.DBConstants.LAST_INTERACTED_WITH);
+        columnList.add(tableName + "." + FamilyPlanningConstants.DBConstants.BASE_ENTITY_ID);
+        columnList.add(tableName + "." + FamilyPlanningConstants.DBConstants.FP_METHOD_ACCEPTED);
+        columnList.add(FamilyPlanningConstants.DBConstants.FAMILY_MEMBER + "." + FamilyPlanningConstants.DBConstants.RELATIONAL_ID + " as relationalid");
+        columnList.add(FamilyPlanningConstants.DBConstants.FAMILY_MEMBER + "." + FamilyPlanningConstants.DBConstants.RELATIONAL_ID);
+
+        columnList.add(FamilyPlanningConstants.DBConstants.FAMILY_MEMBER + "." + FamilyPlanningConstants.DBConstants.FIRST_NAME);
+        columnList.add(FamilyPlanningConstants.DBConstants.FAMILY_MEMBER + "." + FamilyPlanningConstants.DBConstants.MIDDLE_NAME);
+        columnList.add(FamilyPlanningConstants.DBConstants.FAMILY_MEMBER + "." + FamilyPlanningConstants.DBConstants.LAST_NAME);
+        columnList.add(FamilyPlanningConstants.DBConstants.FAMILY_MEMBER + "." + FamilyPlanningConstants.DBConstants.DOB);
+
+        columnList.add(FamilyPlanningConstants.DBConstants.FAMILY + "." + FamilyPlanningConstants.DBConstants.VILLAGE_TOWN);
+
+        return columnList.toArray(new String[columnList.size()]);
     }
 
     @Override
@@ -92,7 +113,7 @@ public class BaseFpRegisterFragmentModel implements BaseFpRegisterFragmentContra
                 return new JSONArray(response.payload());
             }
         } catch (Exception e) {
-            Log.e(getClass().getName(), "", e);
+            Timber.e(getClass().getName(), "", e);
         }
         return null;
     }

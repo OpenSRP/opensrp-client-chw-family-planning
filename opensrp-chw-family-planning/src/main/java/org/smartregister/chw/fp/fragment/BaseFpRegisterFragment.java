@@ -79,7 +79,7 @@ public class BaseFpRegisterFragment extends BaseRegisterFragment implements Base
         if (getActivity() == null) {
             return;
         }
-        presenter = new BaseFpRegisterFragmentPresenter(this, new BaseFpRegisterFragmentModel(), null);
+        presenter = new BaseFpRegisterFragmentPresenter(this, new BaseFpRegisterFragmentModel());
     }
 
     @Override

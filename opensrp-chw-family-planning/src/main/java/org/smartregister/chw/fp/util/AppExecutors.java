@@ -1,9 +1,5 @@
 package org.smartregister.chw.fp.util;
 
-/**
- * Created by keyman on 12/11/18.
- */
-
 import android.os.Handler;
 import android.os.Looper;
 import android.support.annotation.NonNull;
@@ -19,22 +15,18 @@ import java.util.concurrent.Executors;
  */
 public class AppExecutors {
 
-    private static final int THREAD_COUNT = 3;
-
     private final Executor diskIO;
 
-    private final Executor networkIO;
 
     private final Executor mainThread;
 
-    public AppExecutors(Executor diskIO, Executor networkIO, Executor mainThread) {
+    public AppExecutors(Executor diskIO, Executor mainThread) {
         this.diskIO = diskIO;
-        this.networkIO = networkIO;
         this.mainThread = mainThread;
     }
 
     public AppExecutors() {
-        this(new DiskIOThreadExecutor(), Executors.newFixedThreadPool(THREAD_COUNT),
+        this(new DiskIOThreadExecutor(),
                 new MainThreadExecutor());
     }
 

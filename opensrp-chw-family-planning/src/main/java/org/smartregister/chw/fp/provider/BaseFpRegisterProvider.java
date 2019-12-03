@@ -34,9 +34,8 @@ import static org.smartregister.util.Utils.getName;
 public class BaseFpRegisterProvider implements RecyclerViewProvider<BaseFpRegisterProvider.RegisterViewHolder> {
 
     private final LayoutInflater inflater;
-
-    private View.OnClickListener paginationClickListener;
     protected View.OnClickListener onClickListener;
+    private View.OnClickListener paginationClickListener;
     private Context context;
     private Set<org.smartregister.configurableviews.model.View> visibleColumns;
 
@@ -56,7 +55,6 @@ public class BaseFpRegisterProvider implements RecyclerViewProvider<BaseFpRegist
         }
     }
 
-
     private void populatePatientColumn(CommonPersonObjectClient pc, final RegisterViewHolder viewHolder) {
         try {
 
@@ -69,7 +67,7 @@ public class BaseFpRegisterProvider implements RecyclerViewProvider<BaseFpRegist
 
             String patientName = getName(firstName, Utils.getValue(pc.getColumnmaps(), FamilyPlanningConstants.DBConstants.LAST_NAME, true));
             viewHolder.patientName.setText(patientName + ", " + age);
-            viewHolder.textViewGender.setText("FEMALEE");
+            viewHolder.textViewFpMethod.setText(Utils.getValue(pc.getColumnmaps(), FamilyPlanningConstants.DBConstants.FP_METHOD_ACCEPTED, true));
             viewHolder.textViewVillage.setText(Utils.getValue(pc.getColumnmaps(), FamilyPlanningConstants.DBConstants.VILLAGE_TOWN, true));
             viewHolder.patientColumn.setOnClickListener(onClickListener);
             viewHolder.patientColumn.setTag(pc);
@@ -141,7 +139,7 @@ public class BaseFpRegisterProvider implements RecyclerViewProvider<BaseFpRegist
         public TextView patientName;
         public TextView parentName;
         public TextView textViewVillage;
-        public TextView textViewGender;
+        public TextView textViewFpMethod;
         public Button dueButton;
         public View patientColumn;
 
@@ -154,7 +152,7 @@ public class BaseFpRegisterProvider implements RecyclerViewProvider<BaseFpRegist
             parentName = itemView.findViewById(R.id.patient_parent_name);
             patientName = itemView.findViewById(R.id.patient_name_age);
             textViewVillage = itemView.findViewById(R.id.text_view_village);
-            textViewGender = itemView.findViewById(R.id.text_view_gender);
+            textViewFpMethod = itemView.findViewById(R.id.text_view_fp_method);
             dueButton = itemView.findViewById(R.id.due_button);
             patientColumn = itemView.findViewById(R.id.patient_column);
             registerColumns = itemView.findViewById(R.id.register_columns);
