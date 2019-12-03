@@ -1,9 +1,5 @@
 package org.smartregister.chw.fp.util;
 
-/**
- * Created by keyman on 12/11/18.
- */
-
 import android.os.Handler;
 import android.os.Looper;
 import android.support.annotation.NonNull;
