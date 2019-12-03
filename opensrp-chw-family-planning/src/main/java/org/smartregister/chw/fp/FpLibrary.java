@@ -24,6 +24,13 @@ public class FpLibrary {
     private ClientProcessorForJava clientProcessorForJava;
     private Compressor compressor;
 
+    private FpLibrary(Context contextArg, Repository repositoryArg, int applicationVersion, int databaseVersion) {
+        this.context = contextArg;
+        this.repository = repositoryArg;
+        this.applicationVersion = applicationVersion;
+        this.databaseVersion = databaseVersion;
+    }
+
     public static void init(Context context, Repository repository, int applicationVersion, int databaseVersion) {
         if (instance == null) {
             instance = new FpLibrary(context, repository, applicationVersion, databaseVersion);
@@ -40,11 +47,16 @@ public class FpLibrary {
         return instance;
     }
 
-    private FpLibrary(Context contextArg, Repository repositoryArg, int applicationVersion, int databaseVersion) {
-        this.context = contextArg;
-        this.repository = repositoryArg;
-        this.applicationVersion = applicationVersion;
-        this.databaseVersion = databaseVersion;
+    /**
+     * Use this method when testing.
+     * It should replace org.smartregister.Context#setInstance(org.smartregister.Context, org.smartregister.repository.Repository) which has been removed
+     *
+     * @param context
+     */
+    public static void reset(Context context, Repository repository, int applicationVersion, int databaseVersion) {
+        if (context != null) {
+            instance = new FpLibrary(context, repository, applicationVersion, databaseVersion);
+        }
     }
 
     public Context context() {
@@ -77,7 +89,6 @@ public class FpLibrary {
         return syncHelper;
     }
 
-
     public ClientProcessorForJava getClientProcessorForJava() {
         if (clientProcessorForJava == null) {
             clientProcessorForJava = ClientProcessorForJava.getInstance(context().applicationContext());
@@ -94,17 +105,5 @@ public class FpLibrary {
             compressor = Compressor.getDefault(context().applicationContext());
         }
         return compressor;
-    }
-
-    /**
-     * Use this method when testing.
-     * It should replace org.smartregister.Context#setInstance(org.smartregister.Context, org.smartregister.repository.Repository) which has been removed
-     *
-     * @param context
-     */
-    public static void reset(Context context, Repository repository, int applicationVersion, int databaseVersion) {
-        if (context != null) {
-            instance = new FpLibrary(context, repository, applicationVersion, databaseVersion);
-        }
     }
 }

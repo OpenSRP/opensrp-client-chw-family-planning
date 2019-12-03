@@ -1,26 +1,36 @@
 package org.smartregister.chw.fp.interactor;
 
-import org.apache.commons.lang3.tuple.Triple;
+import android.support.annotation.VisibleForTesting;
+
 import org.smartregister.chw.fp.contract.BaseFpRegisterContract;
+import org.smartregister.chw.fp.util.AppExecutors;
+import org.smartregister.chw.fp.util.FpUtil;
 
 public class BaseFpRegisterInteractor implements BaseFpRegisterContract.Interactor {
-    @Override
-    public void onDestroy(boolean isChangingConfiguration) {
-//        implement
+
+    private AppExecutors appExecutors;
+
+    @VisibleForTesting
+    BaseFpRegisterInteractor(AppExecutors appExecutors) {
+        this.appExecutors = appExecutors;
+    }
+
+    public BaseFpRegisterInteractor() {
+        this(new AppExecutors());
     }
 
     @Override
-    public void getNextUniqueId(Triple<String, String, String> triple, BaseFpRegisterContract.InteractorCallBack callBack) {
-//        implement
-    }
+    public void saveRegistration(final String jsonString, final BaseFpRegisterContract.InteractorCallBack callBack) {
 
-    @Override
-    public void saveRegistration(BaseFpRegisterContract.InteractorCallBack callBack) {
-//        implement
-    }
+        Runnable runnable = () -> {
+            try {
+                FpUtil.saveFormEvent(jsonString);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
 
-    @Override
-    public void removeFamilyFromRegister(String closeFormJsonString, String providerId) {
-//        implement
+            appExecutors.mainThread().execute(() -> callBack.onRegistrationSaved());
+        };
+        appExecutors.diskIO().execute(runnable);
     }
 }
