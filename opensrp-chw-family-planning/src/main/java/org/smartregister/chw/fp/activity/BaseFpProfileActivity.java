@@ -80,6 +80,7 @@ public class BaseFpProfileActivity extends BaseProfileActivity implements BaseFp
         setupViews();
         initializePresenter();
         fpProfilePresenter.refreshProfileData();
+        initializeCallFAB();
     }
 
     @Override
@@ -115,6 +116,10 @@ public class BaseFpProfileActivity extends BaseProfileActivity implements BaseFp
     @Override
     protected void initializePresenter() {
         fpProfilePresenter = new BaseFpProfilePresenter(this, new BaseFpProfileInteractor(), fpMemberObject);
+    }
+
+    private void initializeCallFAB() {
+
     }
 
     @Override
