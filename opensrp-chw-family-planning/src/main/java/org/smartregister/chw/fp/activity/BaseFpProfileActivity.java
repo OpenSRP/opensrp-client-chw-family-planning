@@ -17,11 +17,13 @@ import org.smartregister.chw.fp.domain.MemberObject;
 import org.smartregister.chw.fp.interactor.BaseFpProfileInteractor;
 import org.smartregister.chw.fp.presenter.BaseFpProfilePresenter;
 import org.smartregister.chw.fp.util.FamilyPlanningConstants;
+import org.smartregister.domain.AlertStatus;
 import org.smartregister.fp.R;
 import org.smartregister.helper.ImageRenderHelper;
 import org.smartregister.view.activity.BaseProfileActivity;
 import org.smartregister.view.contract.BaseProfileContract;
 
+import java.util.Date;
 import java.util.Locale;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -49,7 +51,7 @@ public class BaseFpProfileActivity extends BaseProfileActivity implements BaseFp
     private TextView tvFamilyStatus;
     private TextView tvRecordFpFollowUp;
 
-    protected BaseProfileContract.Presenter profilePresenter;
+    protected BaseFpProfileContract.Presenter fpProfilePresenter;
     protected MemberObject memberObject;
 
     @Override
@@ -72,8 +74,9 @@ public class BaseFpProfileActivity extends BaseProfileActivity implements BaseFp
         memberObject = (MemberObject) getIntent().getSerializableExtra(FamilyPlanningConstants.FAMILY_PLANNING_MEMBER_OBJECT.MEMBER_OBJECT);
         imageRenderHelper = new ImageRenderHelper(this);
 
-        initializePresenter();
         setupViews();
+        initializePresenter();
+        fpProfilePresenter.refreshProfileData();
     }
 
     @Override
@@ -108,14 +111,17 @@ public class BaseFpProfileActivity extends BaseProfileActivity implements BaseFp
 
     @Override
     protected void initializePresenter() {
-        showProgressBar(true);
-        profilePresenter = new BaseFpProfilePresenter(this, new BaseFpProfileInteractor(), memberObject);
-        fetchProfileData();
+        fpProfilePresenter = new BaseFpProfilePresenter(this, new BaseFpProfileInteractor(), memberObject);
     }
 
     @Override
     protected ViewPager setupViewPager(ViewPager viewPager) {
         return null;
+    }
+
+    @Override
+    protected void fetchProfileData() {
+        
     }
 
     @Override
@@ -130,11 +136,6 @@ public class BaseFpProfileActivity extends BaseProfileActivity implements BaseFp
         } else if (id == R.id.rlFamilyServicesDue) {
             this.openFamilyDueServices();
         }
-    }
-
-    @Override
-    protected void fetchProfileData() {
-        // TODO
     }
 
     @Override
@@ -163,7 +164,17 @@ public class BaseFpProfileActivity extends BaseProfileActivity implements BaseFp
     }
 
     @Override
-    public void refreshUpcomingServices() {
+    public void setLastVisit(Date lastVisitDate) {
+
+    }
+
+    @Override
+    public void setUpComingServicesStatus(String service, AlertStatus status, Date date) {
+
+    }
+
+    @Override
+    public void setFamilyStatus(AlertStatus status) {
 
     }
 

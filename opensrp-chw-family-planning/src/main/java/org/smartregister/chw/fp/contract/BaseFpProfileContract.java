@@ -20,15 +20,19 @@ public interface BaseFpProfileContract {
 
         void openFollowUpVisitForm();
 
-        void refreshUpcomingServices();
+        void setLastVisit(Date lastVisitDate);
 
-        void refreshMedicalHistory(boolean hasHistory);
+        void setUpComingServicesStatus(String service, AlertStatus status, Date date);
+
+        void setFamilyStatus(AlertStatus status);
 
         void setProfileViewDetails(MemberObject memberObject);
 
         void setOverdueColor();
 
         void setDueColor();
+
+        void refreshMedicalHistory(boolean hasHistory);
 
         // hideView();
 
@@ -40,24 +44,18 @@ public interface BaseFpProfileContract {
 
         View getView();
 
-        void refreshProfileInfo();
+        void resetProfileInfo();
 
-        void updateMedicalHistory();
+        void refreshProfileData();
 
-        void updateUpcomingServices();
-
-        void refreshFamilyStatus();
-
-    }
-
-
-    interface Model {
-
+        void fetchMemberDetails(String memberId);
     }
 
     interface Interactor {
 
-        void fetchProfileInfo(String baseEntityId);
+        void refreshProfileView(MemberObject memberObject, boolean isForEdit, BaseFpProfileContract.InteractorCallback callback);
+
+        void resetProfileInfo(BaseFpProfileContract.InteractorCallback callback);
 
     }
 
