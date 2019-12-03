@@ -21,6 +21,8 @@ public interface FamilyPlanningConstants {
 
     interface DBConstants {
         String FAMILY_PLANNING_TABLE = "ec_family_planning";
+        String FAMILY_MEMBER = "ec_family_member";
+        String FAMILY = "ec_family";
 
         String FIRST_NAME = "first_name";
         String MIDDLE_NAME = "middle_name";
@@ -30,6 +32,9 @@ public interface FamilyPlanningConstants {
         String LAST_INTERACTED_WITH = "last_interacted_with";
         String VILLAGE_TOWN = "village_town";
         String DATE_REMOVED = "date_removed";
+        String RELATIONAL_ID = "relational_id";
+        String FP_METHOD_ACCEPTED = "fp_method_accepted";
+
     }
 
     interface ACTIVITY_PAYLOAD {
