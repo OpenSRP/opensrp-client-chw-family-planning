@@ -110,7 +110,6 @@ public class BaseFpProfileActivity extends BaseProfileActivity implements BaseFp
         findViewById(R.id.rlLastVisit).setOnClickListener(this);
         findViewById(R.id.rlUpcomingServices).setOnClickListener(this);
         findViewById(R.id.rlFamilyServicesDue).setOnClickListener(this);
-
     }
 
     @Override

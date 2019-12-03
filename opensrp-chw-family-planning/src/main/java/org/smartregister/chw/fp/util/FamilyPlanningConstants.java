@@ -32,6 +32,7 @@ public interface FamilyPlanningConstants {
         String MIDDLE_NAME = "middle_name";
         String LAST_NAME = "last_name";
         String BASE_ENTITY_ID = "base_entity_id";
+        String UNIQUE_ID = "unique_id";
         String GENDER = "gender";
         String DOB = "dob";
         String LAST_INTERACTED_WITH = "last_interacted_with";
