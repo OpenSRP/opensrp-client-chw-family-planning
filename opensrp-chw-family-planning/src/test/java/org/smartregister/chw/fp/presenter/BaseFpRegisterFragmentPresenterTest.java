@@ -21,7 +21,7 @@ public class BaseFpRegisterFragmentPresenterTest {
     public void setUp() {
         MockitoAnnotations.initMocks(this);
 
-        baseFpRegisterFragmentPresenter = new BaseFpRegisterFragmentPresenter(view, model, "");
+        baseFpRegisterFragmentPresenter = new BaseFpRegisterFragmentPresenter(view, model);
     }
 
     @Test
@@ -31,7 +31,7 @@ public class BaseFpRegisterFragmentPresenterTest {
 
     @Test
     public void getMainCondition() {
-        Assert.assertEquals("", baseFpRegisterFragmentPresenter.getMainCondition());
+        Assert.assertEquals(" ec_family_member.date_removed is null AND ec_family_planning.is_closed = 0", baseFpRegisterFragmentPresenter.getMainCondition());
     }
 
 }
