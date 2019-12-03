@@ -1,7 +1,10 @@
 package org.smartregister.chw.fp.contract;
 
 import org.smartregister.chw.fp.domain.MemberObject;
+import org.smartregister.domain.AlertStatus;
 import org.smartregister.view.contract.BaseProfileContract;
+
+import java.util.Date;
 
 public interface BaseFpProfileContract {
 
@@ -54,6 +57,18 @@ public interface BaseFpProfileContract {
 
     interface Interactor {
 
-        void fetchProfile(String baseEntityId); // Callback here
+        void fetchProfileInfo(String baseEntityId);
+
+    }
+
+    interface InteractorCallback {
+
+        void refreshProfileTopSection(MemberObject memberObject);
+
+        void refreshLastVisit(Date lastVisitDate);
+
+        void refreshUpComingServicesStatus(String service, AlertStatus status, Date date);
+
+        void refreshFamilyStatus(AlertStatus status);
     }
 }

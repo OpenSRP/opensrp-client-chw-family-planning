@@ -1,5 +1,9 @@
 <resources>
     <string name="app_name">Family Planning</string>
+    <string name="scan_qr">Scan QR</string>
+    <string name="home">Home</string>
+    <string name="add_family">Add family</string>
+    <string name="job_aids">Job Aids</string>
     <string name="error_unable_to_start_form">An error occurred when starting the form</string>
     <string name="return_to_previous_page">Back</string>
     <string name="interpunct" translatable="false">\u00b7</string>
@@ -13,4 +17,9 @@
     <string name="view_upcoming_services">View upcoming services</string>
     <string name="family_has_nothing_due">Family has nothing due</string>
     <string name="go_to_family_s_profile">Go to family\'s profile</string>
+    <string name="error_unable_to_save_form">An error occurred when saving the form</string>
+    <string name="fp_followup_visit">FOLLOWUP\nVISIT</string>
+    <string name="sort">Sort</string>
+    <string name="family_planning">Family Planning</string>
+    <string name="saving_dialog_title">Saving</string>
 </resources>

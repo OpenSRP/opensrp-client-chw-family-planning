@@ -3,7 +3,6 @@ package org.smartregister.chw.fp.util;
 public interface FamilyPlanningConstants {
 
     int REQUEST_CODE_GET_JSON = 2244;
-    String ENCOUNTER_TYPE = "encounter_type";
 
     interface FAMILY_PLANNING_MEMBER_OBJECT {
         String MEMBER_OBJECT = "memberObject";
@@ -20,6 +19,9 @@ public interface FamilyPlanningConstants {
     interface Forms {
         String FAMILY_PLANNING_REGISTRATION_FORM = "family_planning_registration";
     }
+    interface CONFIGURATION {
+        String FAMILY_PLANNING_REGISTRATION = "ec_family_planning";
+    }
 
     interface DBConstants {
         String FAMILY_PLANNING_TABLE = "ec_family_planning";
@@ -30,8 +32,6 @@ public interface FamilyPlanningConstants {
         String BASE_ENTITY_ID = "base_entity_id";
         String GENDER = "gender";
         String DOB = "dob";
-        String DOD = "dod";
-        String UNIQUE_ID = "unique_id";
         String LAST_INTERACTED_WITH = "last_interacted_with";
         String VILLAGE_TOWN = "village_town";
         String DATE_REMOVED = "date_removed";
@@ -41,4 +41,12 @@ public interface FamilyPlanningConstants {
         String RELATIONAL_ID = "relational_id";
         String DETAILS = "details";
     }
+
+    interface ACTIVITY_PAYLOAD {
+        String BASE_ENTITY_ID = "BASE_ENTITY_ID";
+        String ACTION = "ACTION";
+        String FP_FORM_NAME = "FP_FORM_NAME";
+        String REGISTRATION_PAYLOAD_TYPE = "REGISTRATION";
+    }
+
 }

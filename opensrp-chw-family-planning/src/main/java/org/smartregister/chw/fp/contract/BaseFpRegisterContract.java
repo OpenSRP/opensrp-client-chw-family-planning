@@ -18,30 +18,16 @@ public interface BaseFpRegisterContract {
 
     interface Presenter extends BaseRegisterContract.Presenter {
 
-        void saveLanguage(String language);
-
         void startForm(String formName, String entityId, String metadata, String currentLocationId) throws Exception;
 
-        void saveForm(String jsonString, boolean isEditMode);
-
-        void closeFamilyRecord(String jsonString);
+        void saveForm(String jsonString);
 
     }
 
     interface Model {
 
-        void registerViewConfigurations(List<String> viewIdentifiers);
-
-        void unregisterViewConfiguration(List<String> viewIdentifiers);
-
-        void saveLanguage(String language);
-
-        String getLocationId(String locationName);
-
         JSONObject getFormAsJson(String formName, String entityId,
                                  String currentLocationId) throws Exception;
-
-        String getInitials();
 
     }
 
@@ -51,7 +37,7 @@ public interface BaseFpRegisterContract {
 
         void getNextUniqueId(Triple<String, String, String> triple, InteractorCallBack callBack);
 
-        void saveRegistration(final InteractorCallBack callBack);
+        void saveRegistration(String jsonString, final InteractorCallBack callBack);
 
         void removeFamilyFromRegister(String closeFormJsonString, String providerId);
 
@@ -59,11 +45,7 @@ public interface BaseFpRegisterContract {
 
     interface InteractorCallBack {
 
-        void onUniqueIdFetched(Triple<String, String, String> triple, String entityId);
-
-        void onNoUniqueId();
-
-        void onRegistrationSaved(boolean isEdit);
+        void onRegistrationSaved();
 
     }
 }
