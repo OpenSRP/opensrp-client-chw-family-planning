@@ -34,9 +34,8 @@ import static org.smartregister.util.Utils.getName;
 public class BaseFpRegisterProvider implements RecyclerViewProvider<BaseFpRegisterProvider.RegisterViewHolder> {
 
     private final LayoutInflater inflater;
-
-    private View.OnClickListener paginationClickListener;
     protected View.OnClickListener onClickListener;
+    private View.OnClickListener paginationClickListener;
     private Context context;
     private Set<org.smartregister.configurableviews.model.View> visibleColumns;
 

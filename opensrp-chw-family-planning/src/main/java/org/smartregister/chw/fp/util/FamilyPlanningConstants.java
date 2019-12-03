@@ -15,6 +15,7 @@ public interface FamilyPlanningConstants {
     interface Forms {
         String FAMILY_PLANNING_REGISTRATION_FORM = "family_planning_registration";
     }
+
     interface CONFIGURATION {
         String FAMILY_PLANNING_REGISTER = "family_planning_register";
     }

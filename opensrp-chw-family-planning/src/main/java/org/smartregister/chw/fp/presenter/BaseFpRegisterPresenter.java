@@ -12,13 +12,13 @@ import java.util.List;
 
 import timber.log.Timber;
 
-public class BaseFpRegisterPresenter implements BaseFpRegisterContract.Presenter, BaseFpRegisterContract.InteractorCallBack  {
+public class BaseFpRegisterPresenter implements BaseFpRegisterContract.Presenter, BaseFpRegisterContract.InteractorCallBack {
 
     public static final String TAG = BaseFpRegisterPresenter.class.getName();
 
     protected WeakReference<BaseFpRegisterContract.View> viewReference;
-    private BaseFpRegisterContract.Interactor interactor;
     protected BaseFpRegisterContract.Model model;
+    private BaseFpRegisterContract.Interactor interactor;
 
     public BaseFpRegisterPresenter(BaseFpRegisterContract.View view, BaseFpRegisterContract.Model model, BaseFpRegisterContract.Interactor interactor) {
         viewReference = new WeakReference<>(view);

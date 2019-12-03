@@ -2,11 +2,8 @@ package org.smartregister.chw.fp.contract;
 
 import com.vijay.jsonwizard.domain.Form;
 
-import org.apache.commons.lang3.tuple.Triple;
 import org.json.JSONObject;
 import org.smartregister.view.contract.BaseRegisterContract;
-
-import java.util.List;
 
 public interface BaseFpRegisterContract {
 

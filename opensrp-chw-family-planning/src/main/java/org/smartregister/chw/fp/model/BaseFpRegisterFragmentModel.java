@@ -37,7 +37,7 @@ public class BaseFpRegisterFragmentModel implements BaseFpRegisterFragmentContra
         return queryBuilder.mainCondition(mainCondition);
     }
 
-    
+
     @Override
     public RegisterConfiguration defaultRegisterConfiguration() {
         return ConfigHelper.defaultRegisterConfiguration(FpLibrary.getInstance().context().applicationContext());
@@ -59,7 +59,6 @@ public class BaseFpRegisterFragmentModel implements BaseFpRegisterFragmentContra
         countQueryBuilder.SelectInitiateMainTableCounts(tableName);
         return countQueryBuilder.mainCondition(mainCondition);
     }
-
 
 
     protected String[] mainColumns(String tableName) {
