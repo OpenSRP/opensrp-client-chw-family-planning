@@ -23,15 +23,16 @@ public class AppExecutors {
 
     private final Executor diskIO;
 
+
     private final Executor mainThread;
 
-    public AppExecutors(Executor diskIO, Executor networkIO, Executor mainThread) {
+    public AppExecutors(Executor diskIO, Executor mainThread) {
         this.diskIO = diskIO;
         this.mainThread = mainThread;
     }
 
     public AppExecutors() {
-        this(new DiskIOThreadExecutor(), Executors.newFixedThreadPool(THREAD_COUNT),
+        this(new DiskIOThreadExecutor(),
                 new MainThreadExecutor());
     }
 
