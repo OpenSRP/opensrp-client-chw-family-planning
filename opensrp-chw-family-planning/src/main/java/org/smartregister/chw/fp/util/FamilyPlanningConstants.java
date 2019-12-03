@@ -37,7 +37,7 @@ public interface FamilyPlanningConstants {
 
     }
 
-    interface ACTIVITY_PAYLOAD {
+    interface ActivityPayload {
         String BASE_ENTITY_ID = "BASE_ENTITY_ID";
         String ACTION = "ACTION";
         String FP_FORM_NAME = "FP_FORM_NAME";
