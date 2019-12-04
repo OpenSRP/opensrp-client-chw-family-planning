@@ -1,7 +1,5 @@
 package org.smartregister.chw.fp.util;
 
-import org.smartregister.view.dialog.STSort;
-
 public interface FamilyPlanningConstants {
 
     int REQUEST_CODE_GET_JSON = 2244;
@@ -12,7 +10,7 @@ public interface FamilyPlanningConstants {
 
     interface EventType {
         String FAMILY_PLANNING_REGISTRATION = "Family Planning Registration";
-        String FP_HOME_VISIT= "FP Home Visit";
+        String FP_HOME_VISIT = "FP Home Visit";
     }
 
     interface Forms {
