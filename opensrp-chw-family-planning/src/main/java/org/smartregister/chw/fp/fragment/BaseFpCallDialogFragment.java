@@ -5,7 +5,7 @@ import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.content.Context;
 import android.os.Bundle;
-import android.support.v4.app.DialogFragment;
+import android.app.DialogFragment;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -123,6 +123,6 @@ public class BaseFpCallDialogFragment extends DialogFragment implements BaseFpCa
 
     @Override
     public Context getCurrentContext() {
-        return null;
+        return getActivity();
     }
 }
