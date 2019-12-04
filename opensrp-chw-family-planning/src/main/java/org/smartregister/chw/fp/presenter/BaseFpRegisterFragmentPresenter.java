@@ -91,7 +91,8 @@ public class BaseFpRegisterFragmentPresenter implements BaseFpRegisterFragmentCo
 
     @Override
     public String getDueFilterCondition() {
-        return "  ";
+//        TODO implement using schedule table for visit
+        return " (cast( julianday(STRFTIME('%Y-%m-%d', datetime('now'))) -  julianday(IFNULL(SUBSTR(fp_reg_date,7,4)|| '-' || SUBSTR(fp_reg_date,4,2) || '-' || SUBSTR(fp_reg_date,1,2),'')) as integer) between 0 and 14) ";
     }
 
 
