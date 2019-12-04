@@ -238,6 +238,7 @@ public class BaseFpProfileActivity extends BaseProfileActivity implements BaseFp
         tvGender.setText(fpMemberObject.getGender());
         tvLocation.setText(fpMemberObject.getAddress());
         tvUniqueID.setText(fpMemberObject.getUniqueId());
+        imageRenderHelper.refreshProfileImage(fpMemberObject.getBaseEntityId(), profileImageView, FpUtil.getMemberProfileImageResourceIDentifier());
 
         if (StringUtils.isNotBlank(fpMemberObject.getFamilyHead()) && fpMemberObject.getFamilyHead().equals(fpMemberObject.getBaseEntityId())) {
             findViewById(R.id.fp_family_head).setVisibility(View.VISIBLE);

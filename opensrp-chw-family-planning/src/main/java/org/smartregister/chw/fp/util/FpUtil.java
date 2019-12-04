@@ -122,4 +122,8 @@ public class FpUtil {
         }
     }
 
+    public static int getMemberProfileImageResourceIDentifier() {
+        return R.mipmap.ic_member;
+    }
+
 }
