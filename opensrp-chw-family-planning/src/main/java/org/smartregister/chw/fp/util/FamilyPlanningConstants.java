@@ -38,7 +38,7 @@ public interface FamilyPlanningConstants {
         String DATE_REMOVED = "date_removed";
         String RELATIONAL_ID = "relational_id";
         String FP_METHOD_ACCEPTED = "fp_method_accepted";
-        String FP_REG_DATE = "fp_reg_date";
+        String FP_FP_START_DATE = "fp_start_date";
         String FP_PILL_CYCLES = "no_pillcycles";
 
 
