@@ -4,7 +4,9 @@ import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -14,6 +16,7 @@ import org.joda.time.DateTime;
 import org.joda.time.Days;
 import org.joda.time.Period;
 import org.smartregister.chw.fp.contract.BaseFpProfileContract;
+import org.smartregister.chw.fp.custom_views.BaseFpFloatingMenu;
 import org.smartregister.chw.fp.domain.FpMemberObject;
 import org.smartregister.chw.fp.interactor.BaseFpProfileInteractor;
 import org.smartregister.chw.fp.presenter.BaseFpProfilePresenter;
@@ -31,8 +34,6 @@ import java.util.Locale;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class BaseFpProfileActivity extends BaseProfileActivity implements BaseFpProfileContract.View {
-    private CollapsingToolbarLayout collapsingToolbarLayout;
-    private ImageRenderHelper imageRenderHelper;
     private ProgressBar progressBar;
     private CircleImageView profileImageView;
     private TextView tvName;
@@ -53,8 +54,11 @@ public class BaseFpProfileActivity extends BaseProfileActivity implements BaseFp
     private TextView tvUpComingServices;
     private TextView tvFamilyStatus;
     private TextView tvRecordFpFollowUp;
+    private CollapsingToolbarLayout collapsingToolbarLayout;
 
+    private ImageRenderHelper imageRenderHelper;
     protected BaseFpProfileContract.Presenter fpProfilePresenter;
+    protected BaseFpFloatingMenu fpFloatingMenu;
     protected FpMemberObject fpMemberObject;
 
     @Override
@@ -119,7 +123,14 @@ public class BaseFpProfileActivity extends BaseProfileActivity implements BaseFp
     }
 
     private void initializeCallFAB() {
-
+        if (StringUtils.isNotBlank(fpMemberObject.getPhoneNumber())) {
+            fpFloatingMenu = new BaseFpFloatingMenu(this, fpMemberObject);
+            fpFloatingMenu.setGravity(Gravity.BOTTOM | Gravity.RIGHT);
+            LinearLayout.LayoutParams linearLayoutParams = new LinearLayout.LayoutParams(
+                    LinearLayout.LayoutParams.MATCH_PARENT,
+                    LinearLayout.LayoutParams.MATCH_PARENT);
+            addContentView(fpFloatingMenu, linearLayoutParams);
+        }
     }
 
     @Override

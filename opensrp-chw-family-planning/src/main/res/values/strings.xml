@@ -29,4 +29,9 @@
     <string name="sort">Sort</string>
     <string name="family_planning">Family Planning</string>
     <string name="saving_dialog_title">Saving</string>
+    <string name="call">Call</string>
+    <string name="call_fp_woman">Call Family Planning woman</string>
+    <string name="fp_member">Family planning woman</string>
+    <string name="copy_to_clipboard">Copy to clipboard</string>
+    <string name="copied_phone_number">PhoneNumber copied to clipboard</string>
 </resources>

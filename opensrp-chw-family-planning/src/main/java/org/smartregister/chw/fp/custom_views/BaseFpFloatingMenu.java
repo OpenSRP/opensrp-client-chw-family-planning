@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.LinearLayout;
 
 import org.smartregister.chw.fp.domain.FpMemberObject;
+import org.smartregister.chw.fp.fragment.BaseFpCallDialogFragment;
 import org.smartregister.fp.R;
 
 
@@ -30,7 +31,7 @@ public class BaseFpFloatingMenu extends LinearLayout implements View.OnClickList
     public void onClick(View view) {
         if (view.getId() == R.id.fp_fab) {
             Activity activity = (Activity) getContext();
-            // BaseFpCallDialogFragment.launchDialog(activity, fpMemberObject);
+            BaseFpCallDialogFragment.launchDialog(activity, fpMemberObject);
         }
     }
 }
