@@ -40,7 +40,8 @@ public class BaseFpRegisterFragmentPresenter implements BaseFpRegisterFragmentCo
 
     @Override
     public String getDefaultSortQuery() {
-        return "";
+        return FamilyPlanningConstants.DBConstants.FAMILY_PLANNING_TABLE + "." + FamilyPlanningConstants.DBConstants.LAST_INTERACTED_WITH + " DESC ";
+
     }
 
     @Override
