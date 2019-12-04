@@ -11,55 +11,18 @@ import org.smartregister.domain.tag.FormTag;
 import org.smartregister.repository.AllSharedPreferences;
 import org.smartregister.util.FormUtils;
 
-import timber.log.Timber;
-
 
 public class FpJsonFormUtils extends org.smartregister.util.JsonFormUtils {
     public static final String METADATA = "metadata";
-    private static String STEP_ONE = "step1";
-    private static String STEP_TWO = "step2";
     private static String ENCOUNTER_TYPE = "encounter_type";
 
     public static Triple<Boolean, JSONObject, JSONArray> validateParameters(String jsonString) {
 
         JSONObject jsonForm = toJSONObject(jsonString);
-        JSONArray fields = fpFormFields(jsonForm);
+        JSONArray fields = fields(jsonForm);
 
         Triple<Boolean, JSONObject, JSONArray> registrationFormParams = Triple.of(jsonForm != null && fields != null, jsonForm, fields);
         return registrationFormParams;
-    }
-
-    public static JSONArray fpFormFields(JSONObject jsonForm) {
-        try {
-            JSONArray fieldsOne = fields(jsonForm, STEP_ONE);
-            JSONArray fieldsTwo = fields(jsonForm, STEP_TWO);
-            if (fieldsTwo != null) {
-                for (int i = 0; i < fieldsTwo.length(); i++) {
-                    fieldsOne.put(fieldsTwo.get(i));
-                }
-            }
-            return fieldsOne;
-
-        } catch (JSONException e) {
-            Timber.e(e);
-        }
-        return null;
-    }
-
-    public static JSONArray fields(JSONObject jsonForm, String step) {
-        try {
-
-            JSONObject step1 = jsonForm.has(step) ? jsonForm.getJSONObject(step) : null;
-            if (step1 == null) {
-                return null;
-            }
-
-            return step1.has(FIELDS) ? step1.getJSONArray(FIELDS) : null;
-
-        } catch (JSONException e) {
-            Timber.e(e);
-        }
-        return null;
     }
 
     public static Event processJsonForm(AllSharedPreferences allSharedPreferences, String
@@ -79,7 +42,6 @@ public class FpJsonFormUtils extends org.smartregister.util.JsonFormUtils {
         return org.smartregister.util.JsonFormUtils.createEvent(fields, getJSONObject(jsonForm, METADATA), formTag(allSharedPreferences), entityId, getString(jsonForm, ENCOUNTER_TYPE), encounter_type);
     }
 
-
     protected static FormTag formTag(AllSharedPreferences allSharedPreferences) {
         FormTag formTag = new FormTag();
         formTag.providerId = allSharedPreferences.fetchRegisteredANM();
@@ -87,7 +49,6 @@ public class FpJsonFormUtils extends org.smartregister.util.JsonFormUtils {
         formTag.databaseVersion = FpLibrary.getInstance().getDatabaseVersion();
         return formTag;
     }
-
 
     public static void tagEvent(AllSharedPreferences allSharedPreferences, Event event) {
         String providerId = allSharedPreferences.fetchRegisteredANM();
