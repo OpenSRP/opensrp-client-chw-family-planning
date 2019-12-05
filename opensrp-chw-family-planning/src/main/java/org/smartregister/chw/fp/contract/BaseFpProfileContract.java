@@ -44,11 +44,8 @@ public interface BaseFpProfileContract {
 
         View getView();
 
-        void resetProfileInfo();
-
         void refreshProfileData();
 
-        void fetchMemberDetails(String memberId);
     }
 
     interface Interactor {

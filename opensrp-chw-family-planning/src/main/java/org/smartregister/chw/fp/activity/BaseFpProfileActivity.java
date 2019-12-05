@@ -40,21 +40,16 @@ public class BaseFpProfileActivity extends BaseProfileActivity implements BaseFp
     private TextView tvGender;
     private TextView tvLocation;
     private TextView tvUniqueID;
-    private TextView familyHead;
-    private TextView primaryCareGiver;
     private View lastVisitRow;
     private View overDueRow;
     private View familyRow;
     private RelativeLayout rlLastVisit;
     private RelativeLayout rlUpcomingServices;
     private RelativeLayout rlFamilyServicesDue;
-    private RelativeLayout visitStatus;
-    private TextView tvUndo;
     private TextView tvLastVisitDate;
     private TextView tvUpComingServices;
     private TextView tvFamilyStatus;
     private TextView tvRecordFpFollowUp;
-    private CollapsingToolbarLayout collapsingToolbarLayout;
 
     private ImageRenderHelper imageRenderHelper;
     protected BaseFpProfileContract.Presenter fpProfilePresenter;
@@ -75,10 +70,10 @@ public class BaseFpProfileActivity extends BaseProfileActivity implements BaseFp
         }
 
         appBarLayout = findViewById(R.id.collapsing_toolbar_appbarlayout);
-        collapsingToolbarLayout = appBarLayout.findViewById(R.id.collapsing_toolbar_layout);
+        CollapsingToolbarLayout collapsingToolbarLayout = appBarLayout.findViewById(R.id.collapsing_toolbar_layout);
         appBarLayout.addOnOffsetChangedListener(this);
 
-        fpMemberObject = (FpMemberObject) getIntent().getSerializableExtra(FamilyPlanningConstants.FAMILY_PLANNING_MEMBER_OBJECT.MEMBER_OBJECT);
+        fpMemberObject = (FpMemberObject) getIntent().getSerializableExtra(FamilyPlanningConstants.FamilyPlanningMemberObject.MEMBER_OBJECT);
         imageRenderHelper = new ImageRenderHelper(this);
 
         setupViews();
@@ -93,8 +88,8 @@ public class BaseFpProfileActivity extends BaseProfileActivity implements BaseFp
         tvGender = findViewById(R.id.textview_gender);
         tvLocation = findViewById(R.id.textview_address);
         tvUniqueID = findViewById(R.id.textview_unique_id);
-        familyHead = findViewById(R.id.fp_family_head);
-        primaryCareGiver = findViewById(R.id.fp_primary_caregiver);
+        TextView familyHead = findViewById(R.id.fp_family_head);
+        TextView primaryCareGiver = findViewById(R.id.fp_primary_caregiver);
         lastVisitRow = findViewById(R.id.view_last_visit_row);
         overDueRow = findViewById(R.id.view_most_due_overdue_row);
         familyRow = findViewById(R.id.view_family_row);
@@ -103,9 +98,9 @@ public class BaseFpProfileActivity extends BaseProfileActivity implements BaseFp
         rlLastVisit = findViewById(R.id.rlLastVisit);
         rlUpcomingServices = findViewById(R.id.rlUpcomingServices);
         rlFamilyServicesDue = findViewById(R.id.rlFamilyServicesDue);
-        visitStatus = findViewById(R.id.record_visit_status_bar);
+        RelativeLayout visitStatus = findViewById(R.id.record_visit_status_bar);
         progressBar = findViewById(R.id.progress_bar);
-        tvUndo = findViewById(R.id.textview_undo);
+        TextView tvUndo = findViewById(R.id.textview_undo);
         profileImageView = findViewById(R.id.profile_image_view);
         tvRecordFpFollowUp = findViewById(R.id.textview_record_reccuring_visit);
         tvLastVisitDate = findViewById(R.id.textview_last_visit_day);
@@ -140,7 +135,7 @@ public class BaseFpProfileActivity extends BaseProfileActivity implements BaseFp
 
     @Override
     protected void fetchProfileData() {
-
+        // Retrieve profile data
     }
 
     @Override
@@ -159,27 +154,27 @@ public class BaseFpProfileActivity extends BaseProfileActivity implements BaseFp
 
     @Override
     public void openMedicalHistory() {
-
+        // TODO :: Open medical history view
     }
 
     @Override
     public void openFamilyPlanningRegistration() {
-
+        // TODO :: Show registration form for edit
     }
 
     @Override
     public void openUpcomingServices() {
-
+        // TODO :: Show upcoming services
     }
 
     @Override
     public void openFamilyDueServices() {
-
+        // TODO :: Show family due services
     }
 
     @Override
     public void openFollowUpVisitForm() {
-
+        // TODO :: Open follow-up visit form
     }
 
     @Override

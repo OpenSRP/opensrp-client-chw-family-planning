@@ -50,7 +50,7 @@ public class BaseFpCallDialogFragment extends DialogFragment implements BaseFpCa
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setStyle(android.app.DialogFragment.STYLE_NO_TITLE, R.style.ChwTheme_Dialog_FullWidth);
+        setStyle(DialogFragment.STYLE_NO_TITLE, R.style.ChwTheme_Dialog_FullWidth);
     }
 
     @Override
@@ -118,7 +118,7 @@ public class BaseFpCallDialogFragment extends DialogFragment implements BaseFpCa
 
     @Override
     public void setPendingCallRequest(BaseFpCallDialogContract.Dialer dialer) {
-
+        // TODO :: set a pending call request
     }
 
     @Override

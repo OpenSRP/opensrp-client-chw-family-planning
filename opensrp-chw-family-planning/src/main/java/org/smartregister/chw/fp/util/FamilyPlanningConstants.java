@@ -4,7 +4,7 @@ public interface FamilyPlanningConstants {
 
     int REQUEST_CODE_GET_JSON = 2244;
 
-    interface FAMILY_PLANNING_MEMBER_OBJECT {
+    interface FamilyPlanningMemberObject {
         String MEMBER_OBJECT = "fpMemberObject";
     }
 

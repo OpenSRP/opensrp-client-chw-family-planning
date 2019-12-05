@@ -28,11 +28,6 @@ public class BaseFpProfilePresenter implements BaseProfileContract, BaseFpProfil
     }
 
     @Override
-    public void resetProfileInfo() {
-
-    }
-
-    @Override
     public void refreshProfileData() {
         if (getView() != null) {
             getView().showProgressBar(true);
@@ -41,13 +36,8 @@ public class BaseFpProfilePresenter implements BaseProfileContract, BaseFpProfil
     }
 
     @Override
-    public void fetchMemberDetails(String memberId) {
-
-    }
-
-    @Override
     public void onDestroy(boolean b) {
-
+        // TODO :: Handle onDestroy called
     }
 
     @Override
