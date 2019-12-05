@@ -35,12 +35,12 @@ public class BaseFpRegisterFragmentPresenter implements BaseFpRegisterFragmentCo
 
     @Override
     public String getMainCondition() {
-        return " ec_family_member.date_removed is null AND ec_family_planning.is_closed = 0";
+        return " ec_family_member.date_removed is null AND ec_family_planning.is_closed = 0 AND ec_family_planning.ecp = 1";
     }
 
     @Override
     public String getDefaultSortQuery() {
-        return FamilyPlanningConstants.DBConstants.FAMILY_PLANNING_TABLE + "." + FamilyPlanningConstants.DBConstants.LAST_INTERACTED_WITH + " DESC ";
+        return "ec_family_planning.last_interacted_with DESC ";
 
     }
 
