@@ -66,14 +66,14 @@ public class BaseFpRegisterFragmentModel implements BaseFpRegisterFragmentContra
         columnList.add(tableName + "." + FamilyPlanningConstants.DBConstants.LAST_INTERACTED_WITH);
         columnList.add(tableName + "." + FamilyPlanningConstants.DBConstants.BASE_ENTITY_ID);
         columnList.add(tableName + "." + FamilyPlanningConstants.DBConstants.FP_METHOD_ACCEPTED);
+        columnList.add(tableName + "." + FamilyPlanningConstants.DBConstants.FP_PILL_CYCLES);
+        columnList.add(tableName + "." + FamilyPlanningConstants.DBConstants.FP_FP_START_DATE);
         columnList.add(FamilyPlanningConstants.DBConstants.FAMILY_MEMBER + "." + FamilyPlanningConstants.DBConstants.RELATIONAL_ID + " as relationalid");
         columnList.add(FamilyPlanningConstants.DBConstants.FAMILY_MEMBER + "." + FamilyPlanningConstants.DBConstants.RELATIONAL_ID);
-
         columnList.add(FamilyPlanningConstants.DBConstants.FAMILY_MEMBER + "." + FamilyPlanningConstants.DBConstants.FIRST_NAME);
         columnList.add(FamilyPlanningConstants.DBConstants.FAMILY_MEMBER + "." + FamilyPlanningConstants.DBConstants.MIDDLE_NAME);
         columnList.add(FamilyPlanningConstants.DBConstants.FAMILY_MEMBER + "." + FamilyPlanningConstants.DBConstants.LAST_NAME);
         columnList.add(FamilyPlanningConstants.DBConstants.FAMILY_MEMBER + "." + FamilyPlanningConstants.DBConstants.DOB);
-
         columnList.add(FamilyPlanningConstants.DBConstants.FAMILY + "." + FamilyPlanningConstants.DBConstants.VILLAGE_TOWN);
 
         return columnList.toArray(new String[columnList.size()]);
