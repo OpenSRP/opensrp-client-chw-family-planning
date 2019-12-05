@@ -1,5 +1,7 @@
 package org.smartregister.chw.fp.activity;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
@@ -70,7 +72,7 @@ public class BaseFpProfileActivity extends BaseProfileActivity implements BaseFp
         }
 
         appBarLayout = findViewById(R.id.collapsing_toolbar_appbarlayout);
-        CollapsingToolbarLayout collapsingToolbarLayout = appBarLayout.findViewById(R.id.collapsing_toolbar_layout);
+        // CollapsingToolbarLayout collapsingToolbarLayout = appBarLayout.findViewById(R.id.collapsing_toolbar_layout);
         appBarLayout.addOnOffsetChangedListener(this);
 
         fpMemberObject = (FpMemberObject) getIntent().getSerializableExtra(FamilyPlanningConstants.FamilyPlanningMemberObject.MEMBER_OBJECT);
@@ -82,14 +84,20 @@ public class BaseFpProfileActivity extends BaseProfileActivity implements BaseFp
         initializeCallFAB();
     }
 
+    public static void startProfileActivity(Activity activity, FpMemberObject memberObject) {
+        Intent intent = new Intent(activity, BaseFpProfileActivity.class);
+        intent.putExtra(FamilyPlanningConstants.FamilyPlanningMemberObject.MEMBER_OBJECT, memberObject);
+        activity.startActivity(intent);
+    }
+
     @Override
     protected void setupViews() {
         tvName = findViewById(R.id.textview_name);
         tvGender = findViewById(R.id.textview_gender);
         tvLocation = findViewById(R.id.textview_address);
         tvUniqueID = findViewById(R.id.textview_unique_id);
-        TextView familyHead = findViewById(R.id.fp_family_head);
-        TextView primaryCareGiver = findViewById(R.id.fp_primary_caregiver);
+        // TextView familyHead = findViewById(R.id.fp_family_head);
+        // TextView primaryCareGiver = findViewById(R.id.fp_primary_caregiver);
         lastVisitRow = findViewById(R.id.view_last_visit_row);
         overDueRow = findViewById(R.id.view_most_due_overdue_row);
         familyRow = findViewById(R.id.view_family_row);
@@ -98,7 +106,7 @@ public class BaseFpProfileActivity extends BaseProfileActivity implements BaseFp
         rlLastVisit = findViewById(R.id.rlLastVisit);
         rlUpcomingServices = findViewById(R.id.rlUpcomingServices);
         rlFamilyServicesDue = findViewById(R.id.rlFamilyServicesDue);
-        RelativeLayout visitStatus = findViewById(R.id.record_visit_status_bar);
+        // RelativeLayout visitStatus = findViewById(R.id.record_visit_status_bar);
         progressBar = findViewById(R.id.progress_bar);
         TextView tvUndo = findViewById(R.id.textview_undo);
         profileImageView = findViewById(R.id.profile_image_view);
