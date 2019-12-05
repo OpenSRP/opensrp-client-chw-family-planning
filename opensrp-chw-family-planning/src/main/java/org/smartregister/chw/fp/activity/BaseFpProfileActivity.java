@@ -79,7 +79,7 @@ public class BaseFpProfileActivity extends BaseProfileActivity implements BaseFp
 
         setupViews();
         initializePresenter();
-        fpProfilePresenter.refreshProfileData();
+        fetchProfileData();
         initializeCallFAB();
     }
 
@@ -142,7 +142,8 @@ public class BaseFpProfileActivity extends BaseProfileActivity implements BaseFp
 
     @Override
     protected void fetchProfileData() {
-        // Retrieve profile data
+        fpProfilePresenter.refreshProfileData();
+        fpProfilePresenter.refreshProfileFpStatusInfo();
     }
 
     @Override
@@ -227,12 +228,6 @@ public class BaseFpProfileActivity extends BaseProfileActivity implements BaseFp
     }
 
     @Override
-    public void refreshMedicalHistory(boolean hasHistory) {
-        showProgressBar(false);
-        rlLastVisit.setVisibility(hasHistory ? View.VISIBLE : View.GONE);
-    }
-
-    @Override
     public void setProfileViewDetails(FpMemberObject fpMemberObject) {
         int age = new Period(new DateTime(fpMemberObject.getAge()), new DateTime()).getYears();
         tvName.setText(String.format(Locale.getDefault(), "%s %s %s, %d", fpMemberObject.getFirstName(),
@@ -248,6 +243,12 @@ public class BaseFpProfileActivity extends BaseProfileActivity implements BaseFp
         if (StringUtils.isNotBlank(fpMemberObject.getPrimaryCareGiver()) && fpMemberObject.getPrimaryCareGiver().equals(fpMemberObject.getBaseEntityId())) {
             findViewById(R.id.fp_primary_caregiver).setVisibility(View.VISIBLE);
         }
+    }
+
+    @Override
+    public void updateHasMedicalHistory(boolean hasMedicalHistory) {
+        showProgressBar(false);
+        rlLastVisit.setVisibility(hasMedicalHistory ? View.VISIBLE : View.GONE);
     }
 
     @Override
