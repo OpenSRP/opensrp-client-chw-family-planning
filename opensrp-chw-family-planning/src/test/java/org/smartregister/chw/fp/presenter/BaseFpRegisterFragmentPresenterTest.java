@@ -31,7 +31,7 @@ public class BaseFpRegisterFragmentPresenterTest {
 
     @Test
     public void getMainCondition() {
-        Assert.assertEquals(" ec_family_member.date_removed is null AND ec_family_planning.is_closed = 0", baseFpRegisterFragmentPresenter.getMainCondition());
+        Assert.assertEquals(" ec_family_member.date_removed is null AND ec_family_planning.is_closed = 0 AND ec_family_planning.ecp = 1", baseFpRegisterFragmentPresenter.getMainCondition());
     }
 
 }
