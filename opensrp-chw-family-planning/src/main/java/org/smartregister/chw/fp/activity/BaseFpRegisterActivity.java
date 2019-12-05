@@ -24,19 +24,13 @@ import org.smartregister.chw.fp.util.FamilyPlanningConstants;
 import org.smartregister.fp.R;
 import org.smartregister.helper.BottomNavigationHelper;
 import org.smartregister.listener.BottomNavigationListener;
-import org.smartregister.repository.BaseRepository;
 import org.smartregister.view.activity.BaseRegisterActivity;
 import org.smartregister.view.fragment.BaseRegisterFragment;
 
 import java.util.Arrays;
-import java.util.Date;
 import java.util.List;
 
 import timber.log.Timber;
-
-import static org.smartregister.chw.fp.util.FpUtil.getClientProcessorForJava;
-import static org.smartregister.chw.fp.util.FpUtil.getSyncHelper;
-import static org.smartregister.util.Utils.getAllSharedPreferences;
 
 public class BaseFpRegisterActivity extends BaseRegisterActivity implements BaseFpRegisterContract.View {
 
@@ -162,7 +156,6 @@ public class BaseFpRegisterActivity extends BaseRegisterActivity implements Base
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (resultCode == Activity.RESULT_OK && requestCode == FamilyPlanningConstants.REQUEST_CODE_GET_JSON) {
-
             try {
                 String jsonString = data.getStringExtra(FamilyPlanningConstants.JsonFromExtra.JSON);
                 JSONObject form = new JSONObject(jsonString);
@@ -172,21 +165,8 @@ public class BaseFpRegisterActivity extends BaseRegisterActivity implements Base
                 Timber.e(e);
                 displayToast(getString(R.string.error_unable_to_save_form));
             }
-            startClientProcessing();
         } else {
             getFpRegisterActivity().finish();
         }
-    }
-
-    public void startClientProcessing() {
-        try {
-            long lastSyncTimeStamp = getAllSharedPreferences().fetchLastUpdatedAtDate(0);
-            Date lastSyncDate = new Date(lastSyncTimeStamp);
-            getClientProcessorForJava().processClient(getSyncHelper().getEvents(lastSyncDate, BaseRepository.TYPE_Unprocessed));
-            getAllSharedPreferences().saveLastUpdatedAtDate(lastSyncDate.getTime());
-        } catch (Exception e) {
-            Timber.d(e);
-        }
-
     }
 }
