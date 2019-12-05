@@ -39,7 +39,6 @@ import static org.smartregister.chw.fp.util.FpUtil.getSyncHelper;
 import static org.smartregister.util.Utils.getAllSharedPreferences;
 
 public class BaseFpRegisterActivity extends BaseRegisterActivity implements BaseFpRegisterContract.View {
-    public static final String TAG = BaseFpRegisterActivity.class.getCanonicalName();
 
     protected String BASE_ENTITY_ID;
     protected String ACTION;

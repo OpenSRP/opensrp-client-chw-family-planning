@@ -14,6 +14,7 @@ public interface FamilyPlanningConstants {
 
     interface EventType {
         String FAMILY_PLANNING_REGISTRATION = "Family Planning Registration";
+        String FP_HOME_VISIT = "FP Home Visit";
     }
 
     interface Forms {
@@ -44,6 +45,17 @@ public interface FamilyPlanningConstants {
         String RELATIONAL_ID = "relational_id";
         String DETAILS = "details";
         String FP_METHOD_ACCEPTED = "fp_method_accepted";
+        String FP_FP_START_DATE = "fp_start_date";
+        String FP_PILL_CYCLES = "no_pillcycles";
+
+        String FP_POP = "POP";
+        String FP_COC = "COC";
+        String FP_FEMALE_CONDOM = "Female condom";
+        String FP_MALE_CONDOM = "Male condom";
+        String FP_INJECTABLE = "Injectable";
+        String FP_IUCD = "IUCD";
+        String FP_FEMALE_STERLIZATION = "Female sterilization";
+        String FP_MALE_STERLIZATION = "Male sterilization";
     }
 
     interface ActivityPayload {
