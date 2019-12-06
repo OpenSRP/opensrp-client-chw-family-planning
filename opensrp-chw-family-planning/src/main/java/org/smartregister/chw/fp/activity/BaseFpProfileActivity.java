@@ -124,7 +124,7 @@ public class BaseFpProfileActivity extends BaseProfileActivity implements BaseFp
         fpProfilePresenter = new BaseFpProfilePresenter(this, new BaseFpProfileInteractor(), fpMemberObject);
     }
 
-    private void initializeCallFAB() {
+    public void initializeCallFAB() {
         if (StringUtils.isNotBlank(fpMemberObject.getFamilyHeadPhoneNumber())) {
             fpFloatingMenu = new BaseFpFloatingMenu(this, fpMemberObject);
             fpFloatingMenu.setGravity(Gravity.BOTTOM | Gravity.RIGHT);
