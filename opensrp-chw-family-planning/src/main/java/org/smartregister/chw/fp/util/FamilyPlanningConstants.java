@@ -36,6 +36,7 @@ public interface FamilyPlanningConstants {
         String UNIQUE_ID = "unique_id";
         String GENDER = "gender";
         String DOB = "dob";
+        String AGE = "age";
         String LAST_INTERACTED_WITH = "last_interacted_with";
         String VILLAGE_TOWN = "village_town";
         String DATE_REMOVED = "date_removed";
@@ -63,6 +64,7 @@ public interface FamilyPlanningConstants {
         String ACTION = "ACTION";
         String FP_FORM_NAME = "FP_FORM_NAME";
         String REGISTRATION_PAYLOAD_TYPE = "REGISTRATION";
+        String DOB = "DOB";
     }
 
 }
