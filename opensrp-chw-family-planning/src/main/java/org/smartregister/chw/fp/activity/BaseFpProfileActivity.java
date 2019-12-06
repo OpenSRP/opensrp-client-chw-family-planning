@@ -2,6 +2,9 @@ package org.smartregister.chw.fp.activity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
@@ -60,7 +63,6 @@ public class BaseFpProfileActivity extends BaseProfileActivity implements BaseFp
     @Override
     protected void onCreation() {
         setContentView(R.layout.activity_base_fp_profile);
-        findViewById(R.id.btn_profile_registration_info).setOnClickListener(this);
 
         Toolbar toolbar = findViewById(R.id.collapsing_toolbar);
         setSupportActionBar(toolbar);
@@ -68,11 +70,16 @@ public class BaseFpProfileActivity extends BaseProfileActivity implements BaseFp
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
+            Drawable upArrow = getResources().getDrawable(R.drawable.ic_arrow_back_white_24dp);
+            upArrow.setColorFilter(getResources().getColor(R.color.text_blue), PorterDuff.Mode.SRC_ATOP);
+            actionBar.setHomeAsUpIndicator(upArrow);
         }
 
-        appBarLayout = findViewById(R.id.collapsing_toolbar_appbarlayout);
-        // CollapsingToolbarLayout collapsingToolbarLayout = appBarLayout.findViewById(R.id.collapsing_toolbar_layout);
-        appBarLayout.addOnOffsetChangedListener(this);
+        toolbar.setNavigationOnClickListener(v -> BaseFpProfileActivity.this.finish());
+        appBarLayout = this.findViewById(R.id.collapsing_toolbar_appbarlayout);
+        if (Build.VERSION.SDK_INT >= 21) {
+            appBarLayout.setOutlineProvider(null);
+        }
 
         fpMemberObject = (FpMemberObject) getIntent().getSerializableExtra(FamilyPlanningConstants.FamilyPlanningMemberObject.MEMBER_OBJECT);
         imageRenderHelper = new ImageRenderHelper(this);
