@@ -3,9 +3,16 @@ package org.smartregister.chw.fp.presenter;
 import android.util.Log;
 
 import org.apache.commons.lang3.StringUtils;
+import org.joda.time.DateTime;
+import org.joda.time.Period;
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 import org.smartregister.chw.fp.contract.BaseFpRegisterContract;
+import org.smartregister.chw.fp.util.FamilyPlanningConstants;
+import org.smartregister.chw.fp.util.FpJsonFormUtils;
 import org.smartregister.fp.R;
+import org.smartregister.util.JsonFormUtils;
 
 import java.lang.ref.WeakReference;
 import java.util.List;
@@ -27,12 +34,21 @@ public class BaseFpRegisterPresenter implements BaseFpRegisterContract.Presenter
     }
 
     @Override
-    public void startForm(String formName, String entityId, String metadata, String currentLocationId) throws Exception {
+    public void startForm(String formName, String entityId, String metadata, String dob) throws Exception {
         if (StringUtils.isBlank(entityId)) {
             return;
         }
 
-        JSONObject form = model.getFormAsJson(formName, entityId, "2020");
+        JSONObject form = model.getFormAsJson(formName, entityId);
+        try {
+            JSONObject stepOne = form.getJSONObject(JsonFormUtils.STEP1);
+            JSONArray jsonArray = stepOne.getJSONArray(JsonFormUtils.FIELDS);
+            int age = new Period(new DateTime(dob), new DateTime()).getYears();
+            FpJsonFormUtils.updateFormField(jsonArray, FamilyPlanningConstants.DBConstants.AGE, String.valueOf(age));
+
+        } catch (JSONException e) {
+            Timber.e(e);
+        }
         getView().startFormActivity(form);
     }
 

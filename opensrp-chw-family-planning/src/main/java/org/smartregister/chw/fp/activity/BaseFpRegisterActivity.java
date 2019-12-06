@@ -12,8 +12,6 @@ import com.vijay.jsonwizard.domain.Form;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.smartregister.AllConstants;
-import org.smartregister.Context;
 import org.smartregister.chw.fp.contract.BaseFpRegisterContract;
 import org.smartregister.chw.fp.fragment.BaseFpRegisterFragment;
 import org.smartregister.chw.fp.interactor.BaseFpRegisterInteractor;
@@ -35,6 +33,7 @@ import timber.log.Timber;
 public class BaseFpRegisterActivity extends BaseRegisterActivity implements BaseFpRegisterContract.View {
 
     protected String BASE_ENTITY_ID;
+    protected String DOB;
     protected String ACTION;
     protected String FORM_NAME;
 
@@ -42,6 +41,7 @@ public class BaseFpRegisterActivity extends BaseRegisterActivity implements Base
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         BASE_ENTITY_ID = getIntent().getStringExtra(FamilyPlanningConstants.ActivityPayload.BASE_ENTITY_ID);
+        DOB = getIntent().getStringExtra(FamilyPlanningConstants.ActivityPayload.DOB);
         ACTION = getIntent().getStringExtra(FamilyPlanningConstants.ActivityPayload.ACTION);
         FORM_NAME = getIntent().getStringExtra(FamilyPlanningConstants.ActivityPayload.FP_FORM_NAME);
         onStartActivityWithAction();
@@ -65,8 +65,8 @@ public class BaseFpRegisterActivity extends BaseRegisterActivity implements Base
     public void startFormActivity(String formName, String entityId, String metaData) {
         try {
             if (mBaseFragment instanceof BaseFpRegisterFragment) {
-                String locationId = Context.getInstance().allSharedPreferences().getPreference(AllConstants.CURRENT_LOCATION_ID);
-                presenter().startForm(formName, entityId, metaData, locationId);
+
+                presenter().startForm(formName, entityId, metaData, DOB);
             }
         } catch (Exception e) {
             Timber.e(e);
