@@ -34,4 +34,7 @@
     <string name="fp_member">Family planning woman</string>
     <string name="copy_to_clipboard">Copy to clipboard</string>
     <string name="copied_phone_number">PhoneNumber copied to clipboard</string>
+    <!--FP -->
+    <string name="fp_visit_day_due">%s DAYS DUE</string>
+    <string name="fp_visit_day_overdue">%s DAYS OVERDUE</string>
 </resources>
