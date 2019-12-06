@@ -11,6 +11,8 @@ import org.smartregister.domain.tag.FormTag;
 import org.smartregister.repository.AllSharedPreferences;
 import org.smartregister.util.FormUtils;
 
+import timber.log.Timber;
+
 
 public class FpJsonFormUtils extends org.smartregister.util.JsonFormUtils {
     public static final String METADATA = "metadata";
@@ -72,14 +74,25 @@ public class FpJsonFormUtils extends org.smartregister.util.JsonFormUtils {
         return userLocationId;
     }
 
-    public static void getRegistrationForm(JSONObject jsonObject, String entityId, String
-            currentLocationId) throws JSONException {
-        jsonObject.getJSONObject(METADATA).put(ENCOUNTER_LOCATION, currentLocationId);
+    public static void getRegistrationForm(JSONObject jsonObject, String entityId) throws JSONException {
         jsonObject.put(org.smartregister.util.JsonFormUtils.ENTITY_ID, entityId);
     }
 
     public static JSONObject getFormAsJson(String formName) throws Exception {
         return FormUtils.getInstance(FpLibrary.getInstance().context().applicationContext()).getFormJson(formName);
+    }
+    public static void updateFormField(JSONArray formFieldArrays, String formFieldKey, String updateValue) {
+        if (updateValue != null) {
+            JSONObject formObject = org.smartregister.util.JsonFormUtils.getFieldJSONObject(formFieldArrays, formFieldKey);
+            if (formObject != null) {
+                try {
+                    formObject.remove(org.smartregister.util.JsonFormUtils.VALUE);
+                    formObject.put(org.smartregister.util.JsonFormUtils.VALUE, updateValue);
+                } catch (JSONException e) {
+                    Timber.e(e);
+                }
+            }
+        }
     }
 
 }

@@ -15,17 +15,14 @@ public interface BaseFpRegisterContract {
 
     interface Presenter extends BaseRegisterContract.Presenter {
 
-        void startForm(String formName, String entityId, String metadata, String currentLocationId) throws Exception;
+        void startForm(String formName, String entityId, String metadata, String dob) throws Exception;
 
         void saveForm(String jsonString);
-
     }
 
     interface Model {
 
-        JSONObject getFormAsJson(String formName, String entityId,
-                                 String currentLocationId) throws Exception;
-
+        JSONObject getFormAsJson(String formName, String entityId) throws Exception;
     }
 
     interface Interactor {
@@ -37,6 +34,5 @@ public interface BaseFpRegisterContract {
     interface InteractorCallBack {
 
         void onRegistrationSaved();
-
     }
 }
