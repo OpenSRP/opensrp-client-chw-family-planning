@@ -23,14 +23,6 @@
                 android:visibility="gone">
 
                 <ImageView
-                    android:id="@+id/tick_image"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginRight="10dp"
-                    android:src="@drawable/childrow_history" />
-
-                <ImageView
                     android:id="@+id/iv_last_visit_arrow"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -167,7 +159,7 @@
                     android:layout_below="@+id/textview_positive_date"
                     android:layout_marginLeft="10dp"
                     android:layout_toRightOf="@+id/cancel_image"
-                    android:text="@string/view_malaria_test_result"
+                    android:text="@string/view_fp_registration"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                     android:textColor="@android:color/darker_gray" />
 

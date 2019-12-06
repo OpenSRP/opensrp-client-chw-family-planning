@@ -15,6 +15,7 @@
     <string name="last_visit_n_days_ago">Last visit %1$s ago</string>
     <string name="less_than_twenty_four">less than 24 hrs</string>
     <string name="days">days</string>
+    <string name="view_fp_registration">View FP registration</string>
     <string name="view_medical_history">View medical history</string>
     <string name="view_upcoming_services">View upcoming services</string>
     <string name="family_has_nothing_due">Family has nothing due</string>
