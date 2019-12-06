@@ -28,11 +28,11 @@ public interface BaseFpProfileContract {
 
         void setProfileViewDetails(FpMemberObject fpMemberObject);
 
+        void updateHasMedicalHistory(boolean hasMedicalHistory);
+
         void setOverdueColor();
 
         void setDueColor();
-
-        void refreshMedicalHistory(boolean hasHistory);
 
         // hideView();
 
@@ -40,11 +40,13 @@ public interface BaseFpProfileContract {
 
     }
 
-    interface Presenter extends BaseProfileContract.Presenter {
+    interface Presenter {
 
         View getView();
 
         void refreshProfileData();
+
+        void refreshProfileFpStatusInfo();
 
     }
 
@@ -52,7 +54,7 @@ public interface BaseFpProfileContract {
 
         void refreshProfileView(FpMemberObject fpMemberObject, boolean isForEdit, BaseFpProfileContract.InteractorCallback callback);
 
-        void resetProfileInfo(BaseFpProfileContract.InteractorCallback callback);
+        void updateProfileFpStatusInfo(FpMemberObject memberObject, BaseFpProfileContract.InteractorCallback callback);
 
     }
 
@@ -65,5 +67,7 @@ public interface BaseFpProfileContract {
         void refreshUpComingServicesStatus(String service, AlertStatus status, Date date);
 
         void refreshFamilyStatus(AlertStatus status);
+
+        void refreshMedicalHistory(boolean hasHistory);
     }
 }

@@ -2,6 +2,9 @@ package org.smartregister.chw.fp.activity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
@@ -47,7 +50,6 @@ public class BaseFpProfileActivity extends BaseProfileActivity implements BaseFp
     private RelativeLayout rlLastVisit;
     private RelativeLayout rlUpcomingServices;
     private RelativeLayout rlFamilyServicesDue;
-    private TextView tvLastVisitDate;
     private TextView tvUpComingServices;
     private TextView tvFamilyStatus;
     private TextView tvRecordFpFollowUp;
@@ -60,7 +62,6 @@ public class BaseFpProfileActivity extends BaseProfileActivity implements BaseFp
     @Override
     protected void onCreation() {
         setContentView(R.layout.activity_base_fp_profile);
-        findViewById(R.id.btn_profile_registration_info).setOnClickListener(this);
 
         Toolbar toolbar = findViewById(R.id.collapsing_toolbar);
         setSupportActionBar(toolbar);
@@ -68,18 +69,23 @@ public class BaseFpProfileActivity extends BaseProfileActivity implements BaseFp
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
+            Drawable upArrow = getResources().getDrawable(R.drawable.ic_arrow_back_white_24dp);
+            upArrow.setColorFilter(getResources().getColor(R.color.text_blue), PorterDuff.Mode.SRC_ATOP);
+            actionBar.setHomeAsUpIndicator(upArrow);
         }
 
-        appBarLayout = findViewById(R.id.collapsing_toolbar_appbarlayout);
-        // CollapsingToolbarLayout collapsingToolbarLayout = appBarLayout.findViewById(R.id.collapsing_toolbar_layout);
-        appBarLayout.addOnOffsetChangedListener(this);
+        toolbar.setNavigationOnClickListener(v -> BaseFpProfileActivity.this.finish());
+        appBarLayout = this.findViewById(R.id.collapsing_toolbar_appbarlayout);
+        if (Build.VERSION.SDK_INT >= 21) {
+            appBarLayout.setOutlineProvider(null);
+        }
 
         fpMemberObject = (FpMemberObject) getIntent().getSerializableExtra(FamilyPlanningConstants.FamilyPlanningMemberObject.MEMBER_OBJECT);
         imageRenderHelper = new ImageRenderHelper(this);
 
         setupViews();
         initializePresenter();
-        fpProfilePresenter.refreshProfileData();
+        fetchProfileData();
         initializeCallFAB();
     }
 
@@ -100,7 +106,7 @@ public class BaseFpProfileActivity extends BaseProfileActivity implements BaseFp
         lastVisitRow = findViewById(R.id.view_last_visit_row);
         overDueRow = findViewById(R.id.view_most_due_overdue_row);
         familyRow = findViewById(R.id.view_family_row);
-        tvUpComingServices = findViewById(R.id.text_view_upcoming_services);
+        tvUpComingServices = findViewById(R.id.textview_name_due);
         tvFamilyStatus = findViewById(R.id.textview_family_has);
         rlLastVisit = findViewById(R.id.rlLastVisit);
         rlUpcomingServices = findViewById(R.id.rlUpcomingServices);
@@ -108,9 +114,8 @@ public class BaseFpProfileActivity extends BaseProfileActivity implements BaseFp
         // RelativeLayout visitStatus = findViewById(R.id.record_visit_status_bar);
         progressBar = findViewById(R.id.progress_bar);
         TextView tvUndo = findViewById(R.id.textview_undo);
-        profileImageView = findViewById(R.id.profile_image_view);
+        profileImageView = findViewById(R.id.imageview_profile);
         tvRecordFpFollowUp = findViewById(R.id.textview_record_reccuring_visit);
-        tvLastVisitDate = findViewById(R.id.textview_last_visit_day);
 
         tvUndo.setOnClickListener(this);
         tvRecordFpFollowUp.setOnClickListener(this);
@@ -124,7 +129,7 @@ public class BaseFpProfileActivity extends BaseProfileActivity implements BaseFp
         fpProfilePresenter = new BaseFpProfilePresenter(this, new BaseFpProfileInteractor(), fpMemberObject);
     }
 
-    private void initializeCallFAB() {
+    public void initializeCallFAB() {
         if (StringUtils.isNotBlank(fpMemberObject.getFamilyHeadPhoneNumber())) {
             fpFloatingMenu = new BaseFpFloatingMenu(this, fpMemberObject);
             fpFloatingMenu.setGravity(Gravity.BOTTOM | Gravity.RIGHT);
@@ -142,7 +147,8 @@ public class BaseFpProfileActivity extends BaseProfileActivity implements BaseFp
 
     @Override
     protected void fetchProfileData() {
-        // Retrieve profile data
+        fpProfilePresenter.refreshProfileData();
+        fpProfilePresenter.refreshProfileFpStatusInfo();
     }
 
     @Override
@@ -193,7 +199,6 @@ public class BaseFpProfileActivity extends BaseProfileActivity implements BaseFp
         rlLastVisit.setVisibility(View.VISIBLE);
 
         int numOfDays = Days.daysBetween(new DateTime(lastVisitDate).toLocalDate(), new DateTime().toLocalDate()).getDays();
-        tvLastVisitDate.setText(getString(R.string.last_visit_n_days_ago, (numOfDays <= 1) ? getString(R.string.less_than_twenty_four) : numOfDays + " " + getString(R.string.days)));
     }
 
     @Override
@@ -227,12 +232,6 @@ public class BaseFpProfileActivity extends BaseProfileActivity implements BaseFp
     }
 
     @Override
-    public void refreshMedicalHistory(boolean hasHistory) {
-        showProgressBar(false);
-        rlLastVisit.setVisibility(hasHistory ? View.VISIBLE : View.GONE);
-    }
-
-    @Override
     public void setProfileViewDetails(FpMemberObject fpMemberObject) {
         int age = new Period(new DateTime(fpMemberObject.getAge()), new DateTime()).getYears();
         tvName.setText(String.format(Locale.getDefault(), "%s %s %s, %d", fpMemberObject.getFirstName(),
@@ -248,6 +247,12 @@ public class BaseFpProfileActivity extends BaseProfileActivity implements BaseFp
         if (StringUtils.isNotBlank(fpMemberObject.getPrimaryCareGiver()) && fpMemberObject.getPrimaryCareGiver().equals(fpMemberObject.getBaseEntityId())) {
             findViewById(R.id.fp_primary_caregiver).setVisibility(View.VISIBLE);
         }
+    }
+
+    @Override
+    public void updateHasMedicalHistory(boolean hasMedicalHistory) {
+        showProgressBar(false);
+        rlLastVisit.setVisibility(hasMedicalHistory ? View.VISIBLE : View.GONE);
     }
 
     @Override

@@ -5,7 +5,7 @@
     <string name="add_family">Add family</string>
     <string name="job_aids">Job Aids</string>
     <string name="error_unable_to_start_form">An error occurred when starting the form</string>
-    <string name="return_to_previous_page">Back</string>
+    <string name="return_to_previous_page">Return to all family planning women</string>
     <string name="interpunct" translatable="false">\u00b7</string>
     <string name="family_head">FAMILY HEAD</string>
     <string name="primary_care_giver">PRIMARY CARE GIVER</string>
@@ -15,6 +15,7 @@
     <string name="last_visit_n_days_ago">Last visit %1$s ago</string>
     <string name="less_than_twenty_four">less than 24 hrs</string>
     <string name="days">days</string>
+    <string name="view_fp_registration">View FP registration</string>
     <string name="view_medical_history">View medical history</string>
     <string name="view_upcoming_services">View upcoming services</string>
     <string name="family_has_nothing_due">Family has nothing due</string>

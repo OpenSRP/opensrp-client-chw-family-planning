@@ -28,11 +28,12 @@ public class BaseFpProfileInteractor implements BaseFpProfileContract.Interactor
     }
 
     @Override
-    public void resetProfileInfo(BaseFpProfileContract.InteractorCallback callback) {
+    public void updateProfileFpStatusInfo(FpMemberObject fpMemberObject, BaseFpProfileContract.InteractorCallback callback) {
         Runnable runnable = () -> appExecutors.mainThread().execute(() -> {
             callback.refreshFamilyStatus(AlertStatus.normal);
             callback.refreshLastVisit(new Date());
             callback.refreshUpComingServicesStatus("Family Planning Followup Visit", AlertStatus.normal, new Date());
+            callback.refreshMedicalHistory(true);
         });
         appExecutors.diskIO().execute(runnable);
     }

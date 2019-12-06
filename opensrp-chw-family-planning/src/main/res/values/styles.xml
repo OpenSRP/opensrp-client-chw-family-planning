@@ -26,4 +26,20 @@
         <item name="android:windowMinWidthMinor">98%</item>
         <item name="android:background">@android:color/white</item>
     </style>
+
+    <style name="FamilyPlanningTheme.AppBarOverlay" parent="Base.Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:textColorPrimary">@color/white</item>
+        <item name="android:textColorSecondary">@color/black</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="colorBackgroundFloating">@color/white</item>
+        <item name="android:windowBackground">@color/white</item>
+        <item name="android:colorBackground">@color/white</item>
+    </style>
+
+    <style name="FamilyPlanning.AppBarOverlay.Light" parent="FamilyPlanningTheme.AppBarOverlay">
+        <item name="android:textColorPrimary">@color/customAppThemeBlue</item>
+        <item name="android:textColorSecondary">@color/black</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
 </resources>

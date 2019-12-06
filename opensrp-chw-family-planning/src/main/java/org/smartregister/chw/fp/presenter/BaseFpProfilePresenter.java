@@ -36,8 +36,15 @@ public class BaseFpProfilePresenter implements BaseProfileContract, BaseFpProfil
     }
 
     @Override
-    public void onDestroy(boolean b) {
-        // TODO :: Handle onDestroy called
+    public void refreshProfileFpStatusInfo() {
+        interactor.updateProfileFpStatusInfo(fpMemberObject, this);
+    }
+
+    @Override
+    public void refreshMedicalHistory(boolean hasHistory) {
+        if (getView() != null) {
+            getView().updateHasMedicalHistory(hasHistory);
+        }
     }
 
     @Override
