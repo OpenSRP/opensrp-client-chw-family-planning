@@ -6,10 +6,9 @@ import org.smartregister.chw.fp.util.FpJsonFormUtils;
 
 public class BaseFpRegisterModel implements BaseFpRegisterContract.Model {
     @Override
-    public JSONObject getFormAsJson(String formName, String entityId, String currentLocationId) throws Exception {
+    public JSONObject getFormAsJson(String formName, String entityId) throws Exception {
         JSONObject jsonObject = FpJsonFormUtils.getFormAsJson(formName);
-        FpJsonFormUtils.getRegistrationForm(jsonObject, entityId, currentLocationId);
-
+        FpJsonFormUtils.getRegistrationForm(jsonObject, entityId);
         return jsonObject;
     }
 }
