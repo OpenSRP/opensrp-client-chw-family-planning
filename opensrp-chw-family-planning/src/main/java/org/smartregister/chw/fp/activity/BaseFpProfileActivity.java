@@ -50,7 +50,6 @@ public class BaseFpProfileActivity extends BaseProfileActivity implements BaseFp
     private RelativeLayout rlLastVisit;
     private RelativeLayout rlUpcomingServices;
     private RelativeLayout rlFamilyServicesDue;
-    private TextView tvLastVisitDate;
     private TextView tvUpComingServices;
     private TextView tvFamilyStatus;
     private TextView tvRecordFpFollowUp;
@@ -107,7 +106,7 @@ public class BaseFpProfileActivity extends BaseProfileActivity implements BaseFp
         lastVisitRow = findViewById(R.id.view_last_visit_row);
         overDueRow = findViewById(R.id.view_most_due_overdue_row);
         familyRow = findViewById(R.id.view_family_row);
-        tvUpComingServices = findViewById(R.id.text_view_upcoming_services);
+        tvUpComingServices = findViewById(R.id.textview_name_due);
         tvFamilyStatus = findViewById(R.id.textview_family_has);
         rlLastVisit = findViewById(R.id.rlLastVisit);
         rlUpcomingServices = findViewById(R.id.rlUpcomingServices);
@@ -115,9 +114,8 @@ public class BaseFpProfileActivity extends BaseProfileActivity implements BaseFp
         // RelativeLayout visitStatus = findViewById(R.id.record_visit_status_bar);
         progressBar = findViewById(R.id.progress_bar);
         TextView tvUndo = findViewById(R.id.textview_undo);
-        profileImageView = findViewById(R.id.profile_image_view);
+        profileImageView = findViewById(R.id.imageview_profile);
         tvRecordFpFollowUp = findViewById(R.id.textview_record_reccuring_visit);
-        tvLastVisitDate = findViewById(R.id.textview_last_visit_day);
 
         tvUndo.setOnClickListener(this);
         tvRecordFpFollowUp.setOnClickListener(this);
@@ -201,7 +199,6 @@ public class BaseFpProfileActivity extends BaseProfileActivity implements BaseFp
         rlLastVisit.setVisibility(View.VISIBLE);
 
         int numOfDays = Days.daysBetween(new DateTime(lastVisitDate).toLocalDate(), new DateTime().toLocalDate()).getDays();
-        tvLastVisitDate.setText(getString(R.string.last_visit_n_days_ago, (numOfDays <= 1) ? getString(R.string.less_than_twenty_four) : numOfDays + " " + getString(R.string.days)));
     }
 
     @Override
