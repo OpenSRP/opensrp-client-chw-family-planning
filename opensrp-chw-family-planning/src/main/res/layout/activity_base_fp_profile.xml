@@ -20,7 +20,7 @@
                 android:id="@+id/collapsing_toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:theme="@style/MalariaTheme.AppBarOverlay.Light"
+                android:theme="@style/FamilyPlanning.AppBarOverlay.Light"
                 app:contentInsetEnd="0dp"
                 app:contentInsetLeft="0dp"
                 app:contentInsetRight="0dp"

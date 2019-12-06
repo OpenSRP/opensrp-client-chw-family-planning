@@ -113,7 +113,7 @@
                 android:visibility="gone" />
 
             <RelativeLayout
-                android:id="@+id/rlMalariaPositiveDate"
+                android:id="@+id/rlFpRegistrationDate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/view_positive_date_row"
@@ -143,7 +143,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
-                    android:text="Malaria positive 12 Jan 2018"
+                    android:text="Family Planning Registration Date"
                     android:layout_toLeftOf="@+id/iv_positive_date_arrow"
                     android:layout_toRightOf="@+id/cancel_image"
                     android:gravity="left|center_horizontal"
@@ -169,7 +169,7 @@
                 android:id="@+id/view_most_due_overdue_row"
                 android:layout_width="match_parent"
                 android:layout_height="1px"
-                android:layout_below="@+id/rlMalariaPositiveDate"
+                android:layout_below="@+id/rlFpRegistrationDate"
                 android:background="@color/light_grey"
                 android:visibility="visible" />
 
