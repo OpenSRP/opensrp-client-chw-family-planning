@@ -18,9 +18,11 @@ import android.text.Html;
 import android.text.Spanned;
 import android.widget.Toast;
 
+import org.apache.commons.lang3.StringUtils;
 import org.json.JSONObject;
 import org.smartregister.chw.fp.FpLibrary;
 import org.smartregister.chw.fp.contract.BaseFpCallDialogContract;
+import org.smartregister.chw.fp.domain.FpMemberObject;
 import org.smartregister.clientandeventmodel.Event;
 import org.smartregister.fp.R;
 import org.smartregister.repository.AllSharedPreferences;
@@ -48,6 +50,23 @@ public class FpUtil {
         AllSharedPreferences allSharedPreferences = FpLibrary.getInstance().context().allSharedPreferences();
         Event baseEvent = FpJsonFormUtils.processJsonForm(allSharedPreferences, jsonString);
         processEvent(allSharedPreferences, baseEvent);
+    }
+
+    public static String getFullName(FpMemberObject fpMemberObject) {
+        StringBuilder nameBuilder = new StringBuilder();
+        String firstName = fpMemberObject.getFirstName();
+        String lastName = fpMemberObject.getLastName();
+        String middleName = fpMemberObject.getMiddleName();
+        if (StringUtils.isNotBlank(fpMemberObject.getFirstName())) {
+            nameBuilder.append(firstName);
+        } else if (StringUtils.isNotBlank(middleName)) {
+            nameBuilder.append(" ");
+            nameBuilder.append(middleName);
+        } else if (StringUtils.isNotBlank(lastName)) {
+            nameBuilder.append(" ");
+            nameBuilder.append(lastName);
+        }
+        return nameBuilder.toString();
     }
 
     public static void processEvent(AllSharedPreferences allSharedPreferences, Event baseEvent) throws Exception {

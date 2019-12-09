@@ -17,6 +17,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.smartregister.chw.fp.contract.BaseFpCallDialogContract;
 import org.smartregister.chw.fp.domain.FpMemberObject;
 import org.smartregister.chw.fp.listener.BaseFpCallWidgetDialogListener;
+import org.smartregister.chw.fp.util.FpUtil;
 import org.smartregister.fp.R;
 
 import static android.view.View.GONE;
@@ -72,21 +73,20 @@ public class BaseFpCallDialogFragment extends DialogFragment implements BaseFpCa
     private void initUI(ViewGroup rootView) {
 
         if (StringUtils.isNotBlank(fpMemberObject.getPhoneNumber())) {
-            TextView ancWomanNameTextView = rootView.findViewById(R.id.call_fp_woman_name);
-            ancWomanNameTextView.setText(fpMemberObject.getFirstName());
+            TextView fpWomanNameTextView = rootView.findViewById(R.id.call_fp_woman_name);
+            fpWomanNameTextView.setText(FpUtil.getFullName(fpMemberObject));
 
             TextView fpWomanPhone = rootView.findViewById(R.id.call_fp_woman_phone);
             fpWomanPhone.setTag(fpMemberObject.getPhoneNumber());
             fpWomanPhone.setText(getName(getCurrentContext().getString(R.string.call), fpMemberObject.getPhoneNumber()));
             fpWomanPhone.setOnClickListener(listener);
         } else {
-
             rootView.findViewById(R.id.layout_fp_woman).setVisibility(GONE);
         }
 
         if (StringUtils.isNotBlank(fpMemberObject.getFamilyHeadPhoneNumber())) {
             TextView familyHeadName = rootView.findViewById(R.id.fp_call_head_name);
-            familyHeadName.setText(fpMemberObject.getFamilyHeadPhoneNumber());
+            familyHeadName.setText(fpMemberObject.getFamilyHeadName());
 
             TextView callHeadPhoneNumber = rootView.findViewById(R.id.fp_call_head_phone_number);
             callHeadPhoneNumber.setTag(fpMemberObject.getFamilyHeadPhoneNumber());
@@ -94,7 +94,6 @@ public class BaseFpCallDialogFragment extends DialogFragment implements BaseFpCa
             callHeadPhoneNumber.setOnClickListener(listener);
 
         } else {
-
             rootView.findViewById(R.id.fp_layout_family_head).setVisibility(GONE);
         }
 
