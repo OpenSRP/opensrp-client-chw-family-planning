@@ -57,7 +57,7 @@ public class FpUtil {
         String firstName = fpMemberObject.getFirstName();
         String lastName = fpMemberObject.getLastName();
         String middleName = fpMemberObject.getMiddleName();
-        if (StringUtils.isNotBlank(fpMemberObject.getFirstName())) {
+        if (StringUtils.isNotBlank(firstName)) {
             nameBuilder.append(firstName);
         } else if (StringUtils.isNotBlank(middleName)) {
             nameBuilder.append(" ");
