@@ -30,11 +30,11 @@ public interface BaseFpProfileContract {
 
         void updateHasMedicalHistory(boolean hasMedicalHistory);
 
-        void setOverdueColor();
+        void setFollowUpButtonOverdue();
 
-        void setDueColor();
+        void setFollowUpButtonDue();
 
-        // hideView();
+        void hideFollowUpVisitButton();
 
         void showProgressBar(boolean status);
 

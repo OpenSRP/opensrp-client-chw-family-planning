@@ -52,7 +52,7 @@ public class BaseFpProfileActivity extends BaseProfileActivity implements BaseFp
     private RelativeLayout rlFamilyServicesDue;
     private TextView tvUpComingServices;
     private TextView tvFamilyStatus;
-    private TextView tvRecordFpFollowUp;
+    protected TextView tvRecordFpFollowUp;
 
     private ImageRenderHelper imageRenderHelper;
     protected BaseFpProfileContract.Presenter fpProfilePresenter;
@@ -256,13 +256,18 @@ public class BaseFpProfileActivity extends BaseProfileActivity implements BaseFp
     }
 
     @Override
-    public void setOverdueColor() {
+    public void setFollowUpButtonOverdue() {
         tvRecordFpFollowUp.setBackground(getResources().getDrawable(R.drawable.record_fp_followup));
     }
 
     @Override
-    public void setDueColor() {
+    public void setFollowUpButtonDue() {
         tvRecordFpFollowUp.setBackground(getResources().getDrawable(R.drawable.record_fp_followup_overdue));
+    }
+
+    @Override
+    public void hideFollowUpVisitButton() {
+        tvRecordFpFollowUp.setVisibility(View.GONE);
     }
 
     @Override
