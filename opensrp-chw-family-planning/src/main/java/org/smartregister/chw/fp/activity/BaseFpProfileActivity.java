@@ -58,6 +58,7 @@ public class BaseFpProfileActivity extends BaseProfileActivity implements BaseFp
     protected BaseFpProfileContract.Presenter fpProfilePresenter;
     protected BaseFpFloatingMenu fpFloatingMenu;
     protected FpMemberObject fpMemberObject;
+    protected int numOfDays;
 
     @Override
     protected void onCreation() {
@@ -101,8 +102,6 @@ public class BaseFpProfileActivity extends BaseProfileActivity implements BaseFp
         tvGender = findViewById(R.id.textview_gender);
         tvLocation = findViewById(R.id.textview_address);
         tvUniqueID = findViewById(R.id.textview_unique_id);
-        // TextView familyHead = findViewById(R.id.fp_family_head);
-        // TextView primaryCareGiver = findViewById(R.id.fp_primary_caregiver);
         lastVisitRow = findViewById(R.id.view_last_visit_row);
         overDueRow = findViewById(R.id.view_most_due_overdue_row);
         familyRow = findViewById(R.id.view_family_row);
@@ -111,7 +110,6 @@ public class BaseFpProfileActivity extends BaseProfileActivity implements BaseFp
         rlLastVisit = findViewById(R.id.rlLastVisit);
         rlUpcomingServices = findViewById(R.id.rlUpcomingServices);
         rlFamilyServicesDue = findViewById(R.id.rlFamilyServicesDue);
-        // RelativeLayout visitStatus = findViewById(R.id.record_visit_status_bar);
         progressBar = findViewById(R.id.progress_bar);
         TextView tvUndo = findViewById(R.id.textview_undo);
         profileImageView = findViewById(R.id.imageview_profile);
@@ -197,8 +195,7 @@ public class BaseFpProfileActivity extends BaseProfileActivity implements BaseFp
 
         lastVisitRow.setVisibility(View.VISIBLE);
         rlLastVisit.setVisibility(View.VISIBLE);
-
-        int numOfDays = Days.daysBetween(new DateTime(lastVisitDate).toLocalDate(), new DateTime().toLocalDate()).getDays();
+        numOfDays = Days.daysBetween(new DateTime(lastVisitDate).toLocalDate(), new DateTime().toLocalDate()).getDays();
     }
 
     @Override
@@ -256,13 +253,13 @@ public class BaseFpProfileActivity extends BaseProfileActivity implements BaseFp
     }
 
     @Override
-    public void setFollowUpButtonOverdue() {
+    public void setFollowUpButtonDue() {
         showFollowUpVisitButton();
         tvRecordFpFollowUp.setBackground(getResources().getDrawable(R.drawable.record_fp_followup));
     }
 
     @Override
-    public void setFollowUpButtonDue() {
+    public void setFollowUpButtonOverdue() {
         showFollowUpVisitButton();
         tvRecordFpFollowUp.setBackground(getResources().getDrawable(R.drawable.record_fp_followup_overdue));
     }
