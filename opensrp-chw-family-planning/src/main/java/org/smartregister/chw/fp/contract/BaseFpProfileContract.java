@@ -36,6 +36,8 @@ public interface BaseFpProfileContract {
 
         void hideFollowUpVisitButton();
 
+        void showFollowUpVisitButton();
+
         void showProgressBar(boolean status);
 
     }

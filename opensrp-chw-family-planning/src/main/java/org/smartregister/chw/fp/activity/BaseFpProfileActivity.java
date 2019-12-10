@@ -257,12 +257,19 @@ public class BaseFpProfileActivity extends BaseProfileActivity implements BaseFp
 
     @Override
     public void setFollowUpButtonOverdue() {
+        showFollowUpVisitButton();
         tvRecordFpFollowUp.setBackground(getResources().getDrawable(R.drawable.record_fp_followup));
     }
 
     @Override
     public void setFollowUpButtonDue() {
+        showFollowUpVisitButton();
         tvRecordFpFollowUp.setBackground(getResources().getDrawable(R.drawable.record_fp_followup_overdue));
+    }
+
+    @Override
+    public void showFollowUpVisitButton() {
+        tvRecordFpFollowUp.setVisibility(View.VISIBLE);
     }
 
     @Override
