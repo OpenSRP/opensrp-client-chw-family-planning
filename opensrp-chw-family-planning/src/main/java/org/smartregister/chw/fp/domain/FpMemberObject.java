@@ -27,6 +27,8 @@ public class FpMemberObject implements Serializable {
     private String familyBaseEntityId;
     private String familyName;
     private String phoneNumber;
+    private String fpStartDate;
+    private int pillCycles;
 
     public FpMemberObject() {
     }
@@ -206,5 +208,21 @@ public class FpMemberObject implements Serializable {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
+    }
+
+    public String getFpStartDate() {
+        return fpStartDate;
+    }
+
+    public void setFpStartDate(String fpStartDate) {
+        this.fpStartDate = fpStartDate;
+    }
+
+    public int getPillCycles() {
+        return pillCycles;
+    }
+
+    public void setPillCycles(int pillCycles) {
+        this.pillCycles = pillCycles;
     }
 }
