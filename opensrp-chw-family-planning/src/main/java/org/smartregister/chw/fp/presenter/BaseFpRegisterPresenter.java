@@ -34,7 +34,7 @@ public class BaseFpRegisterPresenter implements BaseFpRegisterContract.Presenter
     }
 
     @Override
-    public void startForm(String formName, String entityId, String metadata, String dob) throws Exception {
+    public void startForm(String formName, String entityId, String payloadType, String dob) throws Exception {
         if (StringUtils.isBlank(entityId)) {
             return;
         }
