@@ -1,5 +1,7 @@
 package org.smartregister.chw.fp.contract;
 
+import android.content.Context;
+
 import org.smartregister.chw.fp.domain.FpMemberObject;
 import org.smartregister.domain.AlertStatus;
 import org.smartregister.view.contract.BaseProfileContract;
@@ -10,6 +12,8 @@ public interface BaseFpProfileContract {
 
     interface View extends BaseProfileContract.View {
 
+        Context getContext();
+
         void openMedicalHistory();
 
         void openFamilyPlanningRegistration();
@@ -18,7 +22,7 @@ public interface BaseFpProfileContract {
 
         void openFamilyDueServices();
 
-        void openFollowUpVisitForm();
+        void openFollowUpVisitForm(boolean isEdit);
 
         void setLastVisit(Date lastVisitDate);
 
@@ -27,6 +31,8 @@ public interface BaseFpProfileContract {
         void setFamilyStatus(AlertStatus status);
 
         void setProfileViewDetails(FpMemberObject fpMemberObject);
+
+        void setupFollowupVisitEditViews(boolean isWithin24Hours);
 
         void updateHasMedicalHistory(boolean hasMedicalHistory);
 

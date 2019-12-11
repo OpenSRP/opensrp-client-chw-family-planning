@@ -8,7 +8,7 @@
     android:paddingTop="10dp">
 
     <LinearLayout
-        android:id="@+id/record_recurring"
+        android:id="@+id/record_recurring_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -36,7 +36,7 @@
     </LinearLayout>
 
     <RelativeLayout
-        android:id="@+id/record_visit_status_bar"
+        android:id="@+id/record_visit_status_bar_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/white"
@@ -49,11 +49,11 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginRight="10dp"
-            android:src="@drawable/fp_upcoming" />
+            android:src="@drawable/activity_row_fp_visited" />
 
 
         <org.smartregister.view.customcontrols.CustomFontTextView
-            android:id="@+id/textview_not_visit_this_month"
+            android:id="@+id/textview_visit_done"
             style="@style/CustomFontTextViewStyle.ListView.Normal.MultipleLines"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -61,7 +61,7 @@
             android:layout_toLeftOf="@+id/textview_undo"
             android:layout_toRightOf="@+id/tick_image"
             android:padding="10dp"
-            android:text="@string/not_visiting_this_month"
+            android:text="@string/fp_visit_done"
             android:textColor="@color/black" />
 
         <org.smartregister.view.customcontrols.CustomFontTextView
@@ -71,6 +71,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:padding="10dp"
+            android:visibility="gone"
             android:text="@string/undo"
             android:textColor="@color/primary" />
 
@@ -81,9 +82,9 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:padding="10dp"
-            android:text="@string/edit"
+            android:text="@string/fp_visit_edit"
             android:textColor="@color/primary"
-            android:visibility="visible" />
+            android:visibility="gone" />
 
     </RelativeLayout>
 
