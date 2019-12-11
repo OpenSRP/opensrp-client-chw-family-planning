@@ -1,6 +1,7 @@
 package org.smartregister.chw.fp.activity;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
@@ -10,6 +11,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
@@ -47,17 +49,24 @@ public class BaseFpProfileActivity extends BaseProfileActivity implements BaseFp
     private View lastVisitRow;
     private View overDueRow;
     private View familyRow;
+    protected LinearLayout recordFollowUpVisitLayout;
+    protected RelativeLayout recordVisitStatusBarLayout;
+    protected ImageView tickImage;
+    protected TextView tvEditVisit;
+    protected TextView tvUndo;
+    protected TextView tvVisitDone;
     private RelativeLayout rlLastVisit;
     private RelativeLayout rlUpcomingServices;
     private RelativeLayout rlFamilyServicesDue;
     private TextView tvUpComingServices;
     private TextView tvFamilyStatus;
-    private TextView tvRecordFpFollowUp;
+    protected TextView tvRecordFpFollowUp;
 
     private ImageRenderHelper imageRenderHelper;
     protected BaseFpProfileContract.Presenter fpProfilePresenter;
     protected BaseFpFloatingMenu fpFloatingMenu;
     protected FpMemberObject fpMemberObject;
+    protected int numOfDays;
 
     @Override
     protected void onCreation() {
@@ -101,8 +110,8 @@ public class BaseFpProfileActivity extends BaseProfileActivity implements BaseFp
         tvGender = findViewById(R.id.textview_gender);
         tvLocation = findViewById(R.id.textview_address);
         tvUniqueID = findViewById(R.id.textview_unique_id);
-        // TextView familyHead = findViewById(R.id.fp_family_head);
-        // TextView primaryCareGiver = findViewById(R.id.fp_primary_caregiver);
+        recordVisitStatusBarLayout = findViewById(R.id.record_visit_status_bar_layout);
+        recordFollowUpVisitLayout = findViewById(R.id.record_recurring_layout);
         lastVisitRow = findViewById(R.id.view_last_visit_row);
         overDueRow = findViewById(R.id.view_most_due_overdue_row);
         familyRow = findViewById(R.id.view_family_row);
@@ -111,13 +120,16 @@ public class BaseFpProfileActivity extends BaseProfileActivity implements BaseFp
         rlLastVisit = findViewById(R.id.rlLastVisit);
         rlUpcomingServices = findViewById(R.id.rlUpcomingServices);
         rlFamilyServicesDue = findViewById(R.id.rlFamilyServicesDue);
-        // RelativeLayout visitStatus = findViewById(R.id.record_visit_status_bar);
         progressBar = findViewById(R.id.progress_bar);
-        TextView tvUndo = findViewById(R.id.textview_undo);
+        tickImage = findViewById(R.id.tick_image);
+        tvVisitDone = findViewById(R.id.textview_visit_done);
+        tvEditVisit = findViewById(R.id.textview_edit);
+        tvUndo = findViewById(R.id.textview_undo);
         profileImageView = findViewById(R.id.imageview_profile);
         tvRecordFpFollowUp = findViewById(R.id.textview_record_reccuring_visit);
 
         tvUndo.setOnClickListener(this);
+        tvEditVisit.setOnClickListener(this);
         tvRecordFpFollowUp.setOnClickListener(this);
         findViewById(R.id.rlLastVisit).setOnClickListener(this);
         findViewById(R.id.rlUpcomingServices).setOnClickListener(this);
@@ -162,7 +174,29 @@ public class BaseFpProfileActivity extends BaseProfileActivity implements BaseFp
             this.openUpcomingServices();
         } else if (id == R.id.rlFamilyServicesDue) {
             this.openFamilyDueServices();
+        } else if (id == R.id.textview_record_reccuring_visit) {
+            this.openFollowUpVisitForm(false);
+        } else if (id == R.id.textview_edit) {
+            this.openFollowUpVisitForm(true);
         }
+    }
+
+    @Override
+    public void setupFollowupVisitEditViews(boolean isWithin24Hours) {
+        if (isWithin24Hours) {
+            recordFollowUpVisitLayout.setVisibility(View.GONE);
+            recordVisitStatusBarLayout.setVisibility(View.VISIBLE);
+            tvEditVisit.setVisibility(View.VISIBLE);
+        } else {
+            tvEditVisit.setVisibility(View.GONE);
+            recordFollowUpVisitLayout.setVisibility(View.VISIBLE);
+            recordVisitStatusBarLayout.setVisibility(View.GONE);
+        }
+    }
+
+    @Override
+    public Context getContext() {
+        return this;
     }
 
     @Override
@@ -186,8 +220,8 @@ public class BaseFpProfileActivity extends BaseProfileActivity implements BaseFp
     }
 
     @Override
-    public void openFollowUpVisitForm() {
-        // TODO :: Open follow-up visit form
+    public void openFollowUpVisitForm(boolean isEdit) {
+        // TODO :: Open follow-up visit form for editing
     }
 
     @Override
@@ -197,8 +231,7 @@ public class BaseFpProfileActivity extends BaseProfileActivity implements BaseFp
 
         lastVisitRow.setVisibility(View.VISIBLE);
         rlLastVisit.setVisibility(View.VISIBLE);
-
-        int numOfDays = Days.daysBetween(new DateTime(lastVisitDate).toLocalDate(), new DateTime().toLocalDate()).getDays();
+        numOfDays = Days.daysBetween(new DateTime(lastVisitDate).toLocalDate(), new DateTime().toLocalDate()).getDays();
     }
 
     @Override
@@ -256,13 +289,25 @@ public class BaseFpProfileActivity extends BaseProfileActivity implements BaseFp
     }
 
     @Override
-    public void setOverdueColor() {
+    public void setFollowUpButtonDue() {
+        showFollowUpVisitButton();
         tvRecordFpFollowUp.setBackground(getResources().getDrawable(R.drawable.record_fp_followup));
     }
 
     @Override
-    public void setDueColor() {
+    public void setFollowUpButtonOverdue() {
+        showFollowUpVisitButton();
         tvRecordFpFollowUp.setBackground(getResources().getDrawable(R.drawable.record_fp_followup_overdue));
+    }
+
+    @Override
+    public void showFollowUpVisitButton() {
+        tvRecordFpFollowUp.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void hideFollowUpVisitButton() {
+        tvRecordFpFollowUp.setVisibility(View.GONE);
     }
 
     @Override
