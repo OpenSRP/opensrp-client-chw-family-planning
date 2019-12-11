@@ -52,7 +52,7 @@ public class BaseFpRegisterActivity extends BaseRegisterActivity implements Base
      */
     protected void onStartActivityWithAction() {
         if (FORM_NAME != null && ACTION != null) {
-            startFormActivity(FORM_NAME, BASE_ENTITY_ID, null);
+            startFormActivity(FORM_NAME, BASE_ENTITY_ID, ACTION);
         }
     }
 
@@ -62,11 +62,11 @@ public class BaseFpRegisterActivity extends BaseRegisterActivity implements Base
     }
 
     @Override
-    public void startFormActivity(String formName, String entityId, String metaData) {
+    public void startFormActivity(String formName, String entityId, String payloadType) {
         try {
             if (mBaseFragment instanceof BaseFpRegisterFragment) {
 
-                presenter().startForm(formName, entityId, metaData, DOB);
+                presenter().startForm(formName, entityId, payloadType, DOB);
             }
         } catch (Exception e) {
             Timber.e(e);
