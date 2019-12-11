@@ -67,4 +67,8 @@ public interface FamilyPlanningConstants {
         String DOB = "DOB";
     }
 
+    interface EVENT_TYPE {
+        String FP_FOLLOW_UP_VISIT = "Fp Follow Up Visit";
+    }
+
 }

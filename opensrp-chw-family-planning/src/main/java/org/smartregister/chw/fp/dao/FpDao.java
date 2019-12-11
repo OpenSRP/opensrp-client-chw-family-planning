@@ -1,5 +1,7 @@
 package org.smartregister.chw.fp.dao;
 
+import org.jetbrains.annotations.Nullable;
+import org.smartregister.chw.fp.domain.FpAlertObject;
 import org.smartregister.chw.fp.domain.FpMemberObject;
 import org.smartregister.dao.AbstractDao;
 
@@ -69,5 +71,22 @@ public class FpDao extends AbstractDao {
             return null;
 
         return res.get(0);
+    }
+
+    @Nullable
+    public static List<FpAlertObject> getFpDetails(String baseEntityID) {
+        String sql = "select fp_method_accepted, no_pillcycles, fp_reg_date from ec_family_planning where base_entity_id = '" + baseEntityID + "'" +
+                "and is_closed is 0 and ecp = 1";
+
+        DataMap<FpAlertObject> dataMap = c -> new FpAlertObject(
+                getCursorValue(c, "fp_method_accepted"),
+                getCursorIntValue(c, "no_pillcycles"),
+                getCursorValueAsDate(c, "fp_reg_date", getNativeFormsDateFormat())
+        );
+        List<FpAlertObject> fpAlertObjects = readData(sql, dataMap);
+        if (fpAlertObjects.size() == 0) {
+            return null;
+        }
+        return fpAlertObjects;
     }
 }

@@ -41,4 +41,8 @@
     <string name="fp_visit_day_due_today">DUE TODAY</string>
     <string name="fp_visit_day_overdue">%s DAYS OVERDUE</string>
     <string name="fp_visit_day_overdue_today">OVERDUE TODAY</string>
+    <string name="fp_follow_up_visit">Fp Follow Up Visit</string>
+    <string name="side_effects">Side effects</string>
+    <string name="counseling">Counseling</string>
+    <string name="resupply">Resupply %s</string>
 </resources>
