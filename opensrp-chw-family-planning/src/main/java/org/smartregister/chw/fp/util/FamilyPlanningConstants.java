@@ -14,7 +14,6 @@ public interface FamilyPlanningConstants {
 
     interface EventType {
         String FAMILY_PLANNING_REGISTRATION = "Family Planning Registration";
-        String FP_HOME_VISIT = "FP Home Visit";
     }
 
     interface Forms {
@@ -69,6 +68,9 @@ public interface FamilyPlanningConstants {
 
     interface EVENT_TYPE {
         String FP_FOLLOW_UP_VISIT = "Fp Follow Up Visit";
+        String FP_FOLLOW_UP_VISIT_RESUPPLY = "Fp Follow Up Visit Resupply";
+        String FP_FOLLOW_UP_VISIT_COUNSELLING = "Fp Follow Up Visit Counselling";
+        String FP_FOLLOW_UP_VISIT_SIDE_EFFECTS = "Fp Follow Up Visit Side Effects";
     }
 
 }
