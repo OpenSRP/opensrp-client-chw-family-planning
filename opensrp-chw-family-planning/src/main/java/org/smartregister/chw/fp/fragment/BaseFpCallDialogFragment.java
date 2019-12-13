@@ -88,7 +88,6 @@ public class BaseFpCallDialogFragment extends DialogFragment implements BaseFpCa
             TextView fpPrimaryCaregiverTitle = rootView.findViewById(R.id.call_primary_caregiver_title);
             if (StringUtils.isNotBlank(fpMemberObject.getPrimaryCareGiver()) &&
                     fpMemberObject.getFamilyHead().equals(fpMemberObject.getPrimaryCareGiver())) {
-                fpPrimaryCaregiverTitle = rootView.findViewById(R.id.call_primary_caregiver_title);
                 fpPrimaryCaregiverTitle.setVisibility(View.VISIBLE);
             } else {
                 fpPrimaryCaregiverTitle.setVisibility(GONE);
