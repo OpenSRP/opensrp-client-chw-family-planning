@@ -85,6 +85,14 @@ public class BaseFpCallDialogFragment extends DialogFragment implements BaseFpCa
         }
 
         if (StringUtils.isNotBlank(fpMemberObject.getFamilyHeadPhoneNumber())) {
+            TextView fpPrimaryCaregiverTitle = rootView.findViewById(R.id.call_primary_caregiver_title);
+            if (StringUtils.isNotBlank(fpMemberObject.getPrimaryCareGiver()) &&
+                    fpMemberObject.getFamilyHead().equals(fpMemberObject.getPrimaryCareGiver())) {
+                fpPrimaryCaregiverTitle = rootView.findViewById(R.id.call_primary_caregiver_title);
+                fpPrimaryCaregiverTitle.setVisibility(View.VISIBLE);
+            } else {
+                fpPrimaryCaregiverTitle.setVisibility(GONE);
+            }
             TextView familyHeadName = rootView.findViewById(R.id.fp_call_head_name);
             familyHeadName.setText(fpMemberObject.getFamilyHeadName());
 
