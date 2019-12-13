@@ -1,8 +1,5 @@
 package org.smartregister.chw.fp.domain;
 
-import org.smartregister.chw.fp.util.FamilyPlanningConstants;
-import org.smartregister.commonregistry.CommonPersonObjectClient;
-
 import java.io.Serializable;
 
 public class FpMemberObject implements Serializable {
@@ -27,25 +24,11 @@ public class FpMemberObject implements Serializable {
     private String familyBaseEntityId;
     private String familyName;
     private String phoneNumber;
+    private String fpStartDate;
+    private int pillCycles;
+    private String fpMethod;
 
     public FpMemberObject() {
-    }
-
-    public FpMemberObject(CommonPersonObjectClient client) {
-        firstName = client.getColumnmaps().get(FamilyPlanningConstants.DBConstants.FIRST_NAME) != null ? client.getColumnmaps().get(FamilyPlanningConstants.DBConstants.FIRST_NAME) : "";
-        middleName = client.getColumnmaps().get(FamilyPlanningConstants.DBConstants.MIDDLE_NAME) != null ? client.getColumnmaps().get(FamilyPlanningConstants.DBConstants.MIDDLE_NAME) : "";
-        lastName = client.getColumnmaps().get(FamilyPlanningConstants.DBConstants.LAST_NAME) != null ? client.getColumnmaps().get(FamilyPlanningConstants.DBConstants.LAST_NAME) : "";
-        address = client.getColumnmaps().get(FamilyPlanningConstants.DBConstants.VILLAGE_TOWN) != null ? client.getColumnmaps().get(FamilyPlanningConstants.DBConstants.VILLAGE_TOWN) : "";
-        gender = client.getColumnmaps().get(FamilyPlanningConstants.DBConstants.GENDER) != null ? client.getColumnmaps().get(FamilyPlanningConstants.DBConstants.GENDER) : "";
-        age = client.getColumnmaps().get(FamilyPlanningConstants.DBConstants.DOB) != null ? client.getColumnmaps().get(FamilyPlanningConstants.DBConstants.DOB) : "";
-        uniqueId = client.getColumnmaps().get(FamilyPlanningConstants.DBConstants.UNIQUE_ID);
-        baseEntityId = client.getColumnmaps().get(FamilyPlanningConstants.DBConstants.BASE_ENTITY_ID);
-        relationalId = client.getColumnmaps().get(FamilyPlanningConstants.DBConstants.RELATIONAL_ID);
-        primaryCareGiver = client.getColumnmaps().get(FamilyPlanningConstants.DBConstants.PRIMARY_CARE_GIVER);
-        familyHead = client.getColumnmaps().get(FamilyPlanningConstants.DBConstants.FAMILY_HEAD);
-        familyBaseEntityId = client.getColumnmaps().get(FamilyPlanningConstants.DBConstants.RELATIONALID);
-        relationalid = client.getColumnmaps().get(FamilyPlanningConstants.DBConstants.RELATIONALID);
-        details = client.getColumnmaps().get(FamilyPlanningConstants.DBConstants.DETAILS);
     }
 
     public String getFamilyHeadName() {
@@ -206,5 +189,29 @@ public class FpMemberObject implements Serializable {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
+    }
+
+    public String getFpStartDate() {
+        return fpStartDate;
+    }
+
+    public void setFpStartDate(String fpStartDate) {
+        this.fpStartDate = fpStartDate;
+    }
+
+    public int getPillCycles() {
+        return pillCycles;
+    }
+
+    public void setPillCycles(int pillCycles) {
+        this.pillCycles = pillCycles;
+    }
+
+    public String getFpMethod() {
+        return fpMethod;
+    }
+
+    public void setFpMethod(String fpMethod) {
+        this.fpMethod = fpMethod;
     }
 }

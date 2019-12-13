@@ -15,7 +15,7 @@ public interface BaseFpRegisterContract {
 
     interface Presenter extends BaseRegisterContract.Presenter {
 
-        void startForm(String formName, String entityId, String metadata, String dob) throws Exception;
+        void startForm(String formName, String entityId, String payloadType, String dob) throws Exception;
 
         void saveForm(String jsonString);
     }
