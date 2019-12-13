@@ -7,6 +7,7 @@
     <string name="error_unable_to_start_form">An error occurred when starting the form</string>
     <string name="return_to_previous_page">Return to all family planning women</string>
     <string name="interpunct" translatable="false">\u00b7</string>
+    <string name="family_head">FAMILY HEAD</string>
     <string name="primary_care_giver">PRIMARY CARE GIVER</string>
     <string name="record_fp_followup">Record family planning follow-up visit</string>
     <string name="fp_visit_done">Family planning follow-up visit done</string>
