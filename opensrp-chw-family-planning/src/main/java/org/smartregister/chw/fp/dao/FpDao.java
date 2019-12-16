@@ -6,7 +6,11 @@ import org.smartregister.chw.fp.domain.FpAlertObject;
 import org.smartregister.chw.fp.domain.FpMemberObject;
 import org.smartregister.dao.AbstractDao;
 
+import java.text.SimpleDateFormat;
 import java.util.List;
+import java.util.Locale;
+
+import timber.log.Timber;
 
 public class FpDao extends AbstractDao {
 
@@ -133,7 +137,7 @@ public class FpDao extends AbstractDao {
             visit.setVisitId(getCursorValue(c, "visit_id"));
             visit.setParentVisitID(getCursorValue(c,"parent_visit_id"));
             visit.setVisitType(getCursorValue(c, "visit_type"));
-            visit.setDate(getCursorValueAsDate(c, "visit_date", getNativeFormsDateFormat()));
+            visit.setDate(getCursorValueAsDate(c, "visit_date"));
 
             return visit;
         };
@@ -142,7 +146,7 @@ public class FpDao extends AbstractDao {
 
     @Nullable
     public static Visit getLatestInjectionVisit(String baseEntityId, String fpMethod) {
-        String sql = "SELECT details " +
+        String sql = "SELECT  substr(details,7,4) || '-' || substr(details,4,2) || '-' || substr(details,1,2) details " +
                 " FROM visit_details vd " +
                 " INNER JOIN visits v on vd.visit_id = v.visit_id " +
                 " WHERE vd.visit_key = 'fp_refill_injectable' " +
@@ -160,9 +164,16 @@ public class FpDao extends AbstractDao {
     }
 
     private static DataMap<Visit> getInjectionVisitDataMap() {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+
         return c -> {
             Visit visit = new Visit();
-            visit.setDate(getCursorValueAsDate(c, "details", getNativeFormsDateFormat()));
+            try {
+                visit.setDate(sdf.parse(getCursorValue(c, "details")));
+
+            }
+            catch (Exception e){
+            }
             return visit;
         };
     }

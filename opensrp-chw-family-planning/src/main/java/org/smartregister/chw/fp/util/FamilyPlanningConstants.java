@@ -50,8 +50,8 @@ public interface FamilyPlanningConstants {
 
         String FP_POP = "POP";
         String FP_COC = "COC";
-        String FP_FEMALE_CONDOM = "Female condom";
-        String FP_MALE_CONDOM = "Male condom";
+        String FP_FEMALE_CONDOM = "Female Condom";
+        String FP_MALE_CONDOM = "Male Condom";
         String FP_INJECTABLE = "Injectable";
         String FP_IUCD = "IUCD";
         String FP_FEMALE_STERLIZATION = "Female sterilization";
