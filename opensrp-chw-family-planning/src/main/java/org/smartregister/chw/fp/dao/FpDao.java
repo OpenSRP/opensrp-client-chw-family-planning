@@ -1,9 +1,16 @@
 package org.smartregister.chw.fp.dao;
 
+import org.jetbrains.annotations.Nullable;
+import org.smartregister.chw.anc.domain.Visit;
+import org.smartregister.chw.fp.domain.FpAlertObject;
 import org.smartregister.chw.fp.domain.FpMemberObject;
 import org.smartregister.dao.AbstractDao;
 
+import java.text.SimpleDateFormat;
 import java.util.List;
+import java.util.Locale;
+
+import timber.log.Timber;
 
 public class FpDao extends AbstractDao {
 
@@ -82,5 +89,88 @@ public class FpDao extends AbstractDao {
             return null;
 
         return res.get(0);
+    }
+
+    @Nullable
+    public static List<FpAlertObject> getFpDetails(String baseEntityID) {
+        String sql = "select fp_method_accepted, no_pillcycles, fp_reg_date from ec_family_planning where base_entity_id = '" + baseEntityID + "'" +
+                "and is_closed is 0 and ecp = 1";
+
+        DataMap<FpAlertObject> dataMap = c -> new FpAlertObject(
+                getCursorValue(c, "fp_method_accepted"),
+                getCursorIntValue(c, "no_pillcycles"),
+                getCursorValueAsDate(c, "fp_reg_date", getNativeFormsDateFormat())
+        );
+        List<FpAlertObject> fpAlertObjects = readData(sql, dataMap);
+        if (fpAlertObjects.size() == 0) {
+            return null;
+        }
+        return fpAlertObjects;
+    }
+
+
+    @Nullable
+    public static Visit getLatestFpVisit(String baseEntityId, String entityType, String fpMethod) {
+        String sql = " SELECT visit_date, visit_id,visit_type, parent_visit_id " +
+                "FROM Visits v " +
+                "INNER JOIN ec_family_planning fp on fp.base_entity_id = v.base_entity_id " +
+                " WHERE v.base_entity_id = '" + baseEntityId + "' COLLATE NOCASE " +
+                " AND v.visit_type = '" + entityType + "' COLLATE NOCASE " +
+                " AND fp.fp_method_accepted = '" + fpMethod + "' COLLATE NOCASE " +
+                " AND strftime('%Y%d%m', (datetime(v.visit_date/1000, 'unixepoch')))  >= substr(fp.fp_start_date " +
+                ",7,4) || substr(fp.fp_start_date " +
+                ",4,2) || substr(fp.fp_start_date " +
+                ",1,2) " +
+                "ORDER BY v.visit_date DESC";
+
+        List<Visit> visit = AbstractDao.readData(sql, getVisitDataMap());
+        if (visit.size() == 0) {
+            return null;
+        }
+        return visit.get(0);
+    }
+
+    private static DataMap<Visit> getVisitDataMap() {
+        return c -> {
+            Visit visit = new Visit();
+            visit.setVisitId(getCursorValue(c, "visit_id"));
+            visit.setParentVisitID(getCursorValue(c, "parent_visit_id"));
+            visit.setVisitType(getCursorValue(c, "visit_type"));
+            visit.setDate(getCursorValueAsDate(c, "visit_date"));
+
+            return visit;
+        };
+    }
+
+
+    @Nullable
+    public static Visit getLatestInjectionVisit(String baseEntityId, String fpMethod) {
+        String sql = "SELECT  substr(details,7,4) || '-' || substr(details,4,2) || '-' || substr(details,1,2) details " +
+                " FROM visit_details vd " +
+                " INNER JOIN visits v on vd.visit_id = v.visit_id " +
+                " WHERE vd.visit_key = 'fp_refill_injectable' " +
+                " AND v.base_entity_id = '" + baseEntityId + "' COLLATE NOCASE " +
+                " AND strftime('%Y%d%m', (datetime(v.visit_date/1000, 'unixepoch'))) " +
+                " >= ( SELECT substr(fp_start_date,7,4) || substr(fp_start_date,4,2) || substr(fp_start_date,1,2) FROM ec_family_planning WHERE base_entity_id = '" + baseEntityId + "' COLLATE NOCASE  AND fp_method_accepted = '" + fpMethod + "' COLLATE NOCASE) " +
+                " ORDER BY vd.details DESC";
+
+        List<Visit> visit = AbstractDao.readData(sql, getInjectionVisitDataMap());
+        if (visit.size() == 0) {
+            return null;
+        }
+        return visit.get(0);
+    }
+
+    private static DataMap<Visit> getInjectionVisitDataMap() {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+        return c -> {
+            Visit visit = new Visit();
+            try {
+                visit.setDate(sdf.parse(getCursorValue(c, "details")));
+            } catch (Exception e) {
+                Timber.e(e.toString());
+            }
+            return visit;
+        };
     }
 }

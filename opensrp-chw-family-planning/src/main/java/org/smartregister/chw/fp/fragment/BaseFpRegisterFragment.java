@@ -3,6 +3,7 @@ package org.smartregister.chw.fp.fragment;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import org.smartregister.chw.fp.activity.BaseFpFollowUpVisitActivity;
 import org.smartregister.chw.fp.contract.BaseFpRegisterFragmentContract;
 import org.smartregister.chw.fp.model.BaseFpRegisterFragmentModel;
 import org.smartregister.chw.fp.presenter.BaseFpRegisterFragmentPresenter;
@@ -126,7 +127,7 @@ public class BaseFpRegisterFragment extends BaseRegisterFragment implements Base
     }
 
     protected void openFollowUpVisit(CommonPersonObjectClient client) {
-//        implement
+        BaseFpFollowUpVisitActivity.startMe(getActivity(), client.getCaseId(), false);
     }
 
     @Override
