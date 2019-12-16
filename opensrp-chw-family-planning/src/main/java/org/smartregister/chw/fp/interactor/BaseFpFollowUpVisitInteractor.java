@@ -40,8 +40,7 @@ public class BaseFpFollowUpVisitInteractor extends BaseAncHomeVisitInteractor {
             // add anc date obs and last
             List<Object> list = new ArrayList<>();
             list.add(new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date()));
-            //baseEvent.addObs(new Obs("concept", "text", "pnc_visit_date", "",
-            //  list, new ArrayList<>(), null, "pnc_visit_date"));
+
         }
     }
 
@@ -50,8 +49,6 @@ public class BaseFpFollowUpVisitInteractor extends BaseAncHomeVisitInteractor {
         if (baseEvent != null) {
             List<Object> mother_id = new ArrayList<>();
             mother_id.add(motherID);
-            //baseEvent.addObs(new Obs("concept", "text", "pnc_mother_id", "",
-            //     mother_id, new ArrayList<>(), null, "pnc_mother_id"));
         }
     }
 

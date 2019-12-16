@@ -128,7 +128,6 @@ public class BaseFpRegisterFragment extends BaseRegisterFragment implements Base
 
     protected void openFollowUpVisit(CommonPersonObjectClient client) {
         BaseFpFollowUpVisitActivity.startMe(getActivity(), client.getCaseId(), false);
-
     }
 
     @Override
