@@ -12,6 +12,7 @@
     <string name="record_fp_followup">Record family planning follow-up visit</string>
     <string name="fp_visit_done">Family planning follow-up visit done</string>
     <string name="not_visiting_this_month">Not visiting this month</string>
+    <string name="last_visit">Last visit</string>
     <string name="last_visit_n_days_ago">Last visit %1$s ago</string>
     <string name="less_than_twenty_four">less than 24 hrs</string>
     <string name="days">days</string>

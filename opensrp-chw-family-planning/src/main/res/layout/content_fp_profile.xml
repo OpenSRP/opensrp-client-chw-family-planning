@@ -46,7 +46,8 @@
                     android:layout_marginLeft="10dp"
                     android:layout_toRightOf="@+id/tick_image"
                     android:gravity="center_horizontal"
-                    android:text="Last visit today"
+                    android:text="@string/last_visit"
+                    android:visibility="gone"
                     android:textAppearance="@style/TextAppearance.AppCompat.Large"
                     android:textColor="@android:color/black" />
 
@@ -58,7 +59,7 @@
                     android:layout_below="@+id/textview_last_vist_day"
                     android:layout_marginLeft="10dp"
                     android:layout_toRightOf="@+id/tick_image"
-                    android:text="view_medical_history"
+                    android:text="@string/view_medical_history"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                     android:textColor="@color/light_grey_text" />
 

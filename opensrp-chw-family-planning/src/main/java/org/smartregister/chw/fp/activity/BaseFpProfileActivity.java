@@ -233,8 +233,7 @@ public class BaseFpProfileActivity extends BaseProfileActivity implements BaseFp
         if (lastVisitDate == null)
             return;
 
-        rlLastVisitLayout.setVisibility(View.VISIBLE);
-        lastVisitRow.setVisibility(View.VISIBLE);
+        tvLastVisitDay.setVisibility(View.VISIBLE);
         numOfDays = Days.daysBetween(new DateTime(lastVisitDate).toLocalDate(), new DateTime().toLocalDate()).getDays();
         tvLastVisitDay.setText(getString(R.string.last_visit_n_days_ago, (numOfDays <= 1) ? getString(R.string.less_than_twenty_four) : numOfDays + " " + getString(R.string.days)));
     }
@@ -291,6 +290,7 @@ public class BaseFpProfileActivity extends BaseProfileActivity implements BaseFp
     public void updateHasMedicalHistory(boolean hasMedicalHistory) {
         showProgressBar(false);
         rlLastVisitLayout.setVisibility(hasMedicalHistory ? View.VISIBLE : View.GONE);
+        lastVisitRow.setVisibility(hasMedicalHistory ? View.VISIBLE : View.GONE);
     }
 
     @Override
