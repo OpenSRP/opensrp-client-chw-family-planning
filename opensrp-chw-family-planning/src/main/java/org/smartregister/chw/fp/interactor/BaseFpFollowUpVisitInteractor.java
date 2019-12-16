@@ -54,7 +54,7 @@ public class BaseFpFollowUpVisitInteractor extends BaseAncHomeVisitInteractor {
 
     @Override
     protected String getEncounterType() {
-        return FamilyPlanningConstants.EVENT_TYPE.FP_FOLLOW_UP_VISIT;
+        return FamilyPlanningConstants.EventType.FP_FOLLOW_UP_VISIT;
     }
 
     @Override
