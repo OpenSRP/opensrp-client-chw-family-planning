@@ -14,6 +14,10 @@ public interface FamilyPlanningConstants {
 
     interface EventType {
         String FAMILY_PLANNING_REGISTRATION = "Family Planning Registration";
+        String FP_FOLLOW_UP_VISIT = "Fp Follow Up Visit";
+        String FP_FOLLOW_UP_VISIT_RESUPPLY = "Fp Follow Up Visit Resupply";
+        String FP_FOLLOW_UP_VISIT_COUNSELLING = "Fp Follow Up Visit Counselling";
+        String FP_FOLLOW_UP_VISIT_SIDE_EFFECTS = "Fp Follow Up Visit Side Effects";
     }
 
     interface Forms {
@@ -50,8 +54,8 @@ public interface FamilyPlanningConstants {
 
         String FP_POP = "POP";
         String FP_COC = "COC";
-        String FP_FEMALE_CONDOM = "Female Condom";
-        String FP_MALE_CONDOM = "Male Condom";
+        String FP_FEMALE_CONDOM = "Female condom";
+        String FP_MALE_CONDOM = "Male condom";
         String FP_INJECTABLE = "Injectable";
         String FP_IUCD = "IUCD";
         String FP_FEMALE_STERLIZATION = "Female sterilization";
@@ -65,13 +69,6 @@ public interface FamilyPlanningConstants {
         String REGISTRATION_PAYLOAD_TYPE = "REGISTRATION";
         String CHANGE_METHOD_PAYLOAD_TYPE = "CHANGE_METHOD";
         String DOB = "DOB";
-    }
-
-    interface EVENT_TYPE {
-        String FP_FOLLOW_UP_VISIT = "Fp Follow Up Visit";
-        String FP_FOLLOW_UP_VISIT_RESUPPLY = "Fp Follow Up Visit Resupply";
-        String FP_FOLLOW_UP_VISIT_COUNSELLING = "Fp Follow Up Visit Counselling";
-        String FP_FOLLOW_UP_VISIT_SIDE_EFFECTS = "Fp Follow Up Visit Side Effects";
     }
 
 }
