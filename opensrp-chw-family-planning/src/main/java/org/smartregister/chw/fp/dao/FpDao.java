@@ -128,14 +128,13 @@ public class FpDao extends AbstractDao {
             return null;
         }
         return visit.get(0);
-
     }
 
     private static DataMap<Visit> getVisitDataMap() {
         return c -> {
             Visit visit = new Visit();
             visit.setVisitId(getCursorValue(c, "visit_id"));
-            visit.setParentVisitID(getCursorValue(c,"parent_visit_id"));
+            visit.setParentVisitID(getCursorValue(c, "parent_visit_id"));
             visit.setVisitType(getCursorValue(c, "visit_type"));
             visit.setDate(getCursorValueAsDate(c, "visit_date"));
 
@@ -160,19 +159,16 @@ public class FpDao extends AbstractDao {
             return null;
         }
         return visit.get(0);
-
     }
 
     private static DataMap<Visit> getInjectionVisitDataMap() {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
-
         return c -> {
             Visit visit = new Visit();
             try {
                 visit.setDate(sdf.parse(getCursorValue(c, "details")));
-
-            }
-            catch (Exception e){
+            } catch (Exception e) {
+                Timber.e(e.toString());
             }
             return visit;
         };
