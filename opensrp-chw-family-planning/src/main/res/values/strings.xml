@@ -43,4 +43,39 @@
     <string name="fp_visit_day_due_today">DUE TODAY</string>
     <string name="fp_visit_day_overdue">%s DAYS OVERDUE</string>
     <string name="fp_visit_day_overdue_today">OVERDUE TODAY</string>
+    <string name="fp_follow_up_visit">Fp Follow Up Visit</string>
+    <string name="fp_side_effects">Side effects</string>
+    <string name="counseling">Counseling</string>
+    <string name="resupply">Resupply %s</string>
+    <string name="next_health_facility_visit">Next health facility visit</string>
+    <string name="no_of_condoms">No. of Condoms:</string>
+    <string name="no_of_pill_cycles">No. of pill cycles:</string>
+    <string name="date_of_next_injection">Date of next injection:</string>
+    <string name="side_effects">Side-effects:</string>
+    <string name="action">Action:</string>
+    <!--counselling -->
+    <string name="yes">yes</string>
+    <string name="no">no</string>
+    <!-- side effects -->
+    <string name="allergic_reactions">Allergic reactions</string>
+    <string name="heavy_bleading">Heavy bleeding</string>
+    <string name="irregular_period">Irregular periods</string>
+    <string name="others">Others</string>
+    <string name="none">None</string>
+    <string name="severe_pain_inside_the_vagina">Severe pain inside the vagina after IUD was put in</string>
+    <string name="cramps_or_back_ache">Cramping or backaches for a few days after the IUD is put in</string>
+    <string name="spotting">Spotting between periods and/or irregular periods</string>
+    <string name="heavier_period">Heavier periods and worse menstrual cramps </string>
+    <string name="IUCD_explusion">IUCD explusion</string>
+    <string name="incisional_bleeding">Incisional bleeding</string>
+    <string name="pus_discharge_from_incision">Pus/Discharge from incision</string>
+    <string name="swollen_around_the_incision">Swollen around the incision</string>
+   <!--action taken -->
+    <string name="managed">Managed</string>
+    <string name="Referred">Referred</string>
+    <string name="no_action_taken"></string>
+
+
+    
+
 </resources>
