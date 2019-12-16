@@ -46,7 +46,7 @@ public class BaseFpProfileActivity extends BaseProfileActivity implements BaseFp
     private TextView tvGender;
     private TextView tvLocation;
     private TextView tvUniqueID;
-    private View lastVisitRow;
+    protected View lastVisitRow;
     private View overDueRow;
     private View familyRow;
     protected LinearLayout recordFollowUpVisitLayout;
@@ -55,9 +55,11 @@ public class BaseFpProfileActivity extends BaseProfileActivity implements BaseFp
     protected TextView tvEditVisit;
     protected TextView tvUndo;
     protected TextView tvVisitDone;
-    private RelativeLayout rlLastVisit;
+    protected RelativeLayout rlLastVisitLayout;
     private RelativeLayout rlUpcomingServices;
     private RelativeLayout rlFamilyServicesDue;
+    protected TextView tvLastVisitDay;
+    protected TextView tvViewMedicalHistory;
     private TextView tvUpComingServices;
     private TextView tvFamilyStatus;
     protected TextView tvRecordFpFollowUp;
@@ -117,7 +119,9 @@ public class BaseFpProfileActivity extends BaseProfileActivity implements BaseFp
         familyRow = findViewById(R.id.view_family_row);
         tvUpComingServices = findViewById(R.id.textview_name_due);
         tvFamilyStatus = findViewById(R.id.textview_family_has);
-        rlLastVisit = findViewById(R.id.rlLastVisit);
+        rlLastVisitLayout = findViewById(R.id.rl_last_visit_layout);
+        tvLastVisitDay = findViewById(R.id.textview_last_vist_day);
+        tvViewMedicalHistory = findViewById(R.id.textview_medical_history);
         rlUpcomingServices = findViewById(R.id.rlUpcomingServices);
         rlFamilyServicesDue = findViewById(R.id.rlFamilyServicesDue);
         progressBar = findViewById(R.id.progress_bar);
@@ -131,7 +135,7 @@ public class BaseFpProfileActivity extends BaseProfileActivity implements BaseFp
         tvUndo.setOnClickListener(this);
         tvEditVisit.setOnClickListener(this);
         tvRecordFpFollowUp.setOnClickListener(this);
-        findViewById(R.id.rlLastVisit).setOnClickListener(this);
+        findViewById(R.id.rl_last_visit_layout).setOnClickListener(this);
         findViewById(R.id.rlUpcomingServices).setOnClickListener(this);
         findViewById(R.id.rlFamilyServicesDue).setOnClickListener(this);
     }
@@ -168,7 +172,7 @@ public class BaseFpProfileActivity extends BaseProfileActivity implements BaseFp
         int id = view.getId();
         if (id == R.id.title_layout) {
             onBackPressed();
-        } else if (id == R.id.rlLastVisit) {
+        } else if (id == R.id.rl_last_visit_layout) {
             this.openMedicalHistory();
         } else if (id == R.id.rlUpcomingServices) {
             this.openUpcomingServices();
@@ -229,9 +233,9 @@ public class BaseFpProfileActivity extends BaseProfileActivity implements BaseFp
         if (lastVisitDate == null)
             return;
 
-        lastVisitRow.setVisibility(View.VISIBLE);
-        rlLastVisit.setVisibility(View.VISIBLE);
+        tvLastVisitDay.setVisibility(View.VISIBLE);
         numOfDays = Days.daysBetween(new DateTime(lastVisitDate).toLocalDate(), new DateTime().toLocalDate()).getDays();
+        tvLastVisitDay.setText(getString(R.string.last_visit_n_days_ago, (numOfDays <= 1) ? getString(R.string.less_than_twenty_four) : numOfDays + " " + getString(R.string.days)));
     }
 
     @Override
@@ -285,7 +289,8 @@ public class BaseFpProfileActivity extends BaseProfileActivity implements BaseFp
     @Override
     public void updateHasMedicalHistory(boolean hasMedicalHistory) {
         showProgressBar(false);
-        rlLastVisit.setVisibility(hasMedicalHistory ? View.VISIBLE : View.GONE);
+        rlLastVisitLayout.setVisibility(hasMedicalHistory ? View.VISIBLE : View.GONE);
+        lastVisitRow.setVisibility(hasMedicalHistory ? View.VISIBLE : View.GONE);
     }
 
     @Override
