@@ -10,13 +10,14 @@ import org.smartregister.clientandeventmodel.Event;
 import org.smartregister.domain.tag.FormTag;
 import org.smartregister.repository.AllSharedPreferences;
 import org.smartregister.util.FormUtils;
+import org.smartregister.util.JsonFormUtils;
 
 import timber.log.Timber;
 
 
 public class FpJsonFormUtils extends org.smartregister.util.JsonFormUtils {
     public static final String METADATA = "metadata";
-    private static String ENCOUNTER_TYPE = "encounter_type";
+    public static String ENCOUNTER_TYPE = "encounter_type";
 
     public static Triple<Boolean, JSONObject, JSONArray> validateParameters(String jsonString) {
 
@@ -38,8 +39,21 @@ public class FpJsonFormUtils extends org.smartregister.util.JsonFormUtils {
 
         JSONObject jsonForm = registrationFormParams.getMiddle();
         JSONArray fields = registrationFormParams.getRight();
-        String entityId = getString(jsonForm, ENTITY_ID);
-        String encounter_type = jsonForm.optString(ENCOUNTER_TYPE);
+        String entityId = getString(jsonForm, FpJsonFormUtils.ENTITY_ID);
+        String encounter_type = jsonForm.optString(FpJsonFormUtils.ENCOUNTER_TYPE);
+        if (FamilyPlanningConstants.EventType.FAMILY_PLANNING_CHANGE_METHOD.equals(encounter_type)) {
+            JSONObject formObj;
+            for (int i = 0; i < fields.length(); i++) {
+                try {
+                    formObj = fields.getJSONObject(i);
+                    if (StringUtils.isEmpty(formObj.optString(JsonFormUtils.VALUE))) {
+                        jsonForm.remove(formObj.optString(JsonFormUtils.KEY));
+                    }
+                } catch (JSONException e) {
+                    Timber.e(e);
+                }
+            }
+        }
 
         return org.smartregister.util.JsonFormUtils.createEvent(fields, getJSONObject(jsonForm, METADATA), formTag(allSharedPreferences), entityId, getString(jsonForm, ENCOUNTER_TYPE), encounter_type);
     }
