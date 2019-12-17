@@ -83,4 +83,9 @@ public class FpDao extends AbstractDao {
 
         return res.get(0);
     }
+
+    public static void closeFpMemberFromRegister(String baseEntityID) {
+        String sql = "update ec_family_planning set is_closed = 1 where base_entity_id = '" + baseEntityID + "'";
+        updateDB(sql);
+    }
 }
