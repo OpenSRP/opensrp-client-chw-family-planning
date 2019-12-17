@@ -92,6 +92,11 @@ public class BaseFpRegisterActivity extends BaseRegisterActivity implements Base
     }
 
     @Override
+    public void onFormSaved() {
+        hideProgressDialog();
+    }
+
+    @Override
     protected void onActivityResultExtended(int requestCode, int resultCode, Intent data) {
         if (requestCode == FamilyPlanningConstants.REQUEST_CODE_GET_JSON && resultCode == RESULT_OK) {
             presenter().saveForm(data.getStringExtra(FamilyPlanningConstants.JsonFromExtra.JSON));
@@ -159,7 +164,6 @@ public class BaseFpRegisterActivity extends BaseRegisterActivity implements Base
             try {
                 String jsonString = data.getStringExtra(FamilyPlanningConstants.JsonFromExtra.JSON);
                 JSONObject form = new JSONObject(jsonString);
-//                process family planning form
                 presenter().saveForm(form.toString());
             } catch (JSONException e) {
                 Timber.e(e);
