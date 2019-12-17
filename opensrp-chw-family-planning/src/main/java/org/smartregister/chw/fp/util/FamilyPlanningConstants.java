@@ -16,6 +16,10 @@ public interface FamilyPlanningConstants {
         String FAMILY_PLANNING_REGISTRATION = "Family Planning Registration";
         String FAMILY_PLANNING_CHANGE_METHOD = "Family Planning Change Method";
         String FP_HOME_VISIT = "FP Home Visit";
+        String FP_FOLLOW_UP_VISIT = "Fp Follow Up Visit";
+        String FP_FOLLOW_UP_VISIT_RESUPPLY = "Fp Follow Up Visit Resupply";
+        String FP_FOLLOW_UP_VISIT_COUNSELLING = "Fp Follow Up Visit Counselling";
+        String FP_FOLLOW_UP_VISIT_SIDE_EFFECTS = "Fp Follow Up Visit Side Effects";
     }
 
     interface Forms {
