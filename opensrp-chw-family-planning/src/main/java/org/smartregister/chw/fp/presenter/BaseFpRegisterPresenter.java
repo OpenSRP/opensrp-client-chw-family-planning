@@ -1,5 +1,6 @@
 package org.smartregister.chw.fp.presenter;
 
+import android.support.annotation.Nullable;
 import android.util.Log;
 
 import org.apache.commons.lang3.StringUtils;
@@ -17,7 +18,6 @@ import org.smartregister.util.JsonFormUtils;
 import java.lang.ref.WeakReference;
 import java.util.List;
 
-import io.reactivex.annotations.Nullable;
 import timber.log.Timber;
 
 public class BaseFpRegisterPresenter implements BaseFpRegisterContract.Presenter, BaseFpRegisterContract.InteractorCallBack {
