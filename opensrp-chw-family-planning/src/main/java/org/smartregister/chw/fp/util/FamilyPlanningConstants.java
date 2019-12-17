@@ -14,6 +14,7 @@ public interface FamilyPlanningConstants {
 
     interface EventType {
         String FAMILY_PLANNING_REGISTRATION = "Family Planning Registration";
+        String FAMILY_PLANNING_CHANGE_METHOD = "Family Planning Change Method";
         String FP_FOLLOW_UP_VISIT = "Fp Follow Up Visit";
         String FP_FOLLOW_UP_VISIT_RESUPPLY = "Fp Follow Up Visit Resupply";
         String FP_FOLLOW_UP_VISIT_COUNSELLING = "Fp Follow Up Visit Counselling";
@@ -51,6 +52,7 @@ public interface FamilyPlanningConstants {
         String FP_METHOD_ACCEPTED = "fp_method_accepted";
         String FP_FP_START_DATE = "fp_start_date";
         String FP_PILL_CYCLES = "no_pillcycles";
+        String REASON_STOP_FP_CHW = "reason_stop_fp_chw";
 
         String FP_POP = "POP";
         String FP_COC = "COC";

@@ -22,6 +22,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.json.JSONObject;
 import org.smartregister.chw.fp.FpLibrary;
 import org.smartregister.chw.fp.contract.BaseFpCallDialogContract;
+import org.smartregister.chw.fp.dao.FpDao;
 import org.smartregister.chw.fp.domain.FpMemberObject;
 import org.smartregister.clientandeventmodel.Event;
 import org.smartregister.fp.R;
@@ -145,4 +146,7 @@ public class FpUtil {
         return R.mipmap.ic_member;
     }
 
+    public static void processChangeFpMethod(String baseEntityId) {
+        FpDao.closeFpMemberFromRegister(baseEntityId);
+    }
 }

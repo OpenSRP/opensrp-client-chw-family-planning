@@ -16,7 +16,7 @@ import timber.log.Timber;
 
 public class FpJsonFormUtils extends org.smartregister.util.JsonFormUtils {
     public static final String METADATA = "metadata";
-    private static String ENCOUNTER_TYPE = "encounter_type";
+    public static String ENCOUNTER_TYPE = "encounter_type";
 
     public static Triple<Boolean, JSONObject, JSONArray> validateParameters(String jsonString) {
 
@@ -38,8 +38,8 @@ public class FpJsonFormUtils extends org.smartregister.util.JsonFormUtils {
 
         JSONObject jsonForm = registrationFormParams.getMiddle();
         JSONArray fields = registrationFormParams.getRight();
-        String entityId = getString(jsonForm, ENTITY_ID);
-        String encounter_type = jsonForm.optString(ENCOUNTER_TYPE);
+        String entityId = getString(jsonForm, FpJsonFormUtils.ENTITY_ID);
+        String encounter_type = jsonForm.optString(FpJsonFormUtils.ENCOUNTER_TYPE);
 
         return org.smartregister.util.JsonFormUtils.createEvent(fields, getJSONObject(jsonForm, METADATA), formTag(allSharedPreferences), entityId, getString(jsonForm, ENCOUNTER_TYPE), encounter_type);
     }
