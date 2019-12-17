@@ -10,7 +10,6 @@ import org.smartregister.clientandeventmodel.Event;
 import org.smartregister.domain.tag.FormTag;
 import org.smartregister.repository.AllSharedPreferences;
 import org.smartregister.util.FormUtils;
-import org.smartregister.util.JsonFormUtils;
 
 import timber.log.Timber;
 
