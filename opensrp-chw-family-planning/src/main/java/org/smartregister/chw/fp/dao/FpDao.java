@@ -174,11 +174,11 @@ public class FpDao extends AbstractDao {
         };
     }
 
-    public static Integer getFpWomenCount(String baseEntityId){
+    public static Integer getFpWomenCount(String familyBaseEntityId){
         String sql = "SELECT count(fp.base_entity_id) count " +
                 "FROM ec_family_planning fp " +
                 "INNER Join ec_family_member fm on fm.base_entity_id = fp.base_entity_id " +
-                "WHERE fm.relational_id = '" + baseEntityId + "' COLLATE NOCASE " +
+                "WHERE fm.relational_id = '" + familyBaseEntityId + "' COLLATE NOCASE " +
                 "AND fp.is_closed = 0 " +
                 "AND fp.ecp = 1 ";
 
