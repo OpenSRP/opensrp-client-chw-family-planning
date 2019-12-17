@@ -11,6 +11,8 @@ public interface BaseFpRegisterContract {
         Presenter presenter();
 
         Form getFormConfig();
+
+        void onFormSaved();
     }
 
     interface Presenter extends BaseRegisterContract.Presenter {
