@@ -41,19 +41,6 @@ public class FpJsonFormUtils extends org.smartregister.util.JsonFormUtils {
         JSONArray fields = registrationFormParams.getRight();
         String entityId = getString(jsonForm, FpJsonFormUtils.ENTITY_ID);
         String encounter_type = jsonForm.optString(FpJsonFormUtils.ENCOUNTER_TYPE);
-        if (FamilyPlanningConstants.EventType.FAMILY_PLANNING_CHANGE_METHOD.equals(encounter_type)) {
-            JSONObject formObj;
-            for (int i = 0; i < fields.length(); i++) {
-                try {
-                    formObj = fields.getJSONObject(i);
-                    if (StringUtils.isEmpty(formObj.optString(JsonFormUtils.VALUE))) {
-                        jsonForm.remove(formObj.optString(JsonFormUtils.KEY));
-                    }
-                } catch (JSONException e) {
-                    Timber.e(e);
-                }
-            }
-        }
 
         return org.smartregister.util.JsonFormUtils.createEvent(fields, getJSONObject(jsonForm, METADATA), formTag(allSharedPreferences), entityId, getString(jsonForm, ENCOUNTER_TYPE), encounter_type);
     }
