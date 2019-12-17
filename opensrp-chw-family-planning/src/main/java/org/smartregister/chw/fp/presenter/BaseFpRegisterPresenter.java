@@ -17,6 +17,7 @@ import org.smartregister.util.JsonFormUtils;
 import java.lang.ref.WeakReference;
 import java.util.List;
 
+import io.reactivex.annotations.Nullable;
 import timber.log.Timber;
 
 public class BaseFpRegisterPresenter implements BaseFpRegisterContract.Presenter, BaseFpRegisterContract.InteractorCallBack {
@@ -55,7 +56,8 @@ public class BaseFpRegisterPresenter implements BaseFpRegisterContract.Presenter
     @Override
     public void saveForm(String jsonString) {
         try {
-            getView().showProgressDialog(R.string.saving_dialog_title);
+            if (getView() != null)
+                getView().showProgressDialog(R.string.saving_dialog_title);
             interactor.saveRegistration(jsonString, this);
         } catch (Exception e) {
             Timber.e(TAG, Log.getStackTraceString(e));
@@ -64,8 +66,9 @@ public class BaseFpRegisterPresenter implements BaseFpRegisterContract.Presenter
 
     @Override
     public void onRegistrationSaved() {
-        getView().hideProgressDialog();
-
+        if (getView() != null) {
+            getView().onFormSaved();
+        }
     }
 
     @Override
@@ -88,6 +91,7 @@ public class BaseFpRegisterPresenter implements BaseFpRegisterContract.Presenter
 //        implement
     }
 
+    @Nullable
     private BaseFpRegisterContract.View getView() {
         if (viewReference != null)
             return viewReference.get();
