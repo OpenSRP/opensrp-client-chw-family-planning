@@ -62,8 +62,8 @@ public class BaseFpRegisterFragmentPresenter implements BaseFpRegisterFragmentCo
     public void initializeQueries(String mainCondition) {
         String tableName = FamilyPlanningConstants.DBConstants.FAMILY_PLANNING_TABLE;
 
-        String countSelect = model.countSelect(tableName, mainCondition);
-        String mainSelect = model.mainSelect(tableName, mainCondition);
+        String countSelect = model.countSelect(tableName, "");
+        String mainSelect = model.mainSelect(tableName, "");
 
         getView().initializeQueryParams(tableName, countSelect, mainSelect);
         getView().initializeAdapter(visibleColumns);
