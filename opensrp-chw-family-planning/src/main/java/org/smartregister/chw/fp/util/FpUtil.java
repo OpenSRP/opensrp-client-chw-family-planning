@@ -18,20 +18,28 @@ import android.text.Html;
 import android.text.Spanned;
 import android.widget.Toast;
 
+import net.sqlcipher.database.SQLiteDatabase;
+
 import org.apache.commons.lang3.StringUtils;
+import org.json.JSONException;
 import org.json.JSONObject;
 import org.smartregister.chw.fp.FpLibrary;
 import org.smartregister.chw.fp.contract.BaseFpCallDialogContract;
+import org.smartregister.chw.fp.dao.FpDao;
 import org.smartregister.chw.fp.domain.FpMemberObject;
 import org.smartregister.clientandeventmodel.Event;
+import org.smartregister.domain.db.EventClient;
 import org.smartregister.fp.R;
 import org.smartregister.repository.AllSharedPreferences;
 import org.smartregister.repository.BaseRepository;
 import org.smartregister.sync.ClientProcessorForJava;
 import org.smartregister.sync.helper.ECSyncHelper;
 import org.smartregister.util.PermissionUtils;
+import org.smartregister.util.Utils;
 
 import java.util.Date;
+import java.util.List;
+import java.util.Map;
 
 import timber.log.Timber;
 
@@ -143,6 +151,11 @@ public class FpUtil {
 
     public static int getMemberProfileImageResourceIDentifier() {
         return R.mipmap.ic_member;
+    }
+
+    public static void processChangeFpMethod(String baseEntityId) {
+//        Utils.startAsyncTask(new AsyncTasks.CloseFpMemberRecord(baseEntityId), null);
+        FpDao.closeFpMemberFromRegister(baseEntityId);
     }
 
 }
