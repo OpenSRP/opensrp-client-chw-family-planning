@@ -93,7 +93,7 @@ public class FpDao extends AbstractDao {
 
     @Nullable
     public static List<FpAlertObject> getFpDetails(String baseEntityID) {
-        String sql = "select fp_method_accepted, no_pillcycles, fp_reg_date from ec_family_planning where base_entity_id = '" + baseEntityID + "'" +
+        String sql = "select fp_method_accepted, no_pillcycles, fp_reg_date from ec_family_planning where base_entity_id = '" + baseEntityID + "' " +
                 "and is_closed is 0 and ecp = 1";
 
         DataMap<FpAlertObject> dataMap = c -> new FpAlertObject(
@@ -174,6 +174,22 @@ public class FpDao extends AbstractDao {
         };
     }
 
+    public static Integer getFpWomenCount(String familyBaseEntityId){
+        String sql = "SELECT count(fp.base_entity_id) count " +
+                "FROM ec_family_planning fp " +
+                "INNER Join ec_family_member fm on fm.base_entity_id = fp.base_entity_id " +
+                "WHERE fm.relational_id = '" + familyBaseEntityId + "' COLLATE NOCASE " +
+                "AND fp.is_closed = 0 " +
+                "AND fp.ecp = 1 ";
+
+        DataMap<Integer> dataMap = cursor -> getCursorIntValue(cursor, "count");
+
+        List<Integer> res = readData(sql, dataMap);
+        if (res == null || res.size() == 0)
+            return null;
+
+        return res.get(0);
+    }
     public static void closeFpMemberFromRegister(String baseEntityID) {
         String sql = "update ec_family_planning set is_closed = 1 where base_entity_id = '" + baseEntityID + "'";
         updateDB(sql);
