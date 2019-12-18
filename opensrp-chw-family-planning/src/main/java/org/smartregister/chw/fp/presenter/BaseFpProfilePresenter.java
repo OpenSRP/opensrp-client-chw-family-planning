@@ -41,9 +41,9 @@ public class BaseFpProfilePresenter implements BaseProfileContract, BaseFpProfil
     }
 
     @Override
-    public void refreshMedicalHistory(boolean hasHistory) {
+    public void refreshMedicalHistory(Date lastVisitDate) {
         if (getView() != null) {
-            getView().updateHasMedicalHistory(hasHistory);
+            getView().updateHasMedicalHistory(lastVisitDate);
         }
     }
 
@@ -52,13 +52,6 @@ public class BaseFpProfilePresenter implements BaseProfileContract, BaseFpProfil
         if (getView() != null) {
             getView().setProfileViewDetails(fpMemberObject);
             getView().showProgressBar(false);
-        }
-    }
-
-    @Override
-    public void refreshLastVisit(Date lastVisitDate) {
-        if (getView() != null) {
-            getView().setLastVisit(lastVisitDate);
         }
     }
 

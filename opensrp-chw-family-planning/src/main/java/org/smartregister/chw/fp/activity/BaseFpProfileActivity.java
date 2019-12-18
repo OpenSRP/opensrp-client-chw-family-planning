@@ -229,16 +229,6 @@ public class BaseFpProfileActivity extends BaseProfileActivity implements BaseFp
     }
 
     @Override
-    public void setLastVisit(Date lastVisitDate) {
-        if (lastVisitDate == null)
-            return;
-
-        tvLastVisitDay.setVisibility(View.VISIBLE);
-        numOfDays = Days.daysBetween(new DateTime(lastVisitDate).toLocalDate(), new DateTime().toLocalDate()).getDays();
-        tvLastVisitDay.setText(getString(R.string.last_visit_n_days_ago, (numOfDays <= 1) ? getString(R.string.less_than_twenty_four) : numOfDays + " " + getString(R.string.days)));
-    }
-
-    @Override
     public void setUpComingServicesStatus(String service, AlertStatus status, Date date) {
         showProgressBar(false);
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd MMM", Locale.getDefault());
@@ -287,10 +277,16 @@ public class BaseFpProfileActivity extends BaseProfileActivity implements BaseFp
     }
 
     @Override
-    public void updateHasMedicalHistory(boolean hasMedicalHistory) {
+    public void updateHasMedicalHistory(Date lastVisitDate) {
         showProgressBar(false);
-        rlLastVisitLayout.setVisibility(hasMedicalHistory ? View.VISIBLE : View.GONE);
-        lastVisitRow.setVisibility(hasMedicalHistory ? View.VISIBLE : View.GONE);
+        if (lastVisitDate == null)
+            return;
+
+        tvLastVisitDay.setVisibility(View.VISIBLE);
+        numOfDays = Days.daysBetween(new DateTime(lastVisitDate).toLocalDate(), new DateTime().toLocalDate()).getDays();
+        tvLastVisitDay.setText(getString(R.string.last_visit_n_days_ago, (numOfDays <= 1) ? getString(R.string.less_than_twenty_four) : numOfDays + " " + getString(R.string.days)));
+        rlLastVisitLayout.setVisibility(View.VISIBLE);
+        lastVisitRow.setVisibility(View.VISIBLE);
     }
 
     @Override
