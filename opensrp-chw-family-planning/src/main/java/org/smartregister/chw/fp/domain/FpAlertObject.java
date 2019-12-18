@@ -5,9 +5,6 @@ public class FpAlertObject {
     private Integer fpPillCycles;
     private String fpStartDate;
 
-    public FpAlertObject() {
-    }
-
     public String getFpMethod() {
         return fpMethod;
     }
