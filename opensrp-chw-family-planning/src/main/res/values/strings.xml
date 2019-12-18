@@ -5,7 +5,7 @@
     <string name="add_family">Add family</string>
     <string name="job_aids">Job Aids</string>
     <string name="error_unable_to_start_form">An error occurred when starting the form</string>
-    <string name="return_to_previous_page">Return to all family planning women</string>
+    <string name="fp_return_to_previous_page">Return to all family planning women</string>
     <string name="interpunct" translatable="false">\u00b7</string>
     <string name="family_head">FAMILY HEAD</string>
     <string name="primary_care_giver">PRIMARY CARE GIVER</string>
@@ -75,6 +75,18 @@
     <string name="managed">Managed</string>
     <string name="Referred">Referred</string>
     <string name="no_action_taken"></string>
+
+    <!--Family planning fp start dates row-->
+    <string name="male_condom_start_date_note">Male Condom started on</string>
+    <string name="female_condom_start_date_note">Female Condom started on</string>
+    <string name="coc_start_date_note">COC started on</string>
+    <string name="pop_start_date_note">POP started on</string>
+    <string name="injectable_start_date_note">Injectable last injection on</string>
+    <string name="implanon_date_note">Implanon - NXT insertion on</string>
+    <string name="fp_start_implant_jad_note">Jadelle insertion on</string>
+    <string name="fp_start_female_ster_note">Female Sterilization on</string>
+    <string name="fp_start_male_ster_note">Male Sterilization on</string>
+    <string name="fp_start_iucd_insertion_note">Date of IUCD insertion</string>
 
 
     
