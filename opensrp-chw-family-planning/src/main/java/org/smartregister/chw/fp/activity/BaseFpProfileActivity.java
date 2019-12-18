@@ -38,6 +38,7 @@ import java.util.Date;
 import java.util.Locale;
 
 import de.hdodenhof.circleimageview.CircleImageView;
+import timber.log.Timber;
 
 public class BaseFpProfileActivity extends BaseProfileActivity implements BaseFpProfileContract.View {
     private ProgressBar progressBar;
@@ -63,6 +64,8 @@ public class BaseFpProfileActivity extends BaseProfileActivity implements BaseFp
     private TextView tvUpComingServices;
     private TextView tvFamilyStatus;
     protected TextView tvRecordFpFollowUp;
+    protected TextView tvFpMethodRow;
+
 
     private ImageRenderHelper imageRenderHelper;
     protected BaseFpProfileContract.Presenter fpProfilePresenter;
@@ -131,6 +134,7 @@ public class BaseFpProfileActivity extends BaseProfileActivity implements BaseFp
         tvUndo = findViewById(R.id.textview_undo);
         profileImageView = findViewById(R.id.imageview_profile);
         tvRecordFpFollowUp = findViewById(R.id.textview_record_reccuring_visit);
+        tvFpMethodRow = findViewById(R.id.textview_fp_method_date_row);
 
         tvUndo.setOnClickListener(this);
         tvEditVisit.setOnClickListener(this);
@@ -284,6 +288,56 @@ public class BaseFpProfileActivity extends BaseProfileActivity implements BaseFp
         if (StringUtils.isNotBlank(fpMemberObject.getPrimaryCareGiver()) && fpMemberObject.getPrimaryCareGiver().equals(fpMemberObject.getBaseEntityId())) {
             findViewById(R.id.fp_primary_caregiver).setVisibility(View.VISIBLE);
         }
+        if (StringUtils.isNotBlank(fpMemberObject.getFpStartDate())) {
+            tvFpMethodRow.setText(getFpMethodRowString(fpMemberObject.getFpMethod(), fpMemberObject.getFpStartDate()));
+        }
+    }
+
+    private CharSequence formatTime(String dateTime) {
+        CharSequence timePassedString = null;
+        try {
+            SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
+            Date date = df.parse(dateTime);
+            timePassedString = new SimpleDateFormat("dd MMM yyyy", Locale.getDefault()).format(date);
+        } catch (Exception e) {
+            Timber.d(e);
+        }
+        return timePassedString;
+    }
+
+    public String getFpMethodRowString(String fpMethod, String fpStartDate) {
+        String fpMethodDate = null;
+        switch (fpMethod) {
+            case FamilyPlanningConstants.DBConstants.FP_POP:
+                fpMethodDate = getString(R.string.pop_start_date_note) + " " + formatTime(fpStartDate);
+                break;
+            case FamilyPlanningConstants.DBConstants.FP_COC:
+                fpMethodDate = getString(R.string.coc_start_date_note) + " " + formatTime(fpStartDate);
+                break;
+            case FamilyPlanningConstants.DBConstants.FP_FEMALE_CONDOM:
+                fpMethodDate = getString(R.string.female_condom_start_date_note) + " " + formatTime(fpStartDate);
+                break;
+            case FamilyPlanningConstants.DBConstants.FP_MALE_CONDOM:
+                fpMethodDate = getString(R.string.male_condom_start_date_note) + " " + formatTime(fpStartDate);
+                break;
+            case FamilyPlanningConstants.DBConstants.FP_INJECTABLE:
+                fpMethodDate = getString(R.string.injectable_start_date_note) + " " + formatTime(fpStartDate);
+                break;
+            case FamilyPlanningConstants.DBConstants.FP_IUCD:
+                fpMethodDate = getString(R.string.fp_start_iucd_insertion_note) + " " + formatTime(fpStartDate);
+                break;
+            case FamilyPlanningConstants.DBConstants.FP_FEMALE_STERLIZATION:
+                fpMethodDate = getString(R.string.fp_start_female_ster_note) + " " + formatTime(fpStartDate);
+                break;
+            case FamilyPlanningConstants.DBConstants.FP_MALE_STERLIZATION:
+                fpMethodDate = getString(R.string.fp_start_male_ster_note) + " " + formatTime(fpStartDate);
+                break;
+            default:
+                break;
+
+        }
+
+        return fpMethodDate;
     }
 
     @Override
