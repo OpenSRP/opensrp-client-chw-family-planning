@@ -88,7 +88,8 @@
     <string name="fp_start_male_ster_note">Male Sterilization on</string>
     <string name="fp_start_iucd_insertion_note">Date of IUCD insertion</string>
 
-
-    
-
+    <string name="refill">{0} refill</string>
+    <string name="follow_up_one">{0} follow-up 1</string>
+    <string name="follow_up_two">{0} follow-up 2</string>
+    <string name="follow_up_three">{0} follow-up 3</string>
 </resources>
