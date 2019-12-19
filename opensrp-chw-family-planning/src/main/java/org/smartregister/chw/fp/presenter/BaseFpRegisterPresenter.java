@@ -35,22 +35,25 @@ public class BaseFpRegisterPresenter implements BaseFpRegisterContract.Presenter
     }
 
     @Override
-    public void startForm(String formName, String entityId, String payloadType, String dob) throws Exception {
+    public void startForm(String formName, String entityId, String payloadType, String dob, JSONObject form) throws Exception {
         if (StringUtils.isBlank(entityId)) {
             return;
         }
+        if (FamilyPlanningConstants.ActivityPayload.UPDATE_REGISTRATION_PAYLOAD_TYPE.equals(payloadType)) {
+            getView().startFormActivity(form);
+        } else {
+            JSONObject formAsJson = model.getFormAsJson(formName, entityId);
+            try {
+                JSONObject stepOne = formAsJson.getJSONObject(JsonFormUtils.STEP1);
+                JSONArray jsonArray = stepOne.getJSONArray(JsonFormUtils.FIELDS);
+                int age = new Period(new DateTime(dob), new DateTime()).getYears();
+                FpJsonFormUtils.updateFormField(jsonArray, FamilyPlanningConstants.DBConstants.AGE, String.valueOf(age));
 
-        JSONObject form = model.getFormAsJson(formName, entityId);
-        try {
-            JSONObject stepOne = form.getJSONObject(JsonFormUtils.STEP1);
-            JSONArray jsonArray = stepOne.getJSONArray(JsonFormUtils.FIELDS);
-            int age = new Period(new DateTime(dob), new DateTime()).getYears();
-            FpJsonFormUtils.updateFormField(jsonArray, FamilyPlanningConstants.DBConstants.AGE, String.valueOf(age));
-
-        } catch (JSONException e) {
-            Timber.e(e);
+            } catch (JSONException e) {
+                Timber.e(e);
+            }
+            getView().startFormActivity(formAsJson);
         }
-        getView().startFormActivity(form);
     }
 
     @Override

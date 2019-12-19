@@ -36,7 +36,7 @@
                     android:gravity="center_vertical|start"
                     android:paddingStart="0dp"
                     android:paddingEnd="0dp"
-                    android:text="@string/return_to_previous_page"
+                    android:text="@string/fp_return_to_previous_page"
                     android:textColor="@color/customAppThemeBlue"
                     android:textSize="17sp"/>
             </android.support.v7.widget.Toolbar>

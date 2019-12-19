@@ -186,7 +186,7 @@ public class FpDao extends AbstractDao {
         return c -> {
             Visit visit = new Visit();
             try {
-                visit.setDate(sdf.parse(getCursorValue(c, "sorr")));
+                visit.setDate(sdf.parse(getCursorValue(c, "details")));
             } catch (Exception e) {
                 Timber.e(e.toString());
             }
@@ -214,5 +214,28 @@ public class FpDao extends AbstractDao {
     public static void closeFpMemberFromRegister(String baseEntityID) {
         String sql = "update ec_family_planning set is_closed = 1 where base_entity_id = '" + baseEntityID + "'";
         updateDB(sql);
+    }
+
+
+    @Nullable
+    public static Integer getCountFpVisits(String baseEntityId, String entityType, String fpMethod) {
+        String sql = " SELECT count(visit_id) visits " +
+                "FROM Visits v " +
+                "INNER JOIN ec_family_planning fp on fp.base_entity_id = v.base_entity_id " +
+                " WHERE v.base_entity_id = '" + baseEntityId + "' COLLATE NOCASE " +
+                " AND v.visit_type = '" + entityType + "' COLLATE NOCASE " +
+                " AND fp.fp_method_accepted = '" + fpMethod + "' COLLATE NOCASE " +
+                " AND strftime('%Y%d%m', (datetime(v.visit_date/1000, 'unixepoch')))  >= substr(fp.fp_start_date " +
+                ",7,4) || substr(fp.fp_start_date " +
+                ",4,2) || substr(fp.fp_start_date " +
+                ",1,2) ";
+
+        DataMap<Integer> dataMap = cursor -> getCursorIntValue(cursor, "visits");
+
+        List<Integer> res = readData(sql, dataMap);
+        if (res == null || res.size() == 0)
+            return null;
+
+        return res.get(0);
     }
 }

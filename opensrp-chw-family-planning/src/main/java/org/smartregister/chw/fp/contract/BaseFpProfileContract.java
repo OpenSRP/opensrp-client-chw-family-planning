@@ -22,6 +22,8 @@ public interface BaseFpProfileContract {
 
         void openFamilyDueServices();
 
+        void openFpRegistrationForm();
+
         void openFollowUpVisitForm(boolean isEdit);
 
         void setUpComingServicesStatus(String service, AlertStatus status, Date date);

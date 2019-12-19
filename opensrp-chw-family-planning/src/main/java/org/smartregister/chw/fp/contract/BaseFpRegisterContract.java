@@ -2,6 +2,7 @@ package org.smartregister.chw.fp.contract;
 
 import com.vijay.jsonwizard.domain.Form;
 
+import org.jetbrains.annotations.Nullable;
 import org.json.JSONObject;
 import org.smartregister.view.contract.BaseRegisterContract;
 
@@ -17,7 +18,7 @@ public interface BaseFpRegisterContract {
 
     interface Presenter extends BaseRegisterContract.Presenter {
 
-        void startForm(String formName, String entityId, String payloadType, String dob) throws Exception;
+        void startForm(String formName, String entityId, String payloadType, String dob, @Nullable JSONObject form) throws Exception;
 
         void saveForm(String jsonString);
     }
