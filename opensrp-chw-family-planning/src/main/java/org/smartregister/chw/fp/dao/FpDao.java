@@ -7,7 +7,6 @@ import org.smartregister.chw.fp.domain.FpMemberObject;
 import org.smartregister.dao.AbstractDao;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
