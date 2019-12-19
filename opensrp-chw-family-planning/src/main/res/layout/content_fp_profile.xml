@@ -80,7 +80,7 @@
                 android:layout_below="@+id/view_last_visit_row"
                 android:background="@drawable/list_item_background_selctor"
                 android:padding="20dp"
-                android:visibility="gone">
+                android:visibility="visible">
 
                 <ImageView
                     android:id="@+id/cross_image"
