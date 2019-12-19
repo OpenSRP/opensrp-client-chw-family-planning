@@ -32,7 +32,7 @@ public class BaseFpProfileInteractor implements BaseFpProfileContract.Interactor
         Runnable runnable = () -> appExecutors.mainThread().execute(() -> {
             callback.refreshFamilyStatus(AlertStatus.normal);
             callback.refreshUpComingServicesStatus("Family Planning Followup Visit", AlertStatus.normal, new Date());
-            callback.refreshMedicalHistory(new Date());
+            callback.refreshLastVisit(new Date());
         });
         appExecutors.diskIO().execute(runnable);
     }
