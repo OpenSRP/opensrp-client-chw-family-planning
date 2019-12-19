@@ -2,7 +2,6 @@ package org.smartregister.chw.fp.contract;
 
 import android.content.Context;
 
-import org.smartregister.chw.anc.domain.MemberObject;
 import org.smartregister.chw.fp.domain.FpMemberObject;
 import org.smartregister.domain.AlertStatus;
 import org.smartregister.view.contract.BaseProfileContract;

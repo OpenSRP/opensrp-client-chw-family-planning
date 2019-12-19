@@ -18,14 +18,11 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import org.apache.commons.lang3.StringUtils;
-import org.jetbrains.annotations.Nullable;
 import org.joda.time.DateTime;
 import org.joda.time.Days;
 import org.joda.time.Period;
-import org.smartregister.chw.anc.domain.Visit;
 import org.smartregister.chw.fp.contract.BaseFpProfileContract;
 import org.smartregister.chw.fp.custom_views.BaseFpFloatingMenu;
-import org.smartregister.chw.fp.dao.FpDao;
 import org.smartregister.chw.fp.domain.FpMemberObject;
 import org.smartregister.chw.fp.interactor.BaseFpProfileInteractor;
 import org.smartregister.chw.fp.presenter.BaseFpProfilePresenter;
