@@ -292,8 +292,10 @@ public class BaseFpProfileActivity extends BaseProfileActivity implements BaseFp
         lastVisitRow.setVisibility(View.VISIBLE);
     }
 
-    public @Nullable Visit getLatestVisit(String baseEntityId, String eventType) {
-        return FpDao.getLatestVisit(baseEntityId, eventType);
+    @Override
+    public void onMemberDetailsReloaded(FpMemberObject fpMemberObject) {
+        setupViews();
+        fetchProfileData();
     }
 
     @Override
