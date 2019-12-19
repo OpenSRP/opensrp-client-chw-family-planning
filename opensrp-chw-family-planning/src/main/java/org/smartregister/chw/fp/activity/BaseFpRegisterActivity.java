@@ -66,12 +66,16 @@ public class BaseFpRegisterActivity extends BaseRegisterActivity implements Base
         try {
             if (mBaseFragment instanceof BaseFpRegisterFragment) {
 
-                presenter().startForm(formName, entityId, payloadType, DOB);
+                presenter().startForm(formName, entityId, payloadType, DOB, getFpFormForEdit());
             }
         } catch (Exception e) {
             Timber.e(e);
             displayToast(getString(R.string.error_unable_to_start_form));
         }
+    }
+
+    public JSONObject getFpFormForEdit() {
+        return null;
     }
 
     @Override
