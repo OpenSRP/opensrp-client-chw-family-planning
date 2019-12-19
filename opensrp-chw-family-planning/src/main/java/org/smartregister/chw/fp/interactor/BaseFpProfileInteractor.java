@@ -33,7 +33,11 @@ public class BaseFpProfileInteractor implements BaseFpProfileContract.Interactor
             callback.refreshFamilyStatus(AlertStatus.normal);
             callback.refreshLastVisit(new Date());
             callback.refreshUpComingServicesStatus("Family Planning Followup Visit", AlertStatus.normal, new Date());
+<<<<<<< Updated upstream
             callback.refreshMedicalHistory(true);
+=======
+            callback.refreshLastVisit(new Date());
+>>>>>>> Stashed changes
         });
         appExecutors.diskIO().execute(runnable);
     }

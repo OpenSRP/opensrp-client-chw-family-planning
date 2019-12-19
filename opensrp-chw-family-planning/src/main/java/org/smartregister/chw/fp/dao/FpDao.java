@@ -7,6 +7,7 @@ import org.smartregister.chw.fp.domain.FpMemberObject;
 import org.smartregister.dao.AbstractDao;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
@@ -29,6 +30,18 @@ public class FpDao extends AbstractDao {
             return false;
 
         return res.get(0) > 0;
+    }
+
+    public static Visit getLatestVisit(String baseEntityId, String visitType) {
+        String sql = "select visit_id, visit_type, parent_visit_id, visit_date from visits where base_entity_id = '" +
+                baseEntityId + "' " +
+                "and visit_type = '" + visitType + "' ORDER BY visit_date DESC LIMIT 1";
+        List<Visit> visit = AbstractDao.readData(sql, getVisitDataMap());
+        if (visit.size() == 0) {
+            return null;
+        }
+
+        return visit.get(0);
     }
 
     public static FpMemberObject getMember(String baseEntityID) {
@@ -174,7 +187,7 @@ public class FpDao extends AbstractDao {
         };
     }
 
-    public static Integer getFpWomenCount(String familyBaseEntityId){
+    public static Integer getFpWomenCount(String familyBaseEntityId) {
         String sql = "SELECT count(fp.base_entity_id) count " +
                 "FROM ec_family_planning fp " +
                 "INNER Join ec_family_member fm on fm.base_entity_id = fp.base_entity_id " +
@@ -190,6 +203,7 @@ public class FpDao extends AbstractDao {
 
         return res.get(0);
     }
+
     public static void closeFpMemberFromRegister(String baseEntityID) {
         String sql = "update ec_family_planning set is_closed = 1 where base_entity_id = '" + baseEntityID + "'";
         updateDB(sql);

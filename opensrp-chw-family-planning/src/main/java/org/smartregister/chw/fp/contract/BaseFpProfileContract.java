@@ -23,9 +23,7 @@ public interface BaseFpProfileContract {
         void openFamilyDueServices();
 
         void openFollowUpVisitForm(boolean isEdit);
-
-        void setLastVisit(Date lastVisitDate);
-
+        
         void setUpComingServicesStatus(String service, AlertStatus status, Date date);
 
         void setFamilyStatus(AlertStatus status);
@@ -34,7 +32,7 @@ public interface BaseFpProfileContract {
 
         void setupFollowupVisitEditViews(boolean isWithin24Hours);
 
-        void updateHasMedicalHistory(boolean hasMedicalHistory);
+        void updateLastVisitRow(Date lastVisitDate);
 
         void setFollowUpButtonOverdue();
 
@@ -70,12 +68,10 @@ public interface BaseFpProfileContract {
 
         void refreshProfileTopSection(FpMemberObject fpMemberObject);
 
-        void refreshLastVisit(Date lastVisitDate);
-
         void refreshUpComingServicesStatus(String service, AlertStatus status, Date date);
 
         void refreshFamilyStatus(AlertStatus status);
 
-        void refreshMedicalHistory(boolean hasHistory);
+        void refreshLastVisit(Date lastVisitDate);
     }
 }

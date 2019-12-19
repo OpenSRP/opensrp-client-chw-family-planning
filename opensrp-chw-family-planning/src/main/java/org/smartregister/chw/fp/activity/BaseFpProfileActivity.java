@@ -18,11 +18,14 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import org.apache.commons.lang3.StringUtils;
+import org.jetbrains.annotations.Nullable;
 import org.joda.time.DateTime;
 import org.joda.time.Days;
 import org.joda.time.Period;
+import org.smartregister.chw.anc.domain.Visit;
 import org.smartregister.chw.fp.contract.BaseFpProfileContract;
 import org.smartregister.chw.fp.custom_views.BaseFpFloatingMenu;
+import org.smartregister.chw.fp.dao.FpDao;
 import org.smartregister.chw.fp.domain.FpMemberObject;
 import org.smartregister.chw.fp.interactor.BaseFpProfileInteractor;
 import org.smartregister.chw.fp.presenter.BaseFpProfilePresenter;
@@ -229,16 +232,6 @@ public class BaseFpProfileActivity extends BaseProfileActivity implements BaseFp
     }
 
     @Override
-    public void setLastVisit(Date lastVisitDate) {
-        if (lastVisitDate == null)
-            return;
-
-        tvLastVisitDay.setVisibility(View.VISIBLE);
-        numOfDays = Days.daysBetween(new DateTime(lastVisitDate).toLocalDate(), new DateTime().toLocalDate()).getDays();
-        tvLastVisitDay.setText(getString(R.string.last_visit_n_days_ago, (numOfDays <= 1) ? getString(R.string.less_than_twenty_four) : numOfDays + " " + getString(R.string.days)));
-    }
-
-    @Override
     public void setUpComingServicesStatus(String service, AlertStatus status, Date date) {
         showProgressBar(false);
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd MMM", Locale.getDefault());
@@ -287,10 +280,20 @@ public class BaseFpProfileActivity extends BaseProfileActivity implements BaseFp
     }
 
     @Override
-    public void updateHasMedicalHistory(boolean hasMedicalHistory) {
+    public void updateLastVisitRow(Date lastVisitDate) {
         showProgressBar(false);
-        rlLastVisitLayout.setVisibility(hasMedicalHistory ? View.VISIBLE : View.GONE);
-        lastVisitRow.setVisibility(hasMedicalHistory ? View.VISIBLE : View.GONE);
+        if (lastVisitDate == null)
+            return;
+
+        tvLastVisitDay.setVisibility(View.VISIBLE);
+        numOfDays = Days.daysBetween(new DateTime(lastVisitDate).toLocalDate(), new DateTime().toLocalDate()).getDays();
+        tvLastVisitDay.setText(getString(R.string.last_visit_n_days_ago, (numOfDays <= 1) ? getString(R.string.less_than_twenty_four) : numOfDays + " " + getString(R.string.days)));
+        rlLastVisitLayout.setVisibility(View.VISIBLE);
+        lastVisitRow.setVisibility(View.VISIBLE);
+    }
+
+    public @Nullable Visit getLatestVisit(String baseEntityId, String eventType) {
+        return FpDao.getLatestVisit(baseEntityId, eventType);
     }
 
     @Override
