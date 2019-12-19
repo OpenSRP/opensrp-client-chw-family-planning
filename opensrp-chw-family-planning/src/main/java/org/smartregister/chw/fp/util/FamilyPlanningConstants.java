@@ -14,6 +14,7 @@ public interface FamilyPlanningConstants {
 
     interface EventType {
         String FAMILY_PLANNING_REGISTRATION = "Family Planning Registration";
+        String UPDATE_FAMILY_PLANNING_REGISTRATION = "Update Family Planning Registration";
         String FAMILY_PLANNING_CHANGE_METHOD = "Family Planning Change Method";
         String FP_FOLLOW_UP_VISIT = "Fp Follow Up Visit";
         String FP_FOLLOW_UP_VISIT_RESUPPLY = "FP Follow up Visit Resupply";
