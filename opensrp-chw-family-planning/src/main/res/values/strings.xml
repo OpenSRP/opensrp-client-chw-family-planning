@@ -76,7 +76,8 @@
     <string name="Referred">Referred</string>
     <string name="no_action_taken"></string>
 
-
-    
-
+    <string name="refill">{0} refill</string>
+    <string name="follow_up_one">{0} follow-up 1</string>
+    <string name="follow_up_two">{0} follow-up 2</string>
+    <string name="follow_up_three">{0} follow-up 3</string>
 </resources>
