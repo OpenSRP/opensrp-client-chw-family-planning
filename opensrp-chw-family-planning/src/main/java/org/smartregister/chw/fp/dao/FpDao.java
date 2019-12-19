@@ -106,21 +106,29 @@ public class FpDao extends AbstractDao {
 
     @Nullable
     public static List<FpAlertObject> getFpDetails(String baseEntityID) {
-        String sql = "select fp_method_accepted, no_pillcycles, fp_reg_date from ec_family_planning where base_entity_id = '" + baseEntityID + "' " +
+        String sql = "select fp_method_accepted, no_pillcycles, fp_start_date from ec_family_planning where base_entity_id = '" + baseEntityID + "' " +
                 "and is_closed is 0 and ecp = 1";
 
-        DataMap<FpAlertObject> dataMap = c -> new FpAlertObject(
-                getCursorValue(c, "fp_method_accepted"),
-                getCursorIntValue(c, "no_pillcycles"),
-                getCursorValueAsDate(c, "fp_reg_date", getNativeFormsDateFormat())
-        );
-        List<FpAlertObject> fpAlertObjects = readData(sql, dataMap);
+        List<FpAlertObject> fpAlertObjects = AbstractDao.readData(sql, getVisitDetailsDataMap());
         if (fpAlertObjects.size() == 0) {
             return null;
         }
         return fpAlertObjects;
     }
 
+    private static DataMap<FpAlertObject> getVisitDetailsDataMap() {
+        return c -> {
+            FpAlertObject fpAlertObject = new FpAlertObject();
+            try {
+                fpAlertObject.setFpMethod(getCursorValue(c, "fp_method_accepted"));
+                fpAlertObject.setFpPillCycles(getCursorIntValue(c, "no_pillcycles"));
+                fpAlertObject.setFpStartDate(getCursorValue(c, "fp_start_date"));
+            } catch (Exception e) {
+                Timber.e(e.toString());
+            }
+            return fpAlertObject;
+        };
+    }
 
     @Nullable
     public static Visit getLatestFpVisit(String baseEntityId, String entityType, String fpMethod) {
@@ -179,7 +187,7 @@ public class FpDao extends AbstractDao {
         return c -> {
             Visit visit = new Visit();
             try {
-                visit.setDate(sdf.parse(getCursorValue(c, "details")));
+                visit.setDate(sdf.parse(getCursorValue(c, "sorr")));
             } catch (Exception e) {
                 Timber.e(e.toString());
             }

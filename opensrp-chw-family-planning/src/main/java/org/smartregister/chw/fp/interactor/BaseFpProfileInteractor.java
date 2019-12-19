@@ -31,13 +31,16 @@ public class BaseFpProfileInteractor implements BaseFpProfileContract.Interactor
     public void updateProfileFpStatusInfo(FpMemberObject fpMemberObject, BaseFpProfileContract.InteractorCallback callback) {
         Runnable runnable = () -> appExecutors.mainThread().execute(() -> {
             callback.refreshFamilyStatus(AlertStatus.normal);
-            callback.refreshLastVisit(new Date());
             callback.refreshUpComingServicesStatus("Family Planning Followup Visit", AlertStatus.normal, new Date());
+<<<<<<< HEAD
 <<<<<<< Updated upstream
             callback.refreshMedicalHistory(true);
 =======
             callback.refreshLastVisit(new Date());
 >>>>>>> Stashed changes
+=======
+            callback.refreshMedicalHistory(new Date());
+>>>>>>> ba59313f9af449ad94390c85fbad8c29c37185f3
         });
         appExecutors.diskIO().execute(runnable);
     }

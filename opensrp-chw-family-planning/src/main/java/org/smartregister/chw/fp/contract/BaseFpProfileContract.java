@@ -23,7 +23,7 @@ public interface BaseFpProfileContract {
         void openFamilyDueServices();
 
         void openFollowUpVisitForm(boolean isEdit);
-        
+
         void setUpComingServicesStatus(String service, AlertStatus status, Date date);
 
         void setFamilyStatus(AlertStatus status);
