@@ -142,6 +142,7 @@ public class BaseFpProfileActivity extends BaseProfileActivity implements BaseFp
         findViewById(R.id.rl_last_visit_layout).setOnClickListener(this);
         findViewById(R.id.rlUpcomingServices).setOnClickListener(this);
         findViewById(R.id.rlFamilyServicesDue).setOnClickListener(this);
+        findViewById(R.id.rlFpRegistrationDate).setOnClickListener(this);
     }
 
     @Override
@@ -186,6 +187,8 @@ public class BaseFpProfileActivity extends BaseProfileActivity implements BaseFp
             this.openFollowUpVisitForm(false);
         } else if (id == R.id.textview_edit) {
             this.openFollowUpVisitForm(true);
+        } else if (id == R.id.rlFpRegistrationDate) {
+            this.openFamilyPlanningRegistration();
         }
     }
 
@@ -225,6 +228,11 @@ public class BaseFpProfileActivity extends BaseProfileActivity implements BaseFp
     @Override
     public void openFamilyDueServices() {
         // TODO :: Show family due services
+    }
+
+    @Override
+    public void openFpRegistrationForm() {
+        // TODO :: Show fp registration for edit
     }
 
     @Override
@@ -324,7 +332,6 @@ public class BaseFpProfileActivity extends BaseProfileActivity implements BaseFp
                 break;
             default:
                 break;
-
         }
 
         return fpMethodDate;
