@@ -34,7 +34,7 @@ public interface BaseFpProfileContract {
 
         void setupFollowupVisitEditViews(boolean isWithin24Hours);
 
-        void updateHasMedicalHistory(Date lastVisitDate);
+        void updateLastVisitRow(Date lastVisitDate);
 
         void setFollowUpButtonOverdue();
 
@@ -45,6 +45,8 @@ public interface BaseFpProfileContract {
         void showFollowUpVisitButton();
 
         void showProgressBar(boolean status);
+
+        void onMemberDetailsReloaded(FpMemberObject fpMemberObject);
 
     }
 
@@ -74,6 +76,6 @@ public interface BaseFpProfileContract {
 
         void refreshFamilyStatus(AlertStatus status);
 
-        void refreshMedicalHistory(Date lastVisitDate);
+        void refreshLastVisit(Date lastVisitDate);
     }
 }

@@ -338,7 +338,7 @@ public class BaseFpProfileActivity extends BaseProfileActivity implements BaseFp
     }
 
     @Override
-    public void updateHasMedicalHistory(Date lastVisitDate) {
+    public void updateLastVisitRow(Date lastVisitDate) {
         showProgressBar(false);
         if (lastVisitDate == null)
             return;
@@ -348,6 +348,12 @@ public class BaseFpProfileActivity extends BaseProfileActivity implements BaseFp
         tvLastVisitDay.setText(getString(R.string.last_visit_n_days_ago, (numOfDays <= 1) ? getString(R.string.less_than_twenty_four) : numOfDays + " " + getString(R.string.days)));
         rlLastVisitLayout.setVisibility(View.VISIBLE);
         lastVisitRow.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void onMemberDetailsReloaded(FpMemberObject fpMemberObject) {
+        setupViews();
+        fetchProfileData();
     }
 
     @Override

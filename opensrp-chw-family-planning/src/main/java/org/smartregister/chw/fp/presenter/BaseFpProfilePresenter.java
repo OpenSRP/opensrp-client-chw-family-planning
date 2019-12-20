@@ -41,9 +41,9 @@ public class BaseFpProfilePresenter implements BaseProfileContract, BaseFpProfil
     }
 
     @Override
-    public void refreshMedicalHistory(Date lastVisitDate) {
+    public void refreshLastVisit(Date lastVisitDate) {
         if (getView() != null) {
-            getView().updateHasMedicalHistory(lastVisitDate);
+            getView().updateLastVisitRow(lastVisitDate);
         }
     }
 

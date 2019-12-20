@@ -31,6 +31,18 @@ public class FpDao extends AbstractDao {
         return res.get(0) > 0;
     }
 
+    public static Visit getLatestVisit(String baseEntityId, String visitType) {
+        String sql = "select visit_id, visit_type, parent_visit_id, visit_date from visits where base_entity_id = '" +
+                baseEntityId + "' " +
+                "and visit_type = '" + visitType + "' ORDER BY visit_date DESC LIMIT 1";
+        List<Visit> visit = AbstractDao.readData(sql, getVisitDataMap());
+        if (visit.size() == 0) {
+            return null;
+        }
+
+        return visit.get(0);
+    }
+
     public static FpMemberObject getMember(String baseEntityID) {
         String sql = "select m.base_entity_id , m.unique_id , m.relational_id , m.dob , m.first_name , " +
                 "m.middle_name , m.last_name , m.gender , m.phone_number , m.other_phone_number , " +
