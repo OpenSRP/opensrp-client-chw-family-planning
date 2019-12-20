@@ -81,12 +81,13 @@
     <string name="female_condom_start_date_note">Female Condom started on</string>
     <string name="coc_start_date_note">COC started on</string>
     <string name="pop_start_date_note">POP started on</string>
-    <string name="injectable_start_date_note">Injectable last injection on</string>
+    <string name="injectable_start_date_note">Injectable started on</string>
     <string name="implanon_date_note">Implanon - NXT insertion on</string>
     <string name="fp_start_implant_jad_note">Jadelle insertion on</string>
     <string name="fp_start_female_ster_note">Female Sterilization on</string>
     <string name="fp_start_male_ster_note">Male Sterilization on</string>
-    <string name="fp_start_iucd_insertion_note">Date of IUCD insertion</string>
+    <string name="fp_start_iucd_insertion_note">IUCD insertion on</string>
+    <string name="fp_started_on"> started on </string>
 
     <string name="refill">{0} refill</string>
     <string name="follow_up_one">{0} follow-up 1</string>
