@@ -331,7 +331,7 @@ public class BaseFpProfileActivity extends BaseProfileActivity implements BaseFp
                 fpMethodDate = getString(R.string.fp_start_male_ster_note) + " " + formatTime(fpStartDate);
                 break;
             default:
-                break;
+                fpMethodDate = fpMethod + getString(R.string.fp_started_on) + formatTime(fpStartDate);
         }
 
         return fpMethodDate;
