@@ -173,7 +173,7 @@
 
 
                 <org.smartregister.view.customcontrols.CustomFontTextView
-                    android:id="@+id/ivViewFpMethodArrow"
+                    android:id="@+id/tvViewFpMethod"
                     style="@style/CustomFontTextViewStyle.ListView.Normal.MultipleLines"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

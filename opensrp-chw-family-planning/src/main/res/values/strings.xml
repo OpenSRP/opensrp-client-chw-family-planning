@@ -74,14 +74,13 @@
    <!--action taken -->
     <string name="managed">Managed</string>
     <string name="Referred">Referred</string>
-    <string name="no_action_taken"></string>
 
     <!--Family planning fp start dates row-->
-    <string name="male_condom_start_date_note">Male Condom started on</string>
-    <string name="female_condom_start_date_note">Female Condom started on</string>
-    <string name="coc_start_date_note">COC started on</string>
-    <string name="pop_start_date_note">POP started on</string>
-    <string name="injectable_start_date_note">Injectable last injection on</string>
+    <string name="male_condom_start_date_note">Male Condom on</string>
+    <string name="female_condom_start_date_note">Female Condom on</string>
+    <string name="coc_start_date_note">COC on</string>
+    <string name="pop_start_date_note">POP on</string>
+    <string name="injectable_start_date_note">Injectable on</string>
     <string name="implanon_date_note">Implanon - NXT insertion on</string>
     <string name="fp_start_implant_jad_note">Jadelle insertion on</string>
     <string name="fp_start_female_ster_note">Female Sterilization on</string>
