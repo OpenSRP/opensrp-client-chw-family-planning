@@ -78,6 +78,7 @@ public class FpDao extends AbstractDao {
             memberObject.setFpStartDate(getCursorValue(cursor, "fp_start_date", ""));
             memberObject.setPillCycles(Integer.parseInt(getCursorValue(cursor, "no_pillcycles", "0")));
             memberObject.setFpMethod(getCursorValue(cursor, "fp_method_accepted", ""));
+            memberObject.setFpRegistrationDate(getCursorValue(cursor, "fp_reg_date", ""));
 
             String familyHeadName = getCursorValue(cursor, "family_head_first_name", "") + " "
                     + getCursorValue(cursor, "family_head_middle_name", "");
