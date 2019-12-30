@@ -148,7 +148,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_marginRight="10dp"
-                    android:src="@drawable/childrow_upcoming" />
+                    android:src="@drawable/sidemenu_fp" />
 
                 <ImageView
                     android:id="@+id/iv_fp_method_date_row"
