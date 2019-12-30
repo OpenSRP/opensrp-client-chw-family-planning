@@ -63,6 +63,7 @@ public interface FamilyPlanningConstants {
         String FP_IUCD = "IUCD";
         String FP_FEMALE_STERLIZATION = "Female sterilization";
         String FP_MALE_STERLIZATION = "Male sterilization";
+        String FP_IMPLANON_NXT = "Implanon - NXT";
     }
 
     interface ActivityPayload {

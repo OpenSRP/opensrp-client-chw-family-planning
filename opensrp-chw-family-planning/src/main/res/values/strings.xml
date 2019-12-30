@@ -87,7 +87,7 @@
     <string name="fp_start_female_ster_note">Female Sterilization on</string>
     <string name="fp_start_male_ster_note">Male Sterilization on</string>
     <string name="fp_start_iucd_insertion_note">IUCD insertion on</string>
-    <string name="fp_started_on"> started on </string>
+    <string name="fp_started_on">started on</string>
 
     <string name="refill">{0} refill</string>
     <string name="follow_up_one">{0} follow-up 1</string>

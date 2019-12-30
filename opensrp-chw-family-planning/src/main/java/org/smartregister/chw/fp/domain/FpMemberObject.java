@@ -25,6 +25,7 @@ public class FpMemberObject implements Serializable {
     private String familyName;
     private String phoneNumber;
     private String fpStartDate;
+    private String fpRegistrationDate;
     private int pillCycles;
     private String fpMethod;
 
@@ -213,5 +214,13 @@ public class FpMemberObject implements Serializable {
 
     public void setFpMethod(String fpMethod) {
         this.fpMethod = fpMethod;
+    }
+
+    public String getFpRegistrationDate() {
+        return fpRegistrationDate;
+    }
+
+    public void setFpRegistrationDate(String fpRegistrationDate) {
+        this.fpRegistrationDate = fpRegistrationDate;
     }
 }
