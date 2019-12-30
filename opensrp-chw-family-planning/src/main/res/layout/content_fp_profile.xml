@@ -5,13 +5,14 @@
     android:background="@color/white">
 
     <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/white">
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="vertical">
 
 
             <RelativeLayout
@@ -251,7 +252,7 @@
                 android:background="@color/light_grey"
                 android:visibility="gone" />
 
-        </RelativeLayout>
+        </LinearLayout>
     </ScrollView>
 
     <ProgressBar
