@@ -302,45 +302,48 @@ public class BaseFpProfileActivity extends BaseProfileActivity implements BaseFp
     }
 
     public String getFpMethodRowString(String fpMethod, String fpStartDate, String fpRegistrationDate) {
-        String fpMethodDate;
+        String fpMethodDisplayText;
         String fpDisplayDate = "";
         if (StringUtils.isNotEmpty(fpStartDate) || StringUtils.isNotEmpty(fpRegistrationDate)) {
-            fpDisplayDate = " " + formatTime(StringUtils.isNotEmpty(fpStartDate) ? fpStartDate : fpRegistrationDate);
+            fpDisplayDate = String.valueOf(formatTime(StringUtils.isNotEmpty(fpStartDate) ? fpStartDate : fpRegistrationDate));
         }
+        String insertionText = getString(R.string.fp_insertion);
+        String startedText = getString(R.string.fp_started);
+        String onText = getString(R.string.fp_on);
 
         switch (fpMethod) {
             case FamilyPlanningConstants.DBConstants.FP_POP:
-                fpMethodDate = getString(R.string.pop_start_date_note);
+                fpMethodDisplayText = getString(R.string.pop) + " " + startedText;
                 break;
             case FamilyPlanningConstants.DBConstants.FP_COC:
-                fpMethodDate = getString(R.string.coc_start_date_note);
+                fpMethodDisplayText = getString(R.string.coc) + " " + startedText;
                 break;
             case FamilyPlanningConstants.DBConstants.FP_FEMALE_CONDOM:
-                fpMethodDate = getString(R.string.female_condom_start_date_note);
+                fpMethodDisplayText = getString(R.string.female_condom) + " " + startedText;
                 break;
             case FamilyPlanningConstants.DBConstants.FP_MALE_CONDOM:
-                fpMethodDate = getString(R.string.male_condom_start_date_note);
+                fpMethodDisplayText = getString(R.string.male_condom) + " " + startedText;
                 break;
             case FamilyPlanningConstants.DBConstants.FP_INJECTABLE:
-                fpMethodDate = getString(R.string.injectable_start_date_note);
+                fpMethodDisplayText = getString(R.string.injectable) + " " + startedText;
                 break;
             case FamilyPlanningConstants.DBConstants.FP_IUCD:
-                fpMethodDate = getString(R.string.fp_start_iucd_insertion_note);
+                fpMethodDisplayText = getString(R.string.iucd) + " " + insertionText;
                 break;
             case FamilyPlanningConstants.DBConstants.FP_FEMALE_STERLIZATION:
-                fpMethodDate = getString(R.string.fp_start_female_ster_note);
+                fpMethodDisplayText = getString(R.string.female_sterilization);
                 break;
             case FamilyPlanningConstants.DBConstants.FP_MALE_STERLIZATION:
-                fpMethodDate = getString(R.string.fp_start_male_ster_note);
+                fpMethodDisplayText = getString(R.string.male_sterilization);
                 break;
             case FamilyPlanningConstants.DBConstants.FP_IMPLANON_NXT:
-                fpMethodDate = getString(R.string.implanon_date_note);
+                fpMethodDisplayText = getString(R.string.implanon) + " " + insertionText;
                 break;
             default:
-                fpMethodDate = fpMethod + " " + getString(R.string.fp_started_on);
+                fpMethodDisplayText = fpMethod + " " + getString(R.string.fp_started) + " " + onText;
         }
 
-        return fpMethodDate + fpDisplayDate;
+        return fpMethodDisplayText + " " + onText + " " + fpDisplayDate;
     }
 
     @Override

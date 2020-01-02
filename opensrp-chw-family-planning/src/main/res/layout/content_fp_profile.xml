@@ -144,15 +144,15 @@
                 android:visibility="visible">
 
                 <ImageView
-                    android:id="@+id/cancel_image"
+                    android:id="@+id/fp_method_row_image"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_marginRight="10dp"
-                    android:src="@drawable/sidemenu_fp" />
+                    android:src="@drawable/fp_method" />
 
                 <ImageView
-                    android:id="@+id/iv_fp_method_date_row"
+                    android:id="@+id/iv_fp_method_date_row_goto"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
@@ -166,8 +166,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:text="Family Planning Registration Date"
-                    android:layout_toLeftOf="@+id/iv_fp_method_date_row"
-                    android:layout_toRightOf="@+id/cancel_image"
+                    android:layout_toLeftOf="@+id/iv_fp_method_date_row_goto"
+                    android:layout_toRightOf="@+id/fp_method_row_image"
                     android:gravity="left|center_horizontal"
                     android:textAppearance="@style/TextAppearance.AppCompat.Large"
                     android:textColor="@android:color/black" />
@@ -180,7 +180,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/textview_fp_method_date_row"
                     android:layout_marginLeft="10dp"
-                    android:layout_toRightOf="@+id/cancel_image"
+                    android:layout_toRightOf="@+id/fp_method_row_image"
                     android:text="@string/view_fp_registration"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                     android:textColor="@android:color/darker_gray" />
