@@ -48,9 +48,9 @@
                     android:layout_toRightOf="@+id/tick_image"
                     android:gravity="center_horizontal"
                     android:text="@string/last_visit"
-                    android:visibility="gone"
                     android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                    android:textColor="@android:color/black" />
+                    android:textColor="@android:color/black"
+                    android:visibility="gone" />
 
                 <org.smartregister.view.customcontrols.CustomFontTextView
                     android:id="@+id/textview_medical_history"
@@ -149,7 +149,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_marginRight="10dp"
-                    android:src="@drawable/fp_method" />
+                    android:src="@drawable/fp_method_row" />
 
                 <ImageView
                     android:id="@+id/iv_fp_method_date_row_goto"
@@ -164,11 +164,11 @@
                     style="@style/CustomFontTextViewStyle.ListView.Normal.MultipleLines"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:text="Family Planning Registration Date"
+                    android:layout_marginLeft="8dp"
                     android:layout_toLeftOf="@+id/iv_fp_method_date_row_goto"
                     android:layout_toRightOf="@+id/fp_method_row_image"
                     android:gravity="left|center_horizontal"
+                    android:text="Family Planning Registration Date"
                     android:textAppearance="@style/TextAppearance.AppCompat.Large"
                     android:textColor="@android:color/black" />
 
@@ -179,7 +179,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/textview_fp_method_date_row"
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginLeft="8dp"
                     android:layout_toRightOf="@+id/fp_method_row_image"
                     android:text="@string/view_fp_registration"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium"
