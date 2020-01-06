@@ -168,12 +168,24 @@
             </LinearLayout>
 
         </android.support.design.widget.CollapsingToolbarLayout>
+        <ScrollView
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="vertical">
 
         <include
             android:id="@+id/record_fp_followup_visit"
             layout="@layout/fp_follow_up_visit_view" />
 
         <include layout="@layout/content_fp_profile" />
+
+        </LinearLayout>
+        </ScrollView>
 
         <View
             android:layout_width="match_parent"
