@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import org.jetbrains.annotations.Nullable;
 import org.joda.time.DateTime;
 import org.joda.time.Period;
 import org.smartregister.chw.fp.fragment.BaseFpRegisterFragment;
@@ -66,8 +67,9 @@ public class BaseFpRegisterProvider implements RecyclerViewProvider<BaseFpRegist
             int age = new Period(new DateTime(dobString), new DateTime()).getYears();
 
             String patientName = getName(firstName, Utils.getValue(pc.getColumnmaps(), FamilyPlanningConstants.DBConstants.LAST_NAME, true));
+            String methodAccepted = getTranslatedValue(FamilyPlanningConstants.DBConstants.FP_METHOD_ACCEPTED);
             viewHolder.patientName.setText(patientName + ", " + age);
-            viewHolder.textViewFpMethod.setText(Utils.getValue(pc.getColumnmaps(), FamilyPlanningConstants.DBConstants.FP_METHOD_ACCEPTED, true));
+            viewHolder.textViewFpMethod.setText(Utils.getValue(pc.getColumnmaps(), methodAccepted, true));
             viewHolder.textViewVillage.setText(Utils.getValue(pc.getColumnmaps(), FamilyPlanningConstants.DBConstants.VILLAGE_TOWN, true));
             viewHolder.patientColumn.setOnClickListener(onClickListener);
             viewHolder.patientColumn.setTag(pc);
@@ -85,6 +87,39 @@ public class BaseFpRegisterProvider implements RecyclerViewProvider<BaseFpRegist
             Timber.e(e);
         }
     }
+
+    private String getTranslatedValue(@Nullable String fpMethod){
+        if(fpMethod != null){
+            switch (fpMethod){
+                case "COC":
+                    return context.getString(R.string.coc);
+                case "POP":
+                    return context.getString(R.string.pop);
+                case "Female sterilization":
+                    return context.getString(R.string.female_sterilization);
+                case "Injectable":
+                    return context.getString(R.string.injectable);
+                case "Male condom":
+                    return context.getString(R.string.male_condom);
+                case "Female condom":
+                    return context.getString(R.string.female_condom);
+                case "IUCD":
+                    return context.getString(R.string.iucd);
+                case "Implanon - NXT":
+                    return context.getString(R.string.implanon);
+                case "Male sterilization":
+                    return context.getString(R.string.male_sterilization);
+                case "Jadelle":
+                    return context.getString(R.string.jadelle);
+                case "Standard day method":
+                    return context.getString(R.string.standard_day_method);
+                default:
+                    return fpMethod;
+            }
+        }
+        return fpMethod;
+    }
+
 
     @Override
     public void getFooterView(RecyclerView.ViewHolder viewHolder, int currentPageCount, int totalPageCount, boolean hasNext, boolean hasPrevious) {
