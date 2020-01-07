@@ -14,6 +14,7 @@ import org.joda.time.DateTime;
 import org.joda.time.Period;
 import org.smartregister.chw.fp.fragment.BaseFpRegisterFragment;
 import org.smartregister.chw.fp.util.FamilyPlanningConstants;
+import org.smartregister.chw.fp.util.FpUtil;
 import org.smartregister.commonregistry.CommonPersonObjectClient;
 import org.smartregister.cursoradapter.RecyclerViewProvider;
 import org.smartregister.fp.R;
@@ -58,7 +59,6 @@ public class BaseFpRegisterProvider implements RecyclerViewProvider<BaseFpRegist
 
     private void populatePatientColumn(CommonPersonObjectClient pc, final RegisterViewHolder viewHolder) {
         try {
-
             String firstName = getName(
                     Utils.getValue(pc.getColumnmaps(), FamilyPlanningConstants.DBConstants.FIRST_NAME, true),
                     Utils.getValue(pc.getColumnmaps(), FamilyPlanningConstants.DBConstants.MIDDLE_NAME, true));
@@ -67,7 +67,7 @@ public class BaseFpRegisterProvider implements RecyclerViewProvider<BaseFpRegist
             int age = new Period(new DateTime(dobString), new DateTime()).getYears();
 
             String patientName = getName(firstName, Utils.getValue(pc.getColumnmaps(), FamilyPlanningConstants.DBConstants.LAST_NAME, true));
-            String methodAccepted = getTranslatedValue(FamilyPlanningConstants.DBConstants.FP_METHOD_ACCEPTED);
+            String methodAccepted = FpUtil.getTranslatedMethodValue(FamilyPlanningConstants.DBConstants.FP_METHOD_ACCEPTED, context);
             viewHolder.patientName.setText(patientName + ", " + age);
             viewHolder.textViewFpMethod.setText(Utils.getValue(pc.getColumnmaps(), methodAccepted, true));
             viewHolder.textViewVillage.setText(Utils.getValue(pc.getColumnmaps(), FamilyPlanningConstants.DBConstants.VILLAGE_TOWN, true));
@@ -86,38 +86,6 @@ public class BaseFpRegisterProvider implements RecyclerViewProvider<BaseFpRegist
         } catch (Exception e) {
             Timber.e(e);
         }
-    }
-
-    private String getTranslatedValue(@Nullable String fpMethod){
-        if(fpMethod != null){
-            switch (fpMethod){
-                case "COC":
-                    return context.getString(R.string.coc);
-                case "POP":
-                    return context.getString(R.string.pop);
-                case "Female sterilization":
-                    return context.getString(R.string.female_sterilization);
-                case "Injectable":
-                    return context.getString(R.string.injectable);
-                case "Male condom":
-                    return context.getString(R.string.male_condom);
-                case "Female condom":
-                    return context.getString(R.string.female_condom);
-                case "IUCD":
-                    return context.getString(R.string.iucd);
-                case "Implanon - NXT":
-                    return context.getString(R.string.implanon);
-                case "Male sterilization":
-                    return context.getString(R.string.male_sterilization);
-                case "Jadelle":
-                    return context.getString(R.string.jadelle);
-                case "Standard day method":
-                    return context.getString(R.string.standard_day_method);
-                default:
-                    return fpMethod;
-            }
-        }
-        return fpMethod;
     }
 
 
