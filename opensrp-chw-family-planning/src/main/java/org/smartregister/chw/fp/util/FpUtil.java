@@ -19,6 +19,7 @@ import android.text.Spanned;
 import android.widget.Toast;
 
 import org.apache.commons.lang3.StringUtils;
+import org.jetbrains.annotations.Nullable;
 import org.json.JSONObject;
 import org.smartregister.chw.fp.FpLibrary;
 import org.smartregister.chw.fp.contract.BaseFpCallDialogContract;
@@ -148,5 +149,37 @@ public class FpUtil {
 
     public static void processChangeFpMethod(String baseEntityId) {
         FpDao.closeFpMemberFromRegister(baseEntityId);
+    }
+
+    public static String getTranslatedMethodValue(@Nullable String fpMethod, Context context){
+        if(fpMethod != null){
+            switch (fpMethod){
+                case "COC":
+                    return context.getString(R.string.coc);
+                case "POP":
+                    return context.getString(R.string.pop);
+                case "Female sterilization":
+                    return context.getString(R.string.female_sterilization);
+                case "Injectable":
+                    return context.getString(R.string.injectable);
+                case "Male condom":
+                    return context.getString(R.string.male_condom);
+                case "Female condom":
+                    return context.getString(R.string.female_condom);
+                case "IUCD":
+                    return context.getString(R.string.iucd);
+                case "Implanon - NXT":
+                    return context.getString(R.string.implanon);
+                case "Male sterilization":
+                    return context.getString(R.string.male_sterilization);
+                case "Jadelle":
+                    return context.getString(R.string.jadelle);
+                case "Standard day method":
+                    return context.getString(R.string.standard_day_method);
+                default:
+                    return fpMethod;
+            }
+        }
+        return fpMethod;
     }
 }

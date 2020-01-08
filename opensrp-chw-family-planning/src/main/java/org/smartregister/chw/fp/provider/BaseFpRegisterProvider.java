@@ -13,6 +13,7 @@ import org.joda.time.DateTime;
 import org.joda.time.Period;
 import org.smartregister.chw.fp.fragment.BaseFpRegisterFragment;
 import org.smartregister.chw.fp.util.FamilyPlanningConstants;
+import org.smartregister.chw.fp.util.FpUtil;
 import org.smartregister.commonregistry.CommonPersonObjectClient;
 import org.smartregister.cursoradapter.RecyclerViewProvider;
 import org.smartregister.fp.R;
@@ -57,7 +58,6 @@ public class BaseFpRegisterProvider implements RecyclerViewProvider<BaseFpRegist
 
     private void populatePatientColumn(CommonPersonObjectClient pc, final RegisterViewHolder viewHolder) {
         try {
-
             String firstName = getName(
                     Utils.getValue(pc.getColumnmaps(), FamilyPlanningConstants.DBConstants.FIRST_NAME, true),
                     Utils.getValue(pc.getColumnmaps(), FamilyPlanningConstants.DBConstants.MIDDLE_NAME, true));
@@ -66,8 +66,9 @@ public class BaseFpRegisterProvider implements RecyclerViewProvider<BaseFpRegist
             int age = new Period(new DateTime(dobString), new DateTime()).getYears();
 
             String patientName = getName(firstName, Utils.getValue(pc.getColumnmaps(), FamilyPlanningConstants.DBConstants.LAST_NAME, true));
+            String methodAccepted = FpUtil.getTranslatedMethodValue(FamilyPlanningConstants.DBConstants.FP_METHOD_ACCEPTED, context);
             viewHolder.patientName.setText(patientName + ", " + age);
-            viewHolder.textViewFpMethod.setText(Utils.getValue(pc.getColumnmaps(), FamilyPlanningConstants.DBConstants.FP_METHOD_ACCEPTED, true));
+            viewHolder.textViewFpMethod.setText(Utils.getValue(pc.getColumnmaps(), methodAccepted, true));
             viewHolder.textViewVillage.setText(Utils.getValue(pc.getColumnmaps(), FamilyPlanningConstants.DBConstants.VILLAGE_TOWN, true));
             viewHolder.patientColumn.setOnClickListener(onClickListener);
             viewHolder.patientColumn.setTag(pc);
@@ -85,6 +86,7 @@ public class BaseFpRegisterProvider implements RecyclerViewProvider<BaseFpRegist
             Timber.e(e);
         }
     }
+
 
     @Override
     public void getFooterView(RecyclerView.ViewHolder viewHolder, int currentPageCount, int totalPageCount, boolean hasNext, boolean hasPrevious) {
