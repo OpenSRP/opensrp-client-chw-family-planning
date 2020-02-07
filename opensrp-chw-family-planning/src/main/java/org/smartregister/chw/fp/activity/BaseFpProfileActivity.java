@@ -57,12 +57,12 @@ public class BaseFpProfileActivity extends BaseProfileActivity implements BaseFp
     protected TextView tvUndo;
     protected TextView tvVisitDone;
     protected RelativeLayout rlLastVisitLayout;
-    private RelativeLayout rlUpcomingServices;
-    private RelativeLayout rlFamilyServicesDue;
+    protected RelativeLayout rlUpcomingServices;
+    protected RelativeLayout rlFamilyServicesDue;
     protected TextView tvLastVisitDay;
     protected TextView tvViewMedicalHistory;
-    private TextView tvUpComingServices;
-    private TextView tvFamilyStatus;
+    protected TextView tvUpComingServices;
+    protected TextView tvFamilyStatus;
     protected TextView tvRecordFpFollowUp;
     protected TextView tvFpMethodRow;
 
