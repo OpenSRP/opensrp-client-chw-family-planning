@@ -151,7 +151,8 @@ public class BaseFpProfileActivity extends BaseProfileActivity implements BaseFp
     }
 
     public void initializeCallFAB() {
-        if (StringUtils.isNotBlank(fpMemberObject.getFamilyHeadPhoneNumber())) {
+        if (StringUtils.isNotBlank(fpMemberObject.getPhoneNumber())
+                || StringUtils.isNotBlank(fpMemberObject.getFamilyHeadPhoneNumber())) {
             fpFloatingMenu = new BaseFpFloatingMenu(this, fpMemberObject);
             fpFloatingMenu.setGravity(Gravity.BOTTOM | Gravity.RIGHT);
             LinearLayout.LayoutParams linearLayoutParams = new LinearLayout.LayoutParams(
