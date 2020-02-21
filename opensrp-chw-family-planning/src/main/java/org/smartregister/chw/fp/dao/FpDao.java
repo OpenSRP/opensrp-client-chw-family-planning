@@ -171,7 +171,7 @@ public class FpDao extends AbstractDao {
                 " INNER JOIN visits v on vd.visit_id = v.visit_id " +
                 " WHERE vd.visit_key = 'fp_refill_injectable' " +
                 " AND v.base_entity_id = '" + baseEntityId + "' COLLATE NOCASE " +
-                " AND strftime('%Y%d%m', (datetime(v.visit_date/1000, 'unixepoch'))) " +
+                " AND strftime('%Y%d%m', (datetime(v.visit_date/1000, 'unixepoch', 'localtime'))) " +
                 " >= ( SELECT substr(fp_start_date,7,4) || substr(fp_start_date,4,2) || substr(fp_start_date,1,2) FROM ec_family_planning WHERE base_entity_id = '" + baseEntityId + "' COLLATE NOCASE  AND fp_method_accepted = '" + fpMethod + "' COLLATE NOCASE) " +
                 " ORDER BY vd.details DESC";
 
