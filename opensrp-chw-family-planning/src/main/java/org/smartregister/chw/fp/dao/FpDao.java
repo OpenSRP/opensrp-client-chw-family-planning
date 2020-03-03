@@ -239,4 +239,26 @@ public class FpDao extends AbstractDao {
 
         return res.get(0);
     }
-}
+
+    @Nullable
+    public static String getLastPillCycle(String baseEntityId, String fpMethod) {
+        String sql = " SELECT vd.details as details " +
+                " FROM visit_details vd " +
+                " INNER JOIN visit_details vdd " +
+                " on vd.visit_id  = vdd.visit_id " +
+                "  INNER JOIN visits v on vd.visit_id = v.visit_id " +
+                "  WHERE (vd.visit_key LIKE '%no_pillcycles%') " +
+                "  AND (vdd.visit_key LIKE '%fp_method_accepted' or vdd.visit_key LIKE '%fp_method%') " +
+                "  AND   (vdd.details LIKE  = '" + fpMethod + "' COLLATE NOCASE ) " +
+                "  AND v.base_entity_id = '" + baseEntityId + "' COLLATE NOCASE " +
+                "  ORDER by v.visit_date DESC " +
+                "  LIMIT 1 ";
+
+        DataMap<String> dataMap = cursor -> getCursorValue(cursor, "details");
+
+        List<String> res = readData(sql, dataMap);
+        if (res == null || res.size() == 0)
+            return " ";
+
+        return res.get(0);
+    }}
