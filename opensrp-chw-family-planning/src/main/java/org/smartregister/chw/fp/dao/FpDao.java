@@ -249,7 +249,7 @@ public class FpDao extends AbstractDao {
                 "  INNER JOIN visits v on vd.visit_id = v.visit_id " +
                 "  WHERE (vd.visit_key LIKE '%no_pillcycles%') " +
                 "  AND (vdd.visit_key LIKE '%fp_method_accepted' or vdd.visit_key LIKE '%fp_method%') " +
-                "  AND   (vdd.details LIKE  = '" + fpMethod + "' COLLATE NOCASE ) " +
+                "  AND (vdd.details LIKE '%" + fpMethod + "%' COLLATE NOCASE ) " +
                 "  AND v.base_entity_id = '" + baseEntityId + "' COLLATE NOCASE " +
                 "  ORDER by v.visit_date DESC " +
                 "  LIMIT 1 ";
