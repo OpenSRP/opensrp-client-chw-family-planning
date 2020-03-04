@@ -240,7 +240,6 @@ public class FpDao extends AbstractDao {
         return res.get(0);
     }
 
-    @Nullable
     public static String getLastPillCycle(String baseEntityId, String fpMethod) {
         String sql = " SELECT vd.details as details " +
                 " FROM visit_details vd " +
