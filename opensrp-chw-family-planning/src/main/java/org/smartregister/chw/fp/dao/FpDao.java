@@ -1,5 +1,6 @@
 package org.smartregister.chw.fp.dao;
 
+import org.apache.commons.lang3.StringUtils;
 import org.jetbrains.annotations.Nullable;
 import org.smartregister.chw.anc.domain.Visit;
 import org.smartregister.chw.fp.domain.FpAlertObject;
@@ -240,7 +241,7 @@ public class FpDao extends AbstractDao {
         return res.get(0);
     }
 
-    public static String getLastPillCycle(String baseEntityId, String fpMethod) {
+    public static Integer  getLastPillCycle(String baseEntityId, String fpMethod) {
         String sql = " SELECT vd.details as details " +
                 " FROM visit_details vd " +
                 " INNER JOIN visit_details vdd " +
@@ -256,8 +257,6 @@ public class FpDao extends AbstractDao {
         DataMap<String> dataMap = cursor -> getCursorValue(cursor, "details");
 
         List<String> res = readData(sql, dataMap);
-        if (res == null || res.size() == 0)
-            return " ";
-
-        return res.get(0);
+        return  (res == null || res.size() == 0) ? 0 : Integer.parseInt(res.get(0));
     }}
+
