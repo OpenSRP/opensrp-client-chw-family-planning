@@ -259,3 +259,4 @@ public class FpDao extends AbstractDao {
         List<String> res = readData(sql, dataMap);
         return  (res == null || res.size() == 0) ? 0 : Integer.parseInt(res.get(0));
     }}
+
