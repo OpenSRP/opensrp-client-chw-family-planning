@@ -57,12 +57,12 @@ public class BaseFpProfileActivity extends BaseProfileActivity implements BaseFp
     protected TextView tvUndo;
     protected TextView tvVisitDone;
     protected RelativeLayout rlLastVisitLayout;
-    private RelativeLayout rlUpcomingServices;
-    private RelativeLayout rlFamilyServicesDue;
+    protected RelativeLayout rlUpcomingServices;
+    protected RelativeLayout rlFamilyServicesDue;
     protected TextView tvLastVisitDay;
     protected TextView tvViewMedicalHistory;
-    private TextView tvUpComingServices;
-    private TextView tvFamilyStatus;
+    protected TextView tvUpComingServices;
+    protected TextView tvFamilyStatus;
     protected TextView tvRecordFpFollowUp;
     protected TextView tvFpMethodRow;
 
@@ -151,7 +151,8 @@ public class BaseFpProfileActivity extends BaseProfileActivity implements BaseFp
     }
 
     public void initializeCallFAB() {
-        if (StringUtils.isNotBlank(fpMemberObject.getFamilyHeadPhoneNumber())) {
+        if (StringUtils.isNotBlank(fpMemberObject.getPhoneNumber())
+                || StringUtils.isNotBlank(fpMemberObject.getFamilyHeadPhoneNumber())) {
             fpFloatingMenu = new BaseFpFloatingMenu(this, fpMemberObject);
             fpFloatingMenu.setGravity(Gravity.BOTTOM | Gravity.RIGHT);
             LinearLayout.LayoutParams linearLayoutParams = new LinearLayout.LayoutParams(

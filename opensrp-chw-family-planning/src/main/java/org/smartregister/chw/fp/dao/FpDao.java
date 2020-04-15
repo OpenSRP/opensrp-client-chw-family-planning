@@ -1,5 +1,6 @@
 package org.smartregister.chw.fp.dao;
 
+import org.apache.commons.lang3.StringUtils;
 import org.jetbrains.annotations.Nullable;
 import org.smartregister.chw.anc.domain.Visit;
 import org.smartregister.chw.fp.domain.FpAlertObject;
@@ -171,7 +172,7 @@ public class FpDao extends AbstractDao {
                 " INNER JOIN visits v on vd.visit_id = v.visit_id " +
                 " WHERE vd.visit_key = 'fp_refill_injectable' " +
                 " AND v.base_entity_id = '" + baseEntityId + "' COLLATE NOCASE " +
-                " AND strftime('%Y%d%m', (datetime(v.visit_date/1000, 'unixepoch'))) " +
+                " AND strftime('%Y%d%m', (datetime(v.visit_date/1000, 'unixepoch', 'localtime'))) " +
                 " >= ( SELECT substr(fp_start_date,7,4) || substr(fp_start_date,4,2) || substr(fp_start_date,1,2) FROM ec_family_planning WHERE base_entity_id = '" + baseEntityId + "' COLLATE NOCASE  AND fp_method_accepted = '" + fpMethod + "' COLLATE NOCASE) " +
                 " ORDER BY vd.details DESC";
 
@@ -239,4 +240,23 @@ public class FpDao extends AbstractDao {
 
         return res.get(0);
     }
-}
+
+    public static Integer  getLastPillCycle(String baseEntityId, String fpMethod) {
+        String sql = " SELECT vd.details as details " +
+                " FROM visit_details vd " +
+                " INNER JOIN visit_details vdd " +
+                " on vd.visit_id  = vdd.visit_id " +
+                "  INNER JOIN visits v on vd.visit_id = v.visit_id " +
+                "  WHERE (vd.visit_key LIKE 'no_pillcycles') " +
+                "  AND (vdd.visit_key LIKE 'fp_method_accepted' or vdd.visit_key LIKE 'fp_method') " +
+                "  AND (vdd.details LIKE '" + fpMethod + "' COLLATE NOCASE ) " +
+                "  AND v.base_entity_id = '" + baseEntityId + "' COLLATE NOCASE " +
+                "  ORDER by v.visit_date DESC " +
+                "  LIMIT 1 ";
+
+        DataMap<String> dataMap = cursor -> getCursorValue(cursor, "details");
+
+        List<String> res = readData(sql, dataMap);
+        return  (res == null || res.size() == 0) ? 0 : Integer.parseInt(res.get(0));
+    }}
+
