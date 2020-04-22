@@ -57,18 +57,18 @@ public class FpUtil {
     public static String getFullName(FpMemberObject fpMemberObject) {
         StringBuilder nameBuilder = new StringBuilder();
         String firstName = fpMemberObject.getFirstName();
-        String lastName = fpMemberObject.getLastName();
+        String lastName = fpMemberObject.getFamilyName();
         String middleName = fpMemberObject.getMiddleName();
         if (StringUtils.isNotBlank(firstName)) {
             nameBuilder.append(firstName);
-        } else if (StringUtils.isNotBlank(middleName)) {
-            nameBuilder.append(" ");
-            nameBuilder.append(middleName);
-        } else if (StringUtils.isNotBlank(lastName)) {
-            nameBuilder.append(" ");
-            nameBuilder.append(lastName);
         }
-        return nameBuilder.toString();
+        if (StringUtils.isNotBlank(middleName)) {
+            nameBuilder.append(" " + middleName);
+        }
+        if (StringUtils.isNotBlank(lastName)) {
+            nameBuilder.append(" " + lastName);
+        }
+        return String.valueOf(nameBuilder);
     }
 
     public static void processEvent(AllSharedPreferences allSharedPreferences, Event baseEvent) throws Exception {

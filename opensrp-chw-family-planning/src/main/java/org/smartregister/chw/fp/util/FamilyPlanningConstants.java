@@ -23,7 +23,8 @@ public interface FamilyPlanningConstants {
     }
 
     interface Forms {
-        String FAMILY_PLANNING_REGISTRATION_FORM = "family_planning_registration";
+        String FEMALE_FAMILY_PLANNING_REGISTRATION_FORM = "female_family_planning_registration";
+        String MALE_FAMILY_PLANNING_REGISTRATION_FORM = "male_family_planning_registration";
     }
 
     interface CONFIGURATION {

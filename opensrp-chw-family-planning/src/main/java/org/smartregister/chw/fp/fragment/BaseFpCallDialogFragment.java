@@ -1,11 +1,11 @@
 package org.smartregister.chw.fp.fragment;
 
 import android.app.Activity;
+import android.app.DialogFragment;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.content.Context;
 import android.os.Bundle;
-import android.app.DialogFragment;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -60,7 +60,8 @@ public class BaseFpCallDialogFragment extends DialogFragment implements BaseFpCa
         ViewGroup dialogView = (ViewGroup) inflater.inflate(R.layout.fp_member_call_widget_dialog_fragment, container, false);
         setUpPosition();
         TextView callTitle = dialogView.findViewById(R.id.call_fp_woman_title);
-        callTitle.setText(getString((R.string.call_fp_woman)));
+
+        callTitle.setText(getString((fpMemberObject.getGender().equalsIgnoreCase("male") ? R.string.call_fp_man : R.string.call_fp_woman)));
 
         if (listener == null) {
             listener = new BaseFpCallWidgetDialogListener(this);
@@ -71,7 +72,8 @@ public class BaseFpCallDialogFragment extends DialogFragment implements BaseFpCa
     }
 
     private void initUI(ViewGroup rootView) {
-
+        TextView callHeading = rootView.findViewById(R.id.call_title);
+        callHeading.setText(getString((fpMemberObject.getGender().equalsIgnoreCase("male") ? R.string.call_fp_man : R.string.call_fp_woman)));
         if (StringUtils.isNotBlank(fpMemberObject.getPhoneNumber())) {
             TextView fpWomanNameTextView = rootView.findViewById(R.id.call_fp_woman_name);
             fpWomanNameTextView.setText(FpUtil.getFullName(fpMemberObject));
