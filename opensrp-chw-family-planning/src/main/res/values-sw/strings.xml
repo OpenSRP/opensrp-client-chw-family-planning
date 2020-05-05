@@ -1,0 +1,101 @@
+<resources>
+    <string name="app_name">Uzazi wa mpango</string>
+    <string name="scan_qr">Scan QR</string>
+    <string name="home">Nyumbani</string>
+    <string name="add_family">Ongeza Mwanafamilia</string>
+    <string name="job_aids">Viendea kazi</string>
+    <string name="error_unable_to_start_form">Hitilafu wakati wa kuanza form</string>
+    <string name="fp_return_to_previous_page">Rudi kwa wateja wote wa kike wa uzazi wa mpango</string>
+    <string name="family_head">MKUU WA KAYA</string>
+    <string name="primary_care_giver">Mlezi</string>
+    <string name="record_fp_followup">Rekodi tembeleo la ufuatiliaji wa uzazi wa mpango</string>
+    <string name="fp_visit_done">Tembeleo la ufuatiliaji wa uzazi wa mpango limefanyika</string>
+    <string name="not_visiting_this_month">Tembeleo halifanyiki mwezi huu</string>
+    <string name="last_visit">Tembeleo la mwisho</string>
+    <string name="last_visit_n_days_ago">Tembeleo la mwisho %1$s iliyopita</string>
+    <string name="less_than_twenty_four">chini ya masaa 24</string>
+    <string name="days">Siku</string>
+    <string name="fp_visit_edit">Hariri</string>
+    <string name="view_fp_registration">Angalia usajili wa Uzazi wa Mpango</string>
+    <string name="view_medical_history">Angalia historia ya matitbabu</string>
+    <string name="view_upcoming_services">Huduma zinazofuata</string>
+    <string name="family_has_nothing_due">Hakuna huduma iliyofika muda wake kwenye kaya</string>
+    <string name="family_has_services_due">Huduma zimefikia muda wake kwenye kaya</string>
+    <string name="fp_service_upcoming"><![CDATA[%1$s <font color=#7f7f7f> inayofuata (%2$s)</font></b>]]></string>
+    <string name="fp_service_overdue"><![CDATA[%1$s <font color=#f04646>iliyopitiliza muda (%2$s)</font></b>]]> </string>
+    <string name="fp_service_due"><![CDATA[%1$s <font color=#000000>imefika (%2$s)</font> </b>]]></string>
+    <string name="family_has_service_overdue"><![CDATA[Kaya ina <font color=#FF0000>huduma zilizopitiliza muda wake</font></b>]]></string>
+    <string name="go_to_family_s_profile">Elekea kwenye taarifa binafsi za kaya</string>
+    <string name="error_unable_to_save_form">Hitilafu wakati wa kuhifadhi fomu</string>
+    <string name="fp_followup_visit">Tembeleo la\nufuatiliaji</string>
+    <string name="sort">Panga</string>
+    <string name="family_planning">Uzazi wa mpango</string>
+    <string name="saving_dialog_title">Inahifadhi</string>
+    <string name="head_of_family">MKUU WA KAYA</string>
+    <string name="call">Piga simu</string>
+    <string name="call_fp_woman">Piga simu kwa mwanamke mwenye uzazi wa mpango</string>
+    <string name="call_fp_man">Piga simu kwa mwanamume mwenye uzazi wa mpango</string>
+    <string name="fp_member">Uzazi wa mpango kwa mwanamke</string>
+    <string name="fp_man_member">Uzazi wa mpango kwa mwanamume</string>
+    <string name="copy_to_clipboard">Nakili namba ya simu</string>
+    <string name="copied_phone_number">Namba ya simu imenakiliwa</string>
+    <!--FP -->
+    <string name="fp_visit_day_next_due">Inayofuata kufika mda %s</string>
+    <string name="fp_visit_day_due">%s Siku zimefika mda wake</string>
+    <string name="fp_visit_day_due_today">Imefika leo</string>
+    <string name="fp_visit_day_overdue">%s siku zimepita</string>
+    <string name="fp_visit_day_overdue_today">Imepita leo</string>
+    <string name="fp_follow_up_visit">Tembeleo la ufuatiliaji wa uzazi wa mpango</string>
+    <string name="fp_side_effects">Madhara</string>
+    <string name="counseling">Ushauri</string>
+    <string name="resupply">Sambaza upya %s</string>
+    <string name="next_health_facility_visit">Hudhurio linalofuatala la kituoni</string>
+    <string name="no_of_condoms">Idadi ya kondomu</string>
+    <string name="no_of_pill_cycles">Namba ya mzunguko wa vidonge:</string>
+    <string name="date_of_next_injection">Tarehe inayofuata ya sindano:</string>
+    <string name="side_effects">Madhara:</string>
+    <string name="action">Shughuli:</string>
+    <!--counselling -->
+    <string name="yes">Ndiyo</string>
+    <string name="no">Hapana</string>
+    <!-- side effects -->
+    <string name="allergic_reactions">Matokeo ya aleji</string>
+    <string name="heavy_bleading">Kuvuja damu nyingi</string>
+    <string name="irregular_period">Vipindi vya hedhi visivyo vya kawaida</string>
+    <string name="others">Mengineyo</string>
+    <string name="none">Hakuna</string>
+    <string name="severe_pain_inside_the_vagina">Maumivu makali ndani ya uke baada ya IUD kuwekwa</string>
+    <string name="cramps_or_back_ache">Kuuma tumbo la kunyonga au mgongo siku chache baada ya kuweka kitanzi</string>
+    <string name="spotting">Kutokwa matone ya damu katikati ya mzunguko wa hedhi na/au hedhi kutokuwa na mzunguko wa siku maalum</string>
+    <string name="heavier_period">Hedhi nzito na mkakamao mkali wa misuli wakati wa hedhi</string>
+    <string name="IUCD_explusion">Kutoa kitanzi</string>
+    <string name="incisional_bleeding">Kutoka damu kwenye upasuaji</string>
+    <string name="pus_discharge_from_incision">Pus/Kutoka kwa majimaji kwenye upasuaji</string>
+    <string name="swollen_around_the_incision">Kuvimba kwenye upasuaji</string>
+   <!--action taken -->
+    <string name="managed">Imesimamiwa</string>
+    <string name="Referred">Rufaa imetolewa</string>
+
+    <!--Family planning fp start dates row-->
+    <string name="male_condom">Kondomu ya kiume</string>
+    <string name="female_condom">Kondomu ya kike</string>
+    <string name="coc">Vidonge vyenye vichocheo viwili</string>
+    <string name="pop">Vidonge vyenye kichocheo kimoja</string>
+    <string name="injectable">Sindano</string>
+    <string name="implanon">Vipandikzi vya miaka mitatu</string>
+    <string name="jadelle">Vipandikzi vya miaka mitano</string>
+    <string name="female_sterilization">Kufunga kizazi mwanamke</string>
+    <string name="male_sterilization">Kufunga kizazi mwanaume</string>
+    <string name="iucd">Kitanzi</string>
+    <string name="standard_day_method">Njia ya kalenda</string>
+    <string name="emergency_contraceptive">Vidonge nya dharura</string>
+    <string name="not_applicable">Sio husika</string>
+    <string name="fp_insertion">Vipandikizi</string>
+    <string name="fp_started">Imeanza</string>
+    <string name="fp_on">Imewashwa</string>
+
+    <string name="refill">{0} jaza tena</string>
+    <string name="follow_up_one">{0} ufuatiliaji 1</string>
+    <string name="follow_up_two">{0} ufuatiliaji 2</string>
+    <string name="follow_up_three">{0} ufuatiliaji 3</string>
+</resources>
