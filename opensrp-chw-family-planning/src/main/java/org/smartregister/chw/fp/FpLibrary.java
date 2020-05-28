@@ -77,7 +77,7 @@ public class FpLibrary {
 
     public UniqueIdRepository getUniqueIdRepository() {
         if (uniqueIdRepository == null) {
-            uniqueIdRepository = new UniqueIdRepository(getRepository());
+            uniqueIdRepository = new UniqueIdRepository();
         }
         return uniqueIdRepository;
     }

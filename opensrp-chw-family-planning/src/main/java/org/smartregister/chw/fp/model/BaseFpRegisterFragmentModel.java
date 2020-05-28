@@ -30,7 +30,7 @@ public class BaseFpRegisterFragmentModel implements BaseFpRegisterFragmentContra
     @Override
     public String mainSelect(@NonNull String tableName, @NonNull String mainCondition) {
         SmartRegisterQueryBuilder queryBuilder = new SmartRegisterQueryBuilder();
-        queryBuilder.SelectInitiateMainTable(tableName, mainColumns(tableName));
+        queryBuilder.selectInitiateMainTable(tableName, mainColumns(tableName));
         queryBuilder.customJoin("INNER JOIN " + FamilyPlanningConstants.DBConstants.FAMILY_MEMBER + " ON  " + tableName + "." + FamilyPlanningConstants.DBConstants.BASE_ENTITY_ID + " = " + FamilyPlanningConstants.DBConstants.FAMILY_MEMBER + "." + FamilyPlanningConstants.DBConstants.BASE_ENTITY_ID + " COLLATE NOCASE ");
         queryBuilder.customJoin("INNER JOIN " + FamilyPlanningConstants.DBConstants.FAMILY + " ON  " + FamilyPlanningConstants.DBConstants.FAMILY_MEMBER + "." + FamilyPlanningConstants.DBConstants.RELATIONAL_ID + " = " + FamilyPlanningConstants.DBConstants.FAMILY + "." + FamilyPlanningConstants.DBConstants.BASE_ENTITY_ID);
 
@@ -56,7 +56,7 @@ public class BaseFpRegisterFragmentModel implements BaseFpRegisterFragmentContra
     @Override
     public String countSelect(String tableName, String mainCondition) {
         SmartRegisterQueryBuilder countQueryBuilder = new SmartRegisterQueryBuilder();
-        countQueryBuilder.SelectInitiateMainTableCounts(tableName);
+        countQueryBuilder.selectInitiateMainTableCounts(tableName);
         return countQueryBuilder.mainCondition(mainCondition);
     }
 
