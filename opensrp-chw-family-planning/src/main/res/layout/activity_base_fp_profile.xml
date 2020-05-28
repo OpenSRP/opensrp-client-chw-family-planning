@@ -38,7 +38,7 @@
                     android:paddingEnd="0dp"
                     android:text="@string/fp_return_to_previous_page"
                     android:textColor="@color/customAppThemeBlue"
-                    android:textSize="17sp"/>
+                    android:textSize="17sp" />
             </android.support.v7.widget.Toolbar>
 
             <LinearLayout
@@ -58,7 +58,7 @@
                     android:layout_gravity="center_horizontal"
                     android:src="@mipmap/ic_member"
                     app:civ_border_color="@color/transparent"
-                    app:civ_border_width="3dp"/>
+                    app:civ_border_width="3dp" />
 
                 <org.smartregister.view.customcontrols.CustomFontTextView
                     android:id="@+id/textview_name"
@@ -168,23 +168,24 @@
             </LinearLayout>
 
         </android.support.design.widget.CollapsingToolbarLayout>
+
         <ScrollView
             android:layout_width="fill_parent"
             android:layout_height="fill_parent">
 
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/white"
-            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="vertical">
 
-        <include
-            android:id="@+id/record_fp_followup_visit"
-            layout="@layout/fp_follow_up_visit_view" />
+                <include
+                    android:id="@+id/record_fp_followup_visit"
+                    layout="@layout/fp_follow_up_visit_view" />
 
-        <include layout="@layout/content_fp_profile" />
+                <include layout="@layout/content_fp_profile" />
 
-        </LinearLayout>
+            </LinearLayout>
         </ScrollView>
 
         <View
