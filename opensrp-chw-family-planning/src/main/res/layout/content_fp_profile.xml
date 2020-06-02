@@ -5,7 +5,7 @@
     android:background="@color/white">
 
     <LinearLayout
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/white"
         android:orientation="vertical">
@@ -16,12 +16,12 @@
             android:layout_height="wrap_content"
             android:visibility="gone">
 
-            <androidx.recyclerview.widget.RecyclerView
+            <android.support.v7.widget.RecyclerView
                 android:id="@+id/notification_and_referral_recycler_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-            </androidx.recyclerview.widget.RecyclerView>
+            </android.support.v7.widget.RecyclerView>
         </RelativeLayout>
 
         <View
