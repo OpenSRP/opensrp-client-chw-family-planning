@@ -5,7 +5,7 @@
     <string name="add_family">Ongeza Mwanafamilia</string>
     <string name="job_aids">Viendea kazi</string>
     <string name="error_unable_to_start_form">Hitilafu wakati wa kuanza form</string>
-    <string name="fp_return_to_previous_page">Rudi kwa wateja wote wa kike wa uzazi wa mpango</string>
+    <string name="fp_return_to_previous_page">Rudi kwa wateja wote wa uzazi wa mpango</string>
     <string name="family_head">MKUU WA KAYA</string>
     <string name="primary_care_giver">Mlezi</string>
     <string name="record_fp_followup">Rekodi tembeleo la ufuatiliaji wa uzazi wa mpango</string>
@@ -65,7 +65,7 @@
     <string name="others">Mengineyo</string>
     <string name="none">Hakuna</string>
     <string name="severe_pain_inside_the_vagina">Maumivu makali ndani ya uke baada ya IUD kuwekwa</string>
-    <string name="cramps_or_back_ache">Kuuma tumbo la kunyonga au mgongo siku chache baada ya kuweka kitanzi</string>
+    <string name="cramps_or_back_ache">Tumbo la kunyonga au maumivu ya mgongo siku chache baada ya kuweka kitanzi</string>
     <string name="spotting">Kutokwa matone ya damu katikati ya mzunguko wa hedhi na/au hedhi kutokuwa na mzunguko wa siku maalum</string>
     <string name="heavier_period">Hedhi nzito na mkakamao mkali wa misuli wakati wa hedhi</string>
     <string name="IUCD_explusion">Kutoa kitanzi</string>
