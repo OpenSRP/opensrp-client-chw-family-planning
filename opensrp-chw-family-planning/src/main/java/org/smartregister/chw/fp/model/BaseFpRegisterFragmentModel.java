@@ -12,10 +12,12 @@ import org.smartregister.configurableviews.ConfigurableViewsLibrary;
 import org.smartregister.configurableviews.model.Field;
 import org.smartregister.configurableviews.model.RegisterConfiguration;
 import org.smartregister.configurableviews.model.View;
-import org.smartregister.configurableviews.model.ViewConfiguration;
 import org.smartregister.cursoradapter.SmartRegisterQueryBuilder;
 import org.smartregister.domain.Response;
 import org.smartregister.domain.ResponseStatus;
+import org.smartregister.view.contract.IField;
+import org.smartregister.view.contract.IView;
+import org.smartregister.view.contract.IViewConfiguration;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -44,12 +46,12 @@ public class BaseFpRegisterFragmentModel implements BaseFpRegisterFragmentContra
     }
 
     @Override
-    public ViewConfiguration getViewConfiguration(String viewConfigurationIdentifier) {
+    public IViewConfiguration getViewConfiguration(String viewConfigurationIdentifier) {
         return ConfigurableViewsLibrary.getInstance().getConfigurableViewsHelper().getViewConfiguration(viewConfigurationIdentifier);
     }
 
     @Override
-    public Set<View> getRegisterActiveColumns(String viewConfigurationIdentifier) {
+    public Set<IView> getRegisterActiveColumns(String viewConfigurationIdentifier) {
         return ConfigurableViewsLibrary.getInstance().getConfigurableViewsHelper().getRegisterActiveColumns(viewConfigurationIdentifier);
     }
 
@@ -80,8 +82,8 @@ public class BaseFpRegisterFragmentModel implements BaseFpRegisterFragmentContra
     }
 
     @Override
-    public String getFilterText(List<Field> list, String filterTitle) {
-        List<Field> filterList = list;
+    public String getFilterText(List<IField> list, String filterTitle) {
+        List<IField> filterList = list;
         if (filterList == null) {
             filterList = new ArrayList<>();
         }
@@ -91,6 +93,11 @@ public class BaseFpRegisterFragmentModel implements BaseFpRegisterFragmentContra
             filter = "";
         }
         return "<font color=#727272>" + filter + "</font> <font color=#f0ab41>(" + filterList.size() + ")</font>";
+    }
+
+    @Override
+    public String getSortText(IField sortField) {
+        return null;
     }
 
     @Override
