@@ -52,7 +52,9 @@ public class BaseFpRegisterFragmentModel implements BaseFpRegisterFragmentContra
 
     @Override
     public Set<IView> getRegisterActiveColumns(String viewConfigurationIdentifier) {
-        return ConfigurableViewsLibrary.getInstance().getConfigurableViewsHelper().getRegisterActiveColumns(viewConfigurationIdentifier);
+        HashSet<IView> iviews = new HashSet();
+        iviews.addAll(ConfigurableViewsLibrary.getInstance().getConfigurableViewsHelper().getRegisterActiveColumns(viewConfigurationIdentifier));
+        return iviews;
     }
 
     @Override
