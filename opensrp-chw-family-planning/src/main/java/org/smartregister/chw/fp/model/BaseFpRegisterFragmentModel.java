@@ -1,6 +1,7 @@
 package org.smartregister.chw.fp.model;
 
-import android.support.annotation.NonNull;
+
+import androidx.annotation.NonNull;
 
 import org.apache.commons.lang3.StringUtils;
 import org.json.JSONArray;
@@ -11,7 +12,6 @@ import org.smartregister.chw.fp.util.FamilyPlanningConstants;
 import org.smartregister.configurableviews.ConfigurableViewsLibrary;
 import org.smartregister.configurableviews.model.Field;
 import org.smartregister.configurableviews.model.RegisterConfiguration;
-import org.smartregister.configurableviews.model.View;
 import org.smartregister.cursoradapter.SmartRegisterQueryBuilder;
 import org.smartregister.domain.Response;
 import org.smartregister.domain.ResponseStatus;

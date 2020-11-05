@@ -60,7 +60,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.5.3'
+        classpath 'com.android.tools.build:gradle:4.0.2'
         classpath 'org.kt3k.gradle.plugin:coveralls-gradle-plugin:2.8.2'
     }
 }
@@ -73,7 +73,7 @@ allprojects {
 }
 
 dependencies {
-    implementation('org.smartregister:opensrp-client-core:1.11.5-SNAPSHOT@aar') {
+    implementation('org.smartregister:opensrp-client-core:3.1.0-GS-PREVIEW-SNAPSHOT@aar') {
         transitive = true
         exclude group: 'com.github.bmelnychuk', module: 'atv'
         exclude group: 'com.google.guava', module: 'guava'
@@ -91,7 +91,7 @@ dependencies {
         exclude group: 'com.android.support', module: 'cardview-v7'
     }
 
-    implementation('org.smartregister:opensrp-client-configurable-views:1.1.5-SNAPSHOT@aar') {
+    implementation('org.smartregister:opensrp-client-configurable-views:1.2.0-GS-PREVIEW-SNAPSHOT@aar') {
         transitive = true
         exclude group: 'org.smartregister', module: 'opensrp-client-core'
         exclude group: 'org.smartregister', module: 'opensrp-client-native-form'
