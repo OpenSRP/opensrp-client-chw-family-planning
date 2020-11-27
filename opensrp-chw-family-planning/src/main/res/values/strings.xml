@@ -99,4 +99,6 @@
     <string name="follow_up_one">{0} follow-up 1</string>
     <string name="follow_up_two">{0} follow-up 2</string>
     <string name="follow_up_three">{0} follow-up 3</string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
 </resources>

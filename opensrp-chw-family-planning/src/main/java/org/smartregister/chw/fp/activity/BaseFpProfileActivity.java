@@ -276,7 +276,7 @@ public class BaseFpProfileActivity extends BaseProfileActivity implements BaseFp
         int age = new Period(new DateTime(fpMemberObject.getAge()), new DateTime()).getYears();
         tvName.setText(String.format(Locale.getDefault(), "%s %s %s, %d", fpMemberObject.getFirstName(),
                 fpMemberObject.getMiddleName(), fpMemberObject.getLastName(), age));
-        tvGender.setText(fpMemberObject.getGender());
+        tvGender.setText(FpUtil.getGenderTranslated(this, fpMemberObject.getGender()));
         tvLocation.setText(fpMemberObject.getAddress());
         tvUniqueID.setText(fpMemberObject.getUniqueId());
         imageRenderHelper.refreshProfileImage(fpMemberObject.getBaseEntityId(), profileImageView, FpUtil.getMemberProfileImageResourceIDentifier());
