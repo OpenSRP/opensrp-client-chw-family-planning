@@ -70,10 +70,6 @@ android {
         unitTests {
             includeAndroidResources = true
         }
-
-        unitTests.all {
-            jvmArgs "-Xmx3g"
-        }
     }
 }
 
