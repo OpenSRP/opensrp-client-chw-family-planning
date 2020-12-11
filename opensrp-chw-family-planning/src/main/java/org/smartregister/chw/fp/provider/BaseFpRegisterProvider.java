@@ -66,9 +66,9 @@ public class BaseFpRegisterProvider implements RecyclerViewProvider<BaseFpRegist
             int age = new Period(new DateTime(dobString), new DateTime()).getYears();
 
             String patientName = getName(firstName, Utils.getValue(pc.getColumnmaps(), FamilyPlanningConstants.DBConstants.LAST_NAME, true));
-            String methodAccepted = FpUtil.getTranslatedMethodValue(FamilyPlanningConstants.DBConstants.FP_METHOD_ACCEPTED, context);
+            String methodAccepted = Utils.getValue(pc.getColumnmaps(), FamilyPlanningConstants.DBConstants.FP_METHOD_ACCEPTED, true);
             viewHolder.patientName.setText(patientName + ", " + age);
-            viewHolder.textViewFpMethod.setText(Utils.getValue(pc.getColumnmaps(), methodAccepted, true));
+            viewHolder.textViewFpMethod.setText(FpUtil.getTranslatedMethodValue(methodAccepted, context));
             viewHolder.textViewVillage.setText(Utils.getValue(pc.getColumnmaps(), FamilyPlanningConstants.DBConstants.VILLAGE_TOWN, true));
             viewHolder.patientColumn.setOnClickListener(onClickListener);
             viewHolder.patientColumn.setTag(pc);

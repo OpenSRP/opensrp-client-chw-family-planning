@@ -21,6 +21,7 @@ import android.widget.Toast;
 import org.apache.commons.lang3.StringUtils;
 import org.jetbrains.annotations.Nullable;
 import org.json.JSONObject;
+import org.opensrp.api.constants.Gender;
 import org.smartregister.chw.fp.FpLibrary;
 import org.smartregister.chw.fp.contract.BaseFpCallDialogContract;
 import org.smartregister.chw.fp.dao.FpDao;
@@ -153,33 +154,43 @@ public class FpUtil {
 
     public static String getTranslatedMethodValue(@Nullable String fpMethod, Context context){
         if(fpMethod != null){
+            fpMethod = fpMethod.toLowerCase();
             switch (fpMethod){
-                case "COC":
+                case "cdc":
                     return context.getString(R.string.coc);
-                case "POP":
+                case "pop":
                     return context.getString(R.string.pop);
-                case "Female sterilization":
+                case "female sterilization":
                     return context.getString(R.string.female_sterilization);
-                case "Injectable":
+                case "injectable":
                     return context.getString(R.string.injectable);
-                case "Male condom":
+                case "male condom":
                     return context.getString(R.string.male_condom);
-                case "Female condom":
+                case "female condom":
                     return context.getString(R.string.female_condom);
-                case "IUCD":
+                case "iucd":
                     return context.getString(R.string.iucd);
-                case "Implanon - NXT":
+                case "implanon - nxt":
                     return context.getString(R.string.implanon);
-                case "Male sterilization":
+                case "male sterilization":
                     return context.getString(R.string.male_sterilization);
-                case "Jadelle":
+                case "jadelle":
                     return context.getString(R.string.jadelle);
-                case "Standard day method":
+                case "standard day method":
                     return context.getString(R.string.standard_day_method);
                 default:
                     return fpMethod;
             }
         }
         return fpMethod;
+    }
+
+    public static String getGenderTranslated(Context context, String gender) {
+        if (gender.equalsIgnoreCase(Gender.MALE.toString())) {
+            return context.getResources().getString(R.string.male);
+        } else if (gender.equalsIgnoreCase(Gender.FEMALE.toString())) {
+            return context.getResources().getString(R.string.female);
+        }
+        return "";
     }
 }
