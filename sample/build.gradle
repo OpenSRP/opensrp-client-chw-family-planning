@@ -43,6 +43,8 @@ android {
         exclude 'META-INF/dependencies.txt'
         exclude 'META-INF/LGPL2.1'
         exclude 'LICENSE.txt'
+        exclude 'META-INF/LICENSE.md'
+        exclude 'META-INF/NOTICE.md'
     }
 
     lintOptions {
@@ -60,8 +62,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:4.0.2'
-        classpath 'org.kt3k.gradle.plugin:coveralls-gradle-plugin:2.8.2'
+        classpath "com.android.tools.build:gradle:4.0.0"
     }
 }
 
@@ -73,7 +74,7 @@ allprojects {
 }
 
 dependencies {
-    implementation('org.smartregister:opensrp-client-core:3.1.0-GS-PREVIEW-SNAPSHOT@aar') {
+    implementation('org.smartregister:opensrp-client-core:4.2.4.1-GS-PREVIEW-SNAPSHOT@aar') {
         transitive = true
         exclude group: 'com.github.bmelnychuk', module: 'atv'
         exclude group: 'com.google.guava', module: 'guava'
