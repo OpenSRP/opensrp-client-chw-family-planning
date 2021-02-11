@@ -35,6 +35,9 @@ android {
         multiDexEnabled true
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
+
+    android.defaultConfig.javaCompileOptions.annotationProcessorOptions.includeCompileClasspath = true
+
     buildTypes {
         release {
             minifyEnabled false
@@ -64,6 +67,8 @@ android {
         exclude 'META-INF/NOTICE.txt'
         exclude 'META-INF/notice.txt'
         exclude 'META-INF/ASL2.0'
+        exclude 'META-INF/LICENSE.md'
+        exclude 'META-INF/NOTICE.md'
     }
 
     testOptions {
@@ -85,7 +90,7 @@ allprojects {
 }
 
 dependencies {
-    implementation('org.smartregister:opensrp-client-core:1.11.5-SNAPSHOT@aar') {
+    implementation('org.smartregister:opensrp-client-core:4.2.4.1-GS-PREVIEW-SNAPSHOT@aar') {
         transitive = true
         exclude group: 'com.github.bmelnychuk', module: 'atv'
         exclude group: 'com.google.guava', module: 'guava'
@@ -93,14 +98,14 @@ dependencies {
         exclude group: 'org.apache.httpcomponents', module: 'httpmime'
     }
 
-    implementation('org.smartregister:opensrp-client-native-form:1.9.1-SNAPSHOT@aar') {
+    implementation('org.smartregister:opensrp-client-native-form:1.14.7.0-SNAPSHOT@aar') {
         transitive = true
         exclude group: 'com.android.support', module: 'recyclerview-v7'
         exclude group: 'com.android.support', module: 'appcompat-v7'
         exclude group: 'com.android.support', module: 'cardview-v7'
     }
 
-    implementation('org.smartregister:opensrp-client-configurable-views:1.1.5-SNAPSHOT@aar') {
+    implementation('org.smartregister:opensrp-client-configurable-views:1.2.0-GS-PREVIEW-SNAPSHOT@aar') {
         transitive = true
         exclude group: 'org.smartregister', module: 'opensrp-client-core'
         exclude group: 'org.smartregister', module: 'opensrp-client-native-form'
@@ -114,7 +119,7 @@ dependencies {
         exclude group: 'com.android.support', module: 'appcompat-v7'
     }
 
-    api('org.smartregister:opensrp-client-chw-anc:0.1.59-SNAPSHOT@aar') {
+    api('org.smartregister:opensrp-client-chw-anc:2.0.2.1-GS-SNAPSHOT@aar') {
         transitive = true
         exclude group: 'org.smartregister', module: 'opensrp-client-core'
         exclude group: 'com.android.support', module: 'appcompat-v7'
@@ -136,9 +141,9 @@ dependencies {
     testImplementation 'org.mockito:mockito-core:2.7.22'
     androidTestImplementation 'org.mockito:mockito-android:2.7.22'
 
-    testImplementation 'org.robolectric:robolectric:3.8'
-    testImplementation 'org.robolectric:shadows-multidex:3.8'
-    testImplementation 'org.robolectric:shadows-support-v4:3.4-rc2'
+    testImplementation 'org.mockito:mockito-inline:2.25.0'
+    testImplementation 'org.robolectric:robolectric:4.3.1'
+    testImplementation 'org.robolectric:shadows-multidex:4.3.1'
 
 
     testImplementation 'junit:junit:4.12'
@@ -154,7 +159,6 @@ dependencies {
 }
 
 task jacocoTestReport(type: JacocoReport, dependsOn: ['testDebugUnitTest', 'createDebugCoverageReport']) {
-
     reports {
         xml.enabled = true
         html.enabled = true

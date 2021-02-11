@@ -1,6 +1,6 @@
 package org.smartregister.chw.fp.interactor;
 
-import android.support.annotation.VisibleForTesting;
+import androidx.annotation.VisibleForTesting;
 
 import org.smartregister.chw.fp.contract.BaseFpRegisterContract;
 import org.smartregister.chw.fp.util.AppExecutors;

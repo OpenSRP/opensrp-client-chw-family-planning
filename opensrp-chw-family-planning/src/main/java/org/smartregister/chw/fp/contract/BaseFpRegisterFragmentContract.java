@@ -15,8 +15,6 @@ public interface BaseFpRegisterFragmentContract {
 
     interface View extends BaseRegisterFragmentContract.View {
 
-        void initializeAdapter(Set<org.smartregister.configurableviews.model.View> visibleColumns);
-
         Presenter presenter();
 
     }
@@ -36,19 +34,13 @@ public interface BaseFpRegisterFragmentContract {
 
     }
 
-    interface Model {
+    interface Model extends BaseRegisterFragmentContract.Model {
 
         RegisterConfiguration defaultRegisterConfiguration();
-
-        ViewConfiguration getViewConfiguration(String viewConfigurationIdentifier);
-
-        Set<org.smartregister.configurableviews.model.View> getRegisterActiveColumns(String viewConfigurationIdentifier);
 
         String countSelect(String tableName, String mainCondition);
 
         String mainSelect(String tableName, String mainCondition);
-
-        String getFilterText(List<Field> filterList, String filter);
 
         String getSortText(Field sortField);
 

@@ -9,9 +9,9 @@ import org.smartregister.chw.fp.model.BaseFpRegisterFragmentModel;
 import org.smartregister.chw.fp.presenter.BaseFpRegisterFragmentPresenter;
 import org.smartregister.chw.fp.provider.BaseFpRegisterProvider;
 import org.smartregister.commonregistry.CommonPersonObjectClient;
-import org.smartregister.configurableviews.model.View;
 import org.smartregister.cursoradapter.RecyclerViewPaginatedAdapter;
 import org.smartregister.fp.R;
+import org.smartregister.view.contract.IView;
 import org.smartregister.view.customcontrols.CustomFontTextView;
 import org.smartregister.view.customcontrols.FontVariant;
 import org.smartregister.view.fragment.BaseRegisterFragment;
@@ -24,7 +24,7 @@ public class BaseFpRegisterFragment extends BaseRegisterFragment implements Base
     public static final String FOLLOW_UP_VISIT = "follow_up_visit";
 
     @Override
-    public void initializeAdapter(Set<View> visibleColumns) {
+    public void initializeAdapter(Set<IView> visibleColumns) {
         BaseFpRegisterProvider fpRegisterProvider = new BaseFpRegisterProvider(getActivity(), paginationViewHandler, registerActionHandler, visibleColumns);
         clientAdapter = new RecyclerViewPaginatedAdapter(null, fpRegisterProvider, context().commonrepository(this.tablename));
         clientAdapter.setCurrentlimit(20);

@@ -6,6 +6,8 @@ import org.smartregister.configurableviews.model.Field;
 import org.smartregister.configurableviews.model.RegisterConfiguration;
 import org.smartregister.configurableviews.model.View;
 import org.smartregister.configurableviews.model.ViewConfiguration;
+import org.smartregister.view.contract.IView;
+import org.smartregister.view.contract.IViewConfiguration;
 
 import java.lang.ref.WeakReference;
 import java.util.List;
@@ -20,7 +22,7 @@ public class BaseFpRegisterFragmentPresenter implements BaseFpRegisterFragmentCo
 
     protected RegisterConfiguration config;
 
-    protected Set<View> visibleColumns = new TreeSet<>();
+    protected Set<IView> visibleColumns = new TreeSet<>();
 
     public BaseFpRegisterFragmentPresenter(BaseFpRegisterFragmentContract.View view, BaseFpRegisterFragmentContract.Model model) {
         this.viewReference = new WeakReference<>(view);
@@ -47,7 +49,7 @@ public class BaseFpRegisterFragmentPresenter implements BaseFpRegisterFragmentCo
     @Override
     public void processViewConfigurations() {
 
-        ViewConfiguration viewConfiguration = model.getViewConfiguration(FamilyPlanningConstants.CONFIGURATION.FAMILY_PLANNING_REGISTER);
+        IViewConfiguration viewConfiguration = model.getViewConfiguration(FamilyPlanningConstants.CONFIGURATION.FAMILY_PLANNING_REGISTER);
         if (viewConfiguration != null) {
             config = (RegisterConfiguration) viewConfiguration.getMetadata();
             this.visibleColumns = model.getRegisterActiveColumns(FamilyPlanningConstants.CONFIGURATION.FAMILY_PLANNING_REGISTER);

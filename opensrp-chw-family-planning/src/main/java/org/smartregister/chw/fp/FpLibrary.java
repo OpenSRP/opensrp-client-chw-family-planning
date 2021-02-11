@@ -22,7 +22,6 @@ public class FpLibrary {
     private ECSyncHelper syncHelper;
 
     private ClientProcessorForJava clientProcessorForJava;
-    private Compressor compressor;
 
     private FpLibrary(Context contextArg, Repository repositoryArg, int applicationVersion, int databaseVersion) {
         this.context = contextArg;
@@ -98,12 +97,5 @@ public class FpLibrary {
 
     public void setClientProcessorForJava(ClientProcessorForJava clientProcessorForJava) {
         this.clientProcessorForJava = clientProcessorForJava;
-    }
-
-    public Compressor getCompressor() {
-        if (compressor == null) {
-            compressor = Compressor.getDefault(context().applicationContext());
-        }
-        return compressor;
     }
 }
