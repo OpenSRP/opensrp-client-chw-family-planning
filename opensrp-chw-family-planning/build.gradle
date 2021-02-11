@@ -98,7 +98,7 @@ dependencies {
         exclude group: 'org.apache.httpcomponents', module: 'httpmime'
     }
 
-    implementation('org.smartregister:opensrp-client-native-form:1.14.5.0-SNAPSHOT@aar') {
+    implementation('org.smartregister:opensrp-client-native-form:1.14.7.0-SNAPSHOT@aar') {
         transitive = true
         exclude group: 'com.android.support', module: 'recyclerview-v7'
         exclude group: 'com.android.support', module: 'appcompat-v7'
@@ -119,7 +119,7 @@ dependencies {
         exclude group: 'com.android.support', module: 'appcompat-v7'
     }
 
-    api('org.smartregister:opensrp-client-chw-anc:1.1.2-SNAPSHOT@aar') {
+    api('org.smartregister:opensrp-client-chw-anc:2.0.2.1-GS-SNAPSHOT@aar') {
         transitive = true
         exclude group: 'org.smartregister', module: 'opensrp-client-core'
         exclude group: 'com.android.support', module: 'appcompat-v7'
@@ -141,9 +141,9 @@ dependencies {
     testImplementation 'org.mockito:mockito-core:2.7.22'
     androidTestImplementation 'org.mockito:mockito-android:2.7.22'
 
-    testImplementation 'org.robolectric:robolectric:3.8'
-    testImplementation 'org.robolectric:shadows-multidex:3.8'
-    testImplementation 'org.robolectric:shadows-support-v4:3.4-rc2'
+    testImplementation 'org.mockito:mockito-inline:2.25.0'
+    testImplementation 'org.robolectric:robolectric:4.3.1'
+    testImplementation 'org.robolectric:shadows-multidex:4.3.1'
 
 
     testImplementation 'junit:junit:4.12'
@@ -158,7 +158,7 @@ dependencies {
     testImplementation("org.powermock:powermock-classloading-xstream:$powerMockVersion")
 }
 
-task jacocoTestReport(type: JacocoReport, dependsOn: ['testDebugUnitTest', 'createDebugCoverageReport']) {
+task jacocoTestReport(type: JacocoReport, dependsOn: ['testDebugUnitTest']) {
 
     reports {
         xml.enabled = true

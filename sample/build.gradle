@@ -1,7 +1,13 @@
 apply plugin: 'com.android.application'
 
 android {
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
     compileSdkVersion androidCompileSdkVersion
+    buildToolsVersion androidBuildToolsVersion
 
     defaultConfig {
         applicationId "org.smartregister.fp"
@@ -74,7 +80,7 @@ allprojects {
 }
 
 dependencies {
-    implementation('org.smartregister:opensrp-client-core:4.2.4.1-GS-PREVIEW-SNAPSHOT@aar') {
+    implementation('org.smartregister:opensrp-client-core:4.0.4-SNAPSHOT@aar') {
         transitive = true
         exclude group: 'com.github.bmelnychuk', module: 'atv'
         exclude group: 'com.google.guava', module: 'guava'
@@ -83,9 +89,10 @@ dependencies {
         exclude group: 'com.android.support', module: 'recyclerview-v7'
         exclude group: 'com.github.johnkil.print', module: 'print'
         exclude group: 'org.apache.httpcomponents', module: 'httpmime'
+        exclude group: 'com.ibm.fhir', module: 'fhir-model'
     }
 
-    implementation('org.smartregister:opensrp-client-native-form:1.9.1-SNAPSHOT@aar') {
+    implementation('org.smartregister:opensrp-client-native-form:1.14.5.0-SNAPSHOT@aar') {
         transitive = true
         exclude group: 'com.android.support', module: 'recyclerview-v7'
         exclude group: 'com.android.support', module: 'appcompat-v7'
